@@ -34,6 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_04_145549) do
     t.string "last_name"
     t.string "email"
     t.string "phone"
+    t.string "username"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

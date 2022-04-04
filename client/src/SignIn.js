@@ -42,6 +42,24 @@ export default function SignInSide() {
       password: data.get("password"),
     })
   }
+  function handleLogin(e) {
+    e.preventDefault()
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((currentUser) => setCurrentUser(currentUser))
+        navigate("/home")
+      } else setValidUser(false)
+    })
+  }
 
   return (
     <ThemeProvider theme={theme}>

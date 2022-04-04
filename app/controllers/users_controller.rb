@@ -2,19 +2,26 @@ class UsersController < ApplicationController
 
 
     def index 
-        render json: User.all
+        user = User.all
+        render json: user
     end
 
 
     def create 
         user = User.create!(user_params)
-        render json: user
+        session[:user_id]=user.id
+        render json: user, status: :created
     end
+
     def update 
         user = User.find(params[:id])
         user.update!(user_params)
         render json: user
     end
+
+    # def me
+    #     render json: current_user, status: :ok
+    # end
 
     def destroy 
         user = User.find(params[:id])
@@ -24,6 +31,6 @@ class UsersController < ApplicationController
 
     private
     def user_params
-        params.permit(:first_name, :last_name, :email, :phone)
+        params.permit(:first_name, :last_name, :email, :phone, :username, :password)
     end
 end
