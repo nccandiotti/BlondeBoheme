@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  resources :users
 
-  devise_for :accounts
+  # devise_for :accounts
 
   # get 'welcome/home'
   # get 'welcome/app'
