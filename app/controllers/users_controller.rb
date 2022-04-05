@@ -6,6 +6,10 @@ class UsersController < ApplicationController
         render json: user
     end
 
+    
+    def me
+        render json: current_user, status: :ok
+    end
 
     def create 
         user = User.create!(user_params)
@@ -19,9 +23,7 @@ class UsersController < ApplicationController
         render json: user
     end
 
-    # def me
-    #     render json: current_user, status: :ok
-    # end
+   
 
     def destroy 
         user = User.find(params[:id])
