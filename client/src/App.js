@@ -6,7 +6,7 @@ import SignIn from "./SignIn"
 import SignUp from "./SignUp"
 import UserHome from "./UserHome"
 import NavBar from "./NavBar"
-import Messenger from "./components/Messenger"
+import Messenger from "./components/MessengerFeed"
 
 import { ChatEngine } from "react-chat-engine"
 
@@ -32,8 +32,7 @@ function App() {
         </Routes>
         <ChatEngine
           height=" 50vh"
-          projectID="
-0143b2f7-6e7d-4895-ab39-da1a35ee1b86"
+          projectID={process.env.REACT_APP_PROJECT_ID}
           userName="admin"
           userSecret="admin"
           renderChatFeed={(chatAppProps) => <Messenger {...chatAppProps} />}
