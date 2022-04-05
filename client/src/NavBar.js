@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
@@ -10,6 +10,7 @@ import Container from "@mui/material/Container"
 import Button from "@mui/material/Button"
 import Tooltip from "@mui/material/Tooltip"
 import MenuItem from "@mui/material/MenuItem"
+import { UserContext } from "./UserContext"
 
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 
@@ -23,6 +24,8 @@ const pages = ["/", "signup", "home"]
 const settings = ["Profile", "Logout"]
 
 function NavBar() {
+  const { currentUser } = useContext(UserContext)
+  const { setCurrentUser } = useContext(UserContext)
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = useState(null)
   //   const { currentUser } = useContext(UserContext)
@@ -41,6 +44,13 @@ function NavBar() {
     setAnchorElUser(null)
   }
 
+  function handleLogout() {
+    fetch("/logout", { method: "DELETE" })
+
+    console.log(currentUser)
+    setCurrentUser(null)
+  }
+
   //   function handleSelect(e) {
   //     const path = e.target.textContent.toLowerCase()
   //     if (path === "profile" && currentUser) {
@@ -55,7 +65,7 @@ function NavBar() {
   //   }
 
   return (
-    <p>
+    <div>
       <Link style={{ fontSize: "20px" }} to={`/`}>
         Home
       </Link>
@@ -67,7 +77,17 @@ function NavBar() {
       <Link style={{ fontSize: "20px" }} to={`/signup`}>
         Sign Up
       </Link>
-    </p>
+      <br />
+      {currentUser ? (
+        <Link
+          onClick={handleLogout}
+          style={{ fontSize: "20px" }}
+          to={`/signup`}
+        >
+          Log Out
+        </Link>
+      ) : null}
+    </div>
 
     //   <Link />
     //   <Link />

@@ -14,7 +14,6 @@ function App() {
     fetch("/me")
       .then((res) => res.json())
       .then((currentUser) => setCurrentUser(currentUser))
-    console.log(currentUser)
   }, [])
   return (
     <div className="App">
