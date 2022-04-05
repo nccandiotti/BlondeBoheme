@@ -1,15 +1,15 @@
 import { useState, useContext } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import AppBar from "@mui/material/AppBar"
-import Box from "@mui/material/Box"
-import Toolbar from "@mui/material/Toolbar"
-import IconButton from "@mui/material/IconButton"
-import Typography from "@mui/material/Typography"
-import Menu from "@mui/material/Menu"
-import Container from "@mui/material/Container"
-import Button from "@mui/material/Button"
-import Tooltip from "@mui/material/Tooltip"
-import MenuItem from "@mui/material/MenuItem"
+// import AppBar from "@mui/material/AppBar"
+// import Box from "@mui/material/Box"
+// import Toolbar from "@mui/material/Toolbar"
+// import IconButton from "@mui/material/IconButton"
+// import Typography from "@mui/material/Typography"
+// import Menu from "@mui/material/Menu"
+// import Container from "@mui/material/Container"
+// import Button from "@mui/material/Button"
+// import Tooltip from "@mui/material/Tooltip"
+// import MenuItem from "@mui/material/MenuItem"
 import { UserContext } from "./UserContext"
 
 import { createTheme, ThemeProvider } from "@mui/material/styles"
@@ -48,7 +48,7 @@ function NavBar() {
     fetch("/logout", { method: "DELETE" })
 
     console.log(currentUser)
-    setCurrentUser(null)
+    setCurrentUser("")
   }
 
   //   function handleSelect(e) {

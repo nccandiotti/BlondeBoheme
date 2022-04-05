@@ -7,6 +7,8 @@ import SignUp from "./SignUp"
 import UserHome from "./UserHome"
 import NavBar from "./NavBar"
 
+import { ChatEngine } from "react-chat-engine"
+
 function App() {
   const [currentUser, setCurrentUser] = useState({})
 
@@ -15,6 +17,7 @@ function App() {
       .then((res) => res.json())
       .then((currentUser) => setCurrentUser(currentUser))
   }, [])
+
   return (
     <div className="App">
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
@@ -26,6 +29,7 @@ function App() {
           <Route exact path="/login" element={<SignIn />} />
           <Route exact path="/signup" element={<SignUp />} />
         </Routes>
+        <ChatEngine height=" 25vh" projectID="" userName="" userSecret="" />
       </UserContext.Provider>
     </div>
   )
