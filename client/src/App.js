@@ -6,6 +6,7 @@ import SignIn from "./SignIn"
 import SignUp from "./SignUp"
 import UserHome from "./UserHome"
 import NavBar from "./NavBar"
+import Messenger from "./components/Messenger"
 
 import { ChatEngine } from "react-chat-engine"
 
@@ -15,7 +16,7 @@ function App() {
   useEffect(() => {
     fetch("/me")
       .then((res) => res.json())
-      .then((currentUser) => setCurrentUser(currentUser))
+      .then(setCurrentUser)
   }, [])
 
   return (
@@ -29,7 +30,14 @@ function App() {
           <Route exact path="/login" element={<SignIn />} />
           <Route exact path="/signup" element={<SignUp />} />
         </Routes>
-        <ChatEngine height=" 25vh" projectID="" userName="" userSecret="" />
+        <ChatEngine
+          height=" 50vh"
+          projectID="
+0143b2f7-6e7d-4895-ab39-da1a35ee1b86"
+          userName="admin"
+          userSecret="admin"
+          renderChatFeed={(chatAppProps) => <Messenger {...chatAppProps} />}
+        />
       </UserContext.Provider>
     </div>
   )

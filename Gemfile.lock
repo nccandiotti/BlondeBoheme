@@ -206,6 +206,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  bcrypt
   bootsnap
   debug
   devise

@@ -10,9 +10,10 @@ function UserHome() {
   const { setCurrentUser } = useContext(UserContext)
 
   useEffect(() => {
-    fetch(`/user/${id}`)
+    fetch(`/me`)
       .then((r) => r.json())
       .then(setCurrentUser)
+      .then(console.log(currentUser))
   }, [])
 
   return (
