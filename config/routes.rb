@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :salons
+  resources :appointment_services
+  resources :appointments
+  resources :services
+  resources :stylists
   resources :users
   get '/me', to: "users#me"
   

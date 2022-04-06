@@ -18,28 +18,32 @@ Salon.create(name: "The Blonde Boheme", address: "House Of 'MaVriks: 1401 Stone 
 puts "salon created"
 # --------------------
 puts "creating stylist"
-Stylist.create(admin: true, first_name: "Suzie", last_name: "Bernhardt" phone: "585 880-2679", instagram: "https://www.instagram.com/the.blonde.boheme/", email: "", password: "admin", username: "admin", salon_id:1, service_id:1)
+Stylist.create(first_name: "Suzie", last_name: "Bernhardt", phone: "585 880-2679", instagram: "https://www.instagram.com/the.blonde.boheme/", email: "stylist@stylist.com", username: "stylist", salon_id: Salon.ids.sample)
 puts "stylists created"
+
+puts "creating suzie admin"
+User.create(admin: true, first_name: "Suzie", last_name: "Bernhardt", phone: "585 880-2679", email: "suzie@suzie.com", password: "admin", username: "admin")
+puts "suzie admin created"
 
 # --------------------
 puts "creating user"
-User.create(admin: false, first_name: "user", last_name: "user" phone: "585 880-2679", instagram: "", email: "", password: "user", username: "user", stylist_id: 1)
+User.create(admin: false, first_name: "user", last_name: "user", phone: "585 880-2679", email: "user@user.com", password: "user", username: "user")
 puts "user created"
 
 # --------------------
 
 puts "creating services"
 Service.create(name: "Gloss + Blowout", category: "simplicity" , price:"$90+", time:60)
-Service.create(name: "Gloss + Cut + Blowout", category: "simplicity" , price: "$135+":, time:90)
+Service.create(name: "Gloss + Cut + Blowout", category: "simplicity" , price: "$135+", time:90)
 Service.create(name: "Virgin Retouch + Gloss + Blowout", category: "simplicity" , price:"$180+", time:120)
 Service.create(name: "Virgin Retouch + Gloss + Cut + Blowout", category: "simplicity" , price:"$225", time:180)
 Service.create(name: "K18 Treatment", category: "simplicity" , price:"$30", time:15)
 Service.create(name: "Curls", category: "simplicity" , price:"$15", time:15)
 
-Service.create(name: "Customized Coloring", category: "luxury" , price:"$110/hour", time:)
-Service.create(name: "Nourishing Mask + Blowout", category: "therapeutic" , price:65, time:)
-Service.create(name: "K18 Treatment + Blowout", category: "therapeutic" , price:80, time:)
-Service.create(name: "Scalp Therapy and Blowout", category: "therapeutic" , price:135, time:60)
+Service.create(name: "Customized Coloring", category: "luxury" , price:"$110/hour")
+Service.create(name: "Nourishing Mask + Blowout", category: "therapeutic" , price:"$65", time:15)
+Service.create(name: "K18 Treatment + Blowout", category: "therapeutic" , price:"$80", time: 15)
+Service.create(name: "Scalp Therapy and Blowout", category: "therapeutic" , price:"$135", time:60)
 puts "services created"
 
 

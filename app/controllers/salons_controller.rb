@@ -1,0 +1,2 @@
+class SalonsController < ApplicationController
+end
