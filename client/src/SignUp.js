@@ -47,7 +47,7 @@ export default function SignUp() {
         // setPassword = ""
         // setFirstName = ""
         navigate("/login")
-      } else 
+      }
     })
   }
 
