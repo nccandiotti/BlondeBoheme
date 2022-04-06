@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from "react"
-import { userContext } from "./UserContext"
 
 import { useParams } from "react-router-dom"
 import { UserContext } from "./UserContext"
 
 function UserHome() {
-  const { id } = useParams()
+  // const { id } = useParams()
   const { currentUser } = useContext(UserContext)
   const { setCurrentUser } = useContext(UserContext)
 

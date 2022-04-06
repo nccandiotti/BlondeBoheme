@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   get '/me', to: "users#me"
+  
 
   post "/login", to: "sessions#login"
   delete "/logout", to: "sessions#logout"
