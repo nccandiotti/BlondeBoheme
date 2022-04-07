@@ -1,4 +1,9 @@
+.App {
+  background-image: url("./assets/pink.jpg");
+  background-size: cover;
+}
 /* CHAT STYLES */
+
 * {
   font-family: Avenir, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,

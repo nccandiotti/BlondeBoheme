@@ -1,3 +1,3 @@
 class SalonSerializer < ActiveModel::Serializer
-  attributes :id, :name, :address, :instagram
+  attributes :id, :name, :owner, :address, :phone, :instagram
 end

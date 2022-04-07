@@ -1,4 +1,5 @@
 class AppointmentSerializer < ActiveModel::Serializer
-  attributes :id, :stylist, :belongs_to
-  has_one :client
+  attributes :id, :time, :duration
+  has_one :salon
+  has_one :user
 end

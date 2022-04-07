@@ -1,3 +1,3 @@
 class Service < ApplicationRecord
-  belongs_to :stylist
+  belongs_to :salon
 end

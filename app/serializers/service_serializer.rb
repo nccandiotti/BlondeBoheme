@@ -1,4 +1,4 @@
 class ServiceSerializer < ActiveModel::Serializer
-  attributes :id, :name, :category, :price, :time
-  has_one :stylist
+  attributes :id, :category, :time, :price, :name
+  has_one :salon
 end
