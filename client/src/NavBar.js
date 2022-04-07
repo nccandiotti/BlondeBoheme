@@ -65,7 +65,16 @@ function NavBar() {
   //   }
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        fontFamily: "Montserrat",
+        marginLeft: "80px",
+        marginRight: "80px",
+      }}
+    >
       <Link style={{ fontSize: "20px" }} to={`/`}>
         Home
       </Link>
@@ -83,6 +92,10 @@ function NavBar() {
       </Link>
       <Link style={{ fontSize: "20px" }} to={`/policies`}>
         Policies
+      </Link>
+      <br />
+      <Link style={{ fontSize: "20px" }} to={`/about`}>
+        About
       </Link>
       <br />
       {currentUser ? (

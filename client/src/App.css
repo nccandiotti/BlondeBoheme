@@ -1,6 +1,10 @@
-.App {
+/* #cdadaf */
+
+body {
   background-image: url("./assets/pink.jpg");
   background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
 }
 
 .material-icons {
