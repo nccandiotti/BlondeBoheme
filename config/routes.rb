@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :services
-  resources :servcies
+
   resources :appointments
   resources :users
   resources :salons

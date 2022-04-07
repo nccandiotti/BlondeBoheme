@@ -1,4 +1,4 @@
 class Salon < ApplicationRecord
-    has_many :users 
-    has_many :appointments, through: :users
+    has_many :appointments 
+    has_many :users, through: :appointments
 end
