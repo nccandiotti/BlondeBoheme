@@ -78,6 +78,13 @@ function NavBar() {
         Sign Up
       </Link>
       <br />
+      <Link style={{ fontSize: "20px" }} to={`/education`}>
+        Education
+      </Link>
+      <Link style={{ fontSize: "20px" }} to={`/policies`}>
+        Policies
+      </Link>
+      <br />
       {currentUser ? (
         <Link
           onClick={handleLogout}

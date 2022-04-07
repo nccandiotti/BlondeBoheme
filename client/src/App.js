@@ -7,6 +7,9 @@ import SignUp from "./SignUp"
 import UserHome from "./UserHome"
 import NavBar from "./NavBar"
 import MessengerFeed from "./components/MessengerFeed"
+import Education from "./components/Education"
+import Services from "./components/Services"
+import Policies from "./components/Policies"
 
 import { ChatEngine } from "react-chat-engine"
 
@@ -40,23 +43,26 @@ function App() {
           {/* <Route exact path="/" element={<App />} /> */}
           <Route exact path="/login" element={<SignIn />} />
           <Route exact path="/signup" element={<SignUp />} />
+          <Route exact path="/education" element={<Education />} />
+          <Route exact path="/services" element={<Services />} />
+          <Route exact path="/policies" element={<Policies />} />
         </Routes>
-        <ChatEngine
+        {/* <ChatEngine
           height=" 50vh"
           projectID={process.env.REACT_APP_PROJECT_ID}
           userName="admin"
           userSecret="admin"
           renderChatFeed={(chatAppProps) => <MessengerFeed {...chatAppProps} />}
-        />
+        /> */}
       </UserContext.Provider>
-      <iframe
+      {/* <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2907.753123155224!2d-77.6623780845272!3d43.21466717913881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b1496fdd8883%3A0xab84c4616032acac!2s1401%20Stone%20Rd%2C%20Rochester%2C%20NY%2014615!5e0!3m2!1sen!2sus!4v1649279418765!5m2!1sen!2sus"
         width="400"
         height="300"
-        allowfullscreen=""
+        allowFullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
+      ></iframe> */}
     </div>
   )
 }
