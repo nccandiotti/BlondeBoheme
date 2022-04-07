@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :users
   resources :salons
   get '/me', to: "users#me"
+  get '/luxuryServices', to: 'services#luxuryServices'
+  get '/therapeuticServices', to: 'services#therapeuticServices'
+  get '/simpleServices', to: 'services#simpleServices'
   
 
   post "/login", to: "sessions#login"
