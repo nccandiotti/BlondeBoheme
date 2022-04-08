@@ -1,5 +1,7 @@
 /* #cdadaf */
-
+.App {
+  display: block;
+}
 body {
   background-image: url("./assets/pink.jpg");
   background-size: cover;

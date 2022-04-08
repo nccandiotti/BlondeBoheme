@@ -14,10 +14,12 @@ import Policies from "./components/Policies"
 import AboutSuzie from "./components/AboutSuzie"
 import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
-import { ChatEngine } from "react-chat-engine"
+// import { ChatEngine } from "react-chat-engine"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
 
 function App() {
   const [currentUser, setCurrentUser] = useState({})
+  const ourMediaQuery = useMediaQuery("(min-width:400px)")
 
   useEffect(() => {
     fetch("/me")
@@ -26,7 +28,7 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    <div className="App" style={{ ourMediaQuery }}>
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
         <Box
           sx={{

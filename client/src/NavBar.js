@@ -98,6 +98,10 @@ function NavBar() {
         About
       </Link>
       <br />
+      <Link style={{ fontSize: "20px" }} to={`/services`}>
+        Services
+      </Link>
+      <br />
       {currentUser ? (
         <Link
           onClick={handleLogout}

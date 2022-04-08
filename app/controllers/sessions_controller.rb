@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
        end
     
        def logout
-          session.delete :user_id
-          head :no_content
+        session.delete :user_id
+        head :no_content
        end
 
     end
