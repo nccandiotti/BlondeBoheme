@@ -2,10 +2,11 @@ import { Route, Routes } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { UserContext } from "./UserContext"
 import "./App.css"
-import SignIn from "./SignIn"
+import SignIn from "./components/SignIn"
 import SignUp from "./SignUp"
 import UserHome from "./UserHome"
 import NavBar from "./NavBar"
+
 import MessengerFeed from "./components/MessengerFeed"
 import Education from "./components/Education"
 import Services from "./components/Services"
@@ -54,6 +55,7 @@ function App() {
           </h3> */}
         </Box>
         <NavBar />
+        <AboutSuzie />
         <Routes>
           <Route exact path="/myaccount" element={<UserHome />} />
           {/* <Route exact path="/" element={<App />} /> */}
