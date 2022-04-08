@@ -6,16 +6,62 @@ import SignIn from "./components/SignIn"
 import SignUp from "./SignUp"
 import UserHome from "./UserHome"
 import NavBar from "./NavBar"
+import Container from "@mui/material/Container"
 
-import MessengerFeed from "./components/MessengerFeed"
+// import MessengerFeed from "./components/MessengerFeed"
 import Education from "./components/Education"
 import Services from "./components/Services"
 import Policies from "./components/Policies"
 import AboutSuzie from "./components/AboutSuzie"
 import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
+import Grid from "@mui/material/Grid"
+import Link from "@mui/material/Link"
 // import { ChatEngine } from "react-chat-engine"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
+
+const footers = [
+  {
+    title: "The Blonde Boheme",
+    description: [
+      "B(l)eached Washed Creator",
+      "Local Lux.u.ry Co-Educator",
+      <Link href="https://www.instagram.com/the.blonde.boheme/">
+        @the.blonde.boheme
+      </Link>,
+      <Link href="https://www.instagram.com/local_lux.u.ry_/">
+        @local_lux.u.ry_
+      </Link>,
+    ],
+  },
+  {
+    title: "Information",
+    description: [
+      "House of 'Mavriks",
+      "1402 Stone Road, Rochester, NY 14615 (lower level, suite 100)",
+      <Link href="https://www.instagram.com/house_of_mavriks">
+        @house_of_mavriks
+      </Link>,
+    ],
+  },
+  {
+    title: "Service Hours",
+    description: [
+      "SUMMER  (June-Sept)",
+      "Tue/Thur/Fri 9am-5pm",
+      "WINTER (Oct-May",
+      "Tue/Thur/Fri 10am-6pm",
+    ],
+  },
+  {
+    title: "Contact",
+    description: [
+      "EXISTING CLIENTS ONLY: text (585-880-2679",
+      <Link href="/education">Education request</Link>,
+      <Link href="/signup">New Clients</Link>,
+    ],
+  },
+]
 
 function App() {
   const [currentUser, setCurrentUser] = useState({})
@@ -87,6 +133,35 @@ function App() {
           filter: "sepia(100%) saturate(100%)  hue-rotate(180deg)",
         }}
       ></iframe> */}
+
+      <Container
+        maxWidth="md"
+        component="footer"
+        sx={{
+          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+          mt: 8,
+          py: [3, 6],
+        }}
+      >
+        <Grid container spacing={4} justifyContent="space-evenly">
+          {footers.map((footer) => (
+            <Grid item xs={6} sm={3} key={footer.title}>
+              <Typography variant="h6" color="text.primary" gutterBottom>
+                {footer.title}
+              </Typography>
+              <ul>
+                {footer.description.map((item) => (
+                  <li key={item}>
+                    <Link href="#" variant="subtitle1" color="text.secondary">
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </div>
   )
 }

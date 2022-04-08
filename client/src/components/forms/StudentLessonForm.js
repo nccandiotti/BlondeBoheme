@@ -31,6 +31,7 @@ function StudentLessonForm() {
   const [email, setEmail] = useState("")
   const [technique, setTechnique] = useState("")
   const [travel, setTravel] = useState("")
+  const [lessonType, setLessonType] = useState("")
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -62,11 +63,16 @@ function StudentLessonForm() {
     e.preventDefault()
     setTravel(e.target.value)
   }
+  function handleType(e) {
+    e.preventDefault()
+    setLessonType(e.target.value)
+  }
+  console.log(lessonType)
 
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="s">
           <CssBaseline />
           <Box
             sx={{
@@ -74,6 +80,9 @@ function StudentLessonForm() {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
+              backgroundColor: "rgba(255, 255, 255, 0.3)",
+              padding: "40px",
+              borderRadius: "20px",
             }}
           >
             <Typography component="h1" variant="h5">
@@ -202,7 +211,22 @@ function StudentLessonForm() {
                     label="I'm not sure, what do you recommend?"
                   />
                 </RadioGroup>
+                <FormLabel id="size">Lesson Type</FormLabel>
 
+                <RadioGroup name="radio-buttons-group">
+                  <FormControlLabel
+                    value="private"
+                    onChange={handleType}
+                    control={<Radio />}
+                    label="I'd like a public lesson (**only available locally)"
+                  />
+                  <FormControlLabel
+                    value="group"
+                    onChange={handleType}
+                    control={<Radio />}
+                    label="I'm interested in a group class"
+                  />
+                </RadioGroup>
                 <FormLabel id="which-technique"> Local, or Travel?</FormLabel>
 
                 <RadioGroup name="radio-buttons-group">
