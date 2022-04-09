@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { UserContext } from "./UserContext"
 import "./App.css"
@@ -6,7 +6,10 @@ import SignIn from "./components/SignIn"
 import SignUp from "./SignUp"
 import UserHome from "./components/UserHome"
 import NavBar from "./NavBar"
+import NewGuestConsultation from "./components/forms/NewGuestConsultation"
 import Container from "@mui/material/Container"
+
+import Button from "@mui/material/Button"
 
 // import MessengerFeed from "./components/MessengerFeed"
 import Education from "./components/Education"
@@ -71,6 +74,7 @@ const locationId = process.env.REACT_APP_SQUARE_LOCATION_ID
 function App() {
   const [currentUser, setCurrentUser] = useState({})
   const ourMediaQuery = useMediaQuery("(min-width:400px)")
+  let navigate = useNavigate()
 
   useEffect(() => {
     fetch("/me")
@@ -140,6 +144,9 @@ function App() {
           </Typography>
         </Box>
         <NavBar />
+        <Button onClick={() => navigate("/newguest")}>
+          Request an Appointment
+        </Button>
         {/* 
         <form class="payment-form" id="fast-checkout">
           <div class="wrapper">
@@ -190,6 +197,7 @@ function App() {
           <Route exact path="/services" element={<Services />} />
           <Route exact path="/policies" element={<Policies />} />
           <Route exact path="/about" element={<AboutSuzie />} />
+          <Route exact path="/newguest" element={<NewGuestConsultation />} />
         </Routes>
         {/* <ChatEngine
           height=" 50vh"
@@ -211,7 +219,7 @@ function App() {
         }}
       ></iframe> */}
 
-      {/* <Container
+      <Container
         maxWidth="md"
         component="footer"
         sx={{
@@ -228,17 +236,13 @@ function App() {
               </Typography>
               <ul>
                 {footer.description.map((item) => (
-                  <li key={item.title}>
-                    <Link href="#" variant="subtitle1" color="text.secondary">
-                      {item}
-                    </Link>
-                  </li>
+                  <li key={item.title}>{item}</li>
                 ))}
               </ul>
             </Grid>
           ))}
         </Grid>
-      </Container> */}
+      </Container>
     </div>
   )
 }
