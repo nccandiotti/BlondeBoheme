@@ -1,7 +1,9 @@
 import { useState, useEffect, useContext } from "react"
+import AdminPortal from "./AdminPortal"
+import UserPortal from "./UserPortal"
 
 import { useParams } from "react-router-dom"
-import { UserContext } from "./UserContext"
+import { UserContext } from "../UserContext"
 
 function UserHome() {
   // const { id } = useParams()
@@ -12,7 +14,6 @@ function UserHome() {
     fetch(`/me`)
       .then((r) => r.json())
       .then(setCurrentUser)
-      .then(console.log(currentUser))
   }, [])
 
   return (
@@ -22,6 +23,8 @@ function UserHome() {
       <p>{`username: ${currentUser.username}`} </p>
       <p>{`email: ${currentUser.email}`} </p>
       <p>{`phone: ${currentUser.phone}`}</p>
+      {currentUser.admin ? <p>I'm an admin</p> : <p>Guest</p>}
+      {currentUser.admin ? <AdminPortal /> : <UserPortal />}
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { UserContext } from "./UserContext"
 import "./App.css"
 import SignIn from "./components/SignIn"
 import SignUp from "./SignUp"
-import UserHome from "./UserHome"
+import UserHome from "./components/UserHome"
 import NavBar from "./NavBar"
 import Container from "@mui/material/Container"
 
@@ -19,6 +19,8 @@ import Grid from "@mui/material/Grid"
 import Link from "@mui/material/Link"
 // import { ChatEngine } from "react-chat-engine"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
+// import { Client, Environment } from "square"
+import useScript from "./organization/importScript"
 
 const footers = [
   {
@@ -63,6 +65,9 @@ const footers = [
   },
 ]
 
+const appId = process.env.REACT_APP_SQUARE_APP_ID
+const locationId = process.env.REACT_APP_SQUARE_LOCATION_ID
+// const payments = Square.payments(appId, locationId)
 function App() {
   const [currentUser, setCurrentUser] = useState({})
   const ourMediaQuery = useMediaQuery("(min-width:400px)")
@@ -72,6 +77,44 @@ function App() {
       .then((res) => res.json())
       .then(setCurrentUser)
   }, [])
+
+  useScript("https://use.typekit.net/foobar.js")
+
+  async function CardPay(fieldEl, buttonEl) {
+    // Create a card payment object and attach to page
+    const card = await window.payments.card({
+      style: {
+        ".input-container.is-focus": {
+          borderColor: "#006AFF",
+        },
+        ".message-text.is-error": {
+          color: "#BF0020",
+        },
+      },
+    })
+    await card.attach(fieldEl)
+
+    async function eventHandler(event) {
+      // Clear any existing messages
+      window.paymentFlowMessageEl.innerText = ""
+
+      try {
+        const result = await card.tokenize()
+        if (result.status === "OK") {
+          // Use global method from sq-payment-flow.js
+          window.createPayment(result.token)
+        }
+      } catch (e) {
+        if (e.message) {
+          window.showError(`Error: ${e.message}`)
+        } else {
+          window.showError("Something went wrong")
+        }
+      }
+    }
+
+    buttonEl.addEventListener("click", eventHandler)
+  }
 
   return (
     <div className="App" style={{ ourMediaQuery }}>
@@ -95,15 +138,49 @@ function App() {
           >
             Luxury Color Services | Laid Back Vibe
           </Typography>
-          {/* <h1 style={{ fontSize: "80px", fontFamily: "Sacramento" }}>
-          The Blonde Boheme
-          </h1> */}
-          {/* <h3 style={{ fontFamily: "Montserrat" }}>
-            Luxury Color Services | Laid Back Vibe
-          </h3> */}
         </Box>
         <NavBar />
-        <AboutSuzie />
+        {/* 
+        <form class="payment-form" id="fast-checkout">
+          <div class="wrapper">
+            <div id="apple-pay-button" alt="apple-pay" type="button"></div>
+            <div id="google-pay-button" alt="google-pay" type="button"></div>
+            <div class="border">
+              <span>OR</span>
+            </div>
+            <div id="ach-wrapper">
+              <label for="ach-account-holder-name">Full Name</label>
+              <input
+                id="ach-account-holder-name"
+                type="text"
+                placeholder="Jane Doe"
+                name="ach-account-holder-name"
+                autocomplete="name"
+              />
+              <span id="ach-message"></span>
+              <button id="ach-button" type="button">
+                Pay with Bank Account
+              </button>
+            </div>
+            <div class="border">
+              <span>OR</span>
+            </div>
+            <div id="card-container"></div>
+            <button id="card-button" type="button">
+              Pay with Card
+            </button>
+            <span id="payment-flow-message"></span>
+          </div>
+        </form>
+        <form id="payment-form">
+          <div id="card-container"></div>
+
+          <button id="card-button" type="button">
+            Pay
+          </button>
+        </form>
+        <div id="payment-status-container"></div> */}
+        {/* <AboutSuzie /> */}
         <Routes>
           <Route exact path="/myaccount" element={<UserHome />} />
           {/* <Route exact path="/" element={<App />} /> */}
@@ -134,7 +211,7 @@ function App() {
         }}
       ></iframe> */}
 
-      <Container
+      {/* <Container
         maxWidth="md"
         component="footer"
         sx={{
@@ -151,7 +228,7 @@ function App() {
               </Typography>
               <ul>
                 {footer.description.map((item) => (
-                  <li key={item}>
+                  <li key={item.title}>
                     <Link href="#" variant="subtitle1" color="text.secondary">
                       {item}
                     </Link>
@@ -161,7 +238,7 @@ function App() {
             </Grid>
           ))}
         </Grid>
-      </Container>
+      </Container> */}
     </div>
   )
 }

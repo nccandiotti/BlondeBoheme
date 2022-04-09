@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :student_inquiries
   resources :services
 
   resources :appointments
@@ -31,6 +32,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  root to: "public#home"
+  # root to: "public#home"
   # root to: "home#index" ----- devise example
 end

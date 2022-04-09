@@ -14,7 +14,7 @@ import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { UserContext } from "../UserContext"
-import UserHome from "../UserHome"
+import UserHome from "./UserHome"
 import hair from "../assets/hair.png"
 
 function Copyright(props) {

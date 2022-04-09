@@ -20,6 +20,35 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <script
+      type="text/javascript"
+      src="https://sandbox.web.squarecdn.com/v1/square.js"
+    >
+          const appId = process.env.REACT_APP_SQUARE_APP_ID
+      const locationId = process.env.REACT_APP_SQUARE_LOCATION_ID
+            async function initializeCard(payments) {
+                 const card = await payments.card();
+                 await card.attach('#card-container');
+                 return card;
+               }
+
+              document.addEventListener('DOMContentLoaded', async function () {
+                if (!window.Square) {
+                  throw new Error('Square.js failed to load properly');
+                }
+                const payments = window.Square.payments(appId, locationId);
+                let card;
+                try {
+                  card = await initializeCard(payments);
+                } catch (e) {
+                  console.error('Initializing Card failed', e);
+                  return;
+                }
+
+                // Step 5.2: create card payment
+              });
+    </script>
+
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/

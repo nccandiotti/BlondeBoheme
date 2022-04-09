@@ -9,11 +9,11 @@ gem "active_model_serializers"
 
 gem "irb"
 gem 'bcrypt'
-
+gem 'square.rb', '~> 18.1', '>= 18.1.0.20220316'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-
+gem 'rack-cors'
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
