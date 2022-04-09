@@ -76,7 +76,7 @@ function AboutSuzie() {
             <Grid item xs={6}>
               <Typography
                 sx={{
-                  fontSize: "30px",
+                  fontSize: "20px",
                   fontFamily: "Montserrat",
                   fontWeight: "bold",
                 }}
@@ -95,7 +95,7 @@ function AboutSuzie() {
             <Grid item xs={8}>
               <Typography
                 sx={{
-                  fontSize: "30px",
+                  fontSize: "20px",
                   fontFamily: "Montserrat",
                   fontWeight: "bold",
                 }}
@@ -111,7 +111,7 @@ function AboutSuzie() {
 
               <Typography
                 sx={{
-                  fontSize: "30px",
+                  fontSize: "20px",
                   fontFamily: "Montserrat",
                   fontWeight: "bold",
                 }}
