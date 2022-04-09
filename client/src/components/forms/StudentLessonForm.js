@@ -16,14 +16,17 @@ import FormLabel from "@mui/material/FormLabel"
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
-// import { UserContext } from "../../UserContext"
+
+import Alert from "@mui/material/Alert"
+import AlertTitle from "@mui/material/AlertTitle"
+import { UserContext } from "../../UserContext"
 
 const theme = createTheme()
 
 function StudentLessonForm() {
   let navigate = useNavigate()
-  //   const { currentUser } = useContext(UserContext)
-  //   const { setCurrentUser } = useContext(UserContext)
+  const { currentUser } = useContext(UserContext)
+  const { setCurrentUser } = useContext(UserContext)
 
   const [firstname, setFirstName] = useState("")
   const [lastname, setLastName] = useState("")
@@ -35,7 +38,7 @@ function StudentLessonForm() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    fetch("/users", {
+    fetch("/student_inquiries", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -43,14 +46,23 @@ function StudentLessonForm() {
         lastname: lastname,
         email: email,
         phone: phone,
+        travel: travel,
+        technique: technique,
+        lessonType: lessonType,
+        salon_id: 2,
+        user_id: currentUser.id,
       }),
     }).then((r) => {
       if (r.ok) {
         r.json()
         // r.json().then((currentUser) => setCurrentUser(currentUser))
         // setFirstName = ""
-        navigate("/login")
-      }
+        // navigate("/login")
+        setFirstName("")
+        setLastName("")
+        setEmail("")
+        setPhone("")
+      } else alert("Error")
     })
   }
 
@@ -134,32 +146,7 @@ function StudentLessonForm() {
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="new-password"
-                      //   value={password}
-                      //   onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      required
-                      fullWidth
-                      name="username"
-                      label="username"
-                      type="username"
-                      id="username"
-                      autoComplete="username"
-                      //   value={username}
-                      //   onChange={(e) => setUsername(e.target.value)}
-                    />
-                  </Grid>
+
                   <Grid item xs={12}>
                     <TextField
                       required
