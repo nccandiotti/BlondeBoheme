@@ -4,4 +4,7 @@ class Salon < ApplicationRecord
 
     has_many :student_inquiries
     has_many :users, through: :student_inquiries
+
+    has_many :user_consults
+    has_many :users, through: :user_consults
 end

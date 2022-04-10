@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_09_164429) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_09_232213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +53,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_09_164429) do
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
+  create_table "consults", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "phone"
+    t.string "graycvg"
+    t.string "hairHx"
+    t.string "mugShot"
+    t.string "inspo"
+    t.bigint "user_id", null: false
+    t.bigint "salon_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["salon_id"], name: "index_consults_on_salon_id"
+    t.index ["user_id"], name: "index_consults_on_user_id"
+  end
+
   create_table "salons", force: :cascade do |t|
     t.string "name"
     t.string "owner"
@@ -90,6 +107,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_09_164429) do
     t.index ["user_id"], name: "index_student_inquiries_on_user_id"
   end
 
+  create_table "user_consults", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "phone"
+    t.string "graycvg"
+    t.string "hairhx"
+    t.string "allergies"
+    t.string "mugshot"
+    t.string "inspo"
+    t.bigint "user_id", null: false
+    t.bigint "salon_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["salon_id"], name: "index_user_consults_on_salon_id"
+    t.index ["user_id"], name: "index_user_consults_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.boolean "admin"
     t.string "firstname"
@@ -106,7 +141,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_09_164429) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "appointments", "salons"
   add_foreign_key "appointments", "users"
+  add_foreign_key "consults", "salons"
+  add_foreign_key "consults", "users"
   add_foreign_key "services", "salons"
   add_foreign_key "student_inquiries", "salons"
   add_foreign_key "student_inquiries", "users"
+  add_foreign_key "user_consults", "salons"
+  add_foreign_key "user_consults", "users"
 end
