@@ -3,4 +3,5 @@ class SalonSerializer < ActiveModel::Serializer
   has_many :users
   has_many :appointments
   has_many :student_inquiries
+  has_many :user_consults
 end

@@ -51,8 +51,8 @@ function NewGuestConsultation() {
   const [graycvg, setGrayCvg] = useState("")
   const [allergies, setAllergies] = useState("")
   const [hairHx, setHairHx] = useState("")
-  const [mugShot, setMugShot] = useState({})
-  const [inspo, setInspo] = useState({})
+  const [mugshot, setMugshot] = useState("")
+  const [inspo, setInspo] = useState("")
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -81,7 +81,7 @@ function NewGuestConsultation() {
         graycvg: graycvg,
         allergies: allergies,
         hairhx: hairHx,
-        mugshot: mugShot,
+        mugshot: mugshot,
         inspo: inspo,
         salon_id: 2,
         user_id: currentUser.id,
@@ -265,9 +265,8 @@ function NewGuestConsultation() {
                     <Grid item xs={12} sm={6}>
                       <input
                         type="file"
-                        multiple
                         accept="image/*"
-                        onChange={(e) => setMugShot(e.target.files)}
+                        onChange={(e) => setMugshot(e.target.files[0])}
                       />
                     </Grid>
                     {/* ----------- */}
@@ -279,9 +278,8 @@ function NewGuestConsultation() {
                     </FormLabel>
                     <Grid item xs={12} sm={6}>
                       <input
-                        onChange={(e) => setInspo(e.target.files)}
+                        onChange={(e) => console.log(e.target.files[0])}
                         type="file"
-                        multiple
                         accept="image/*"
                       />
                     </Grid>

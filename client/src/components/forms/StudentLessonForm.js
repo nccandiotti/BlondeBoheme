@@ -17,8 +17,6 @@ import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 
-import Alert from "@mui/material/Alert"
-import AlertTitle from "@mui/material/AlertTitle"
 import { UserContext } from "../../UserContext"
 
 const theme = createTheme()
