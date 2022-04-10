@@ -3,7 +3,7 @@ import { sendMessage, isTyping } from "react-chat-engine"
 import { SendOutlined, PictureOutlined } from "@ant-design/icons"
 
 import MyMessage from "./MyMessage"
-import TheirMessage from "../TheirMessage"
+import TheirMessage from "./TheirMessage"
 
 function MessageForm(props) {
   const [value, setValue] = useState("")

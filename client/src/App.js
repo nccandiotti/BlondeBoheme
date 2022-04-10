@@ -11,7 +11,7 @@ import Container from "@mui/material/Container"
 
 import Button from "@mui/material/Button"
 
-// import MessengerFeed from "./components/MessengerFeed"
+import MessengerFeed from "./components/messages/MessengerFeed"
 import Education from "./components/Education"
 import Services from "./components/Services"
 import Policies from "./components/Policies"
@@ -20,10 +20,10 @@ import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import Link from "@mui/material/Link"
-// import { ChatEngine } from "react-chat-engine"
+import { ChatEngine } from "react-chat-engine"
+import ChatLogin from "./components/messages/ChatLogin"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 // import { Client, Environment } from "square"
-import useScript from "./organization/importScript"
 
 const footers = [
   {
@@ -81,44 +81,6 @@ function App() {
       .then((res) => res.json())
       .then(setCurrentUser)
   }, [])
-
-  useScript("https://use.typekit.net/foobar.js")
-
-  async function CardPay(fieldEl, buttonEl) {
-    // Create a card payment object and attach to page
-    const card = await window.payments.card({
-      style: {
-        ".input-container.is-focus": {
-          borderColor: "#006AFF",
-        },
-        ".message-text.is-error": {
-          color: "#BF0020",
-        },
-      },
-    })
-    await card.attach(fieldEl)
-
-    async function eventHandler(event) {
-      // Clear any existing messages
-      window.paymentFlowMessageEl.innerText = ""
-
-      try {
-        const result = await card.tokenize()
-        if (result.status === "OK") {
-          // Use global method from sq-payment-flow.js
-          window.createPayment(result.token)
-        }
-      } catch (e) {
-        if (e.message) {
-          window.showError(`Error: ${e.message}`)
-        } else {
-          window.showError("Something went wrong")
-        }
-      }
-    }
-
-    buttonEl.addEventListener("click", eventHandler)
-  }
 
   return (
     <div className="App" style={{ ourMediaQuery }}>
@@ -199,13 +161,19 @@ function App() {
           <Route exact path="/about" element={<AboutSuzie />} />
           <Route exact path="/newguest" element={<NewGuestConsultation />} />
         </Routes>
-        {/* <ChatEngine
-          height=" 50vh"
-          projectID={process.env.REACT_APP_PROJECT_ID}
-          userName="admin"
-          userSecret="admin"
-          renderChatFeed={(chatAppProps) => <MessengerFeed {...chatAppProps} />}
-        /> */}
+        {!localStorage.getItem("username") ? (
+          <ChatLogin />
+        ) : (
+          <ChatEngine
+            height=" 50vh"
+            projectID={process.env.REACT_APP_PROJECT_ID}
+            userName={localStorage.getItem("username")}
+            userSecret={localStorage.getItem("password")}
+            renderChatFeed={(chatAppProps) => (
+              <MessengerFeed {...chatAppProps} />
+            )}
+          />
+        )}
       </UserContext.Provider>
       {/* <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2907.753123155224!2d-77.6623780845272!3d43.21466717913881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b1496fdd8883%3A0xab84c4616032acac!2s1401%20Stone%20Rd%2C%20Rochester%2C%20NY%2014615!5e0!3m2!1sen!2sus!4v1649279418765!5m2!1sen!2sus"

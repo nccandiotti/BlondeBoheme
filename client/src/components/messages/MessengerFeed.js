@@ -1,16 +1,15 @@
 import React from "react"
 import MessageForm from "./MessageForm"
 import MyMessage from "./MyMessage"
-import TheirMessage from "../TheirMessage"
+import TheirMessage from "./TheirMessage"
 
 function MessengerFeed(props) {
   const { chats, activeChat, userName, messages } = props
 
   const chat = chats && chats[activeChat]
-  console.group(chat, userName, messages)
 
   const renderReadReceipts = (message, isMyMessage) => {
-    chat.people.map(
+    return chat.people.map(
       (person, index) =>
         person.last_read === message.id && (
           <div
@@ -50,7 +49,9 @@ function MessengerFeed(props) {
               marginRight: isMyMessage ? "18px" : "0px",
               marginLeft: isMyMessage ? "0px" : "18px",
             }}
-          ></div>
+          >
+            {renderReadReceipts(message, isMyMessage)}
+          </div>
         </div>
       )
     })
