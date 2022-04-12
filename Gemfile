@@ -10,7 +10,7 @@ gem "active_model_serializers"
 gem "irb"
 gem 'bcrypt'
 gem 'square.rb', '~> 18.1', '>= 18.1.0.20220316'
-
+gem 'stripe'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 gem 'rack-cors'

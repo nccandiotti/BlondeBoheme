@@ -12,7 +12,7 @@ function UserHome() {
     fetch(`/me`)
       .then((r) => r.json())
       .then(setCurrentUser)
-  }, [currentUser])
+  }, [])
 
   return (
     <div>

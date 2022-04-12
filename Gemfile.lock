@@ -250,6 +250,7 @@ GEM
       logging (~> 2.3)
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
+    stripe (5.49.0)
     strscan (3.0.1)
     thor (1.2.1)
     timeout (0.2.0)
@@ -292,6 +293,7 @@ DEPENDENCIES
   sprockets-rails
   square.rb (~> 18.1, >= 18.1.0.20220316)
   stimulus-rails
+  stripe
   turbo-rails
   tzinfo-data
   web-console

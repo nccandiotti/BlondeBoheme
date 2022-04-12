@@ -115,7 +115,6 @@ function UserPortal() {
     <div>
       UserPortal
       <div>New Guest Form</div>
-      <div>Policies</div>
       <Button onClick={handleOpen}>Edit Profile</Button>
       <Modal
         open={open}
@@ -227,8 +226,13 @@ function UserPortal() {
       </Button>
       <Button onClick={handleClick}>Upload Pics</Button>
       {!clicked ? null : <UploadPicsForm />}
-      <Button onClick={() => console.log("clicked")}>Leave Deposit</Button>
-      {userApptCards}
+      <Button
+        onClick={() =>
+          window.open("https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww")
+        }
+      >
+        Leave Deposit
+      </Button>
       <DateTimePicker
         sx={{
           button: {
