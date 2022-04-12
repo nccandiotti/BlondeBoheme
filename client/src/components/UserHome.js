@@ -12,12 +12,12 @@ function UserHome() {
     fetch(`/me`)
       .then((r) => r.json())
       .then(setCurrentUser)
-  }, [])
+  }, [currentUser])
 
   return (
     <div>
       <p>{`firstname: ${currentUser.username}`}</p>
-      <p>{`lastname: ${currentUser.last_name}`} </p>
+      <p>{`lastname: ${currentUser.lastname}`} </p>
       <p>{`username: ${currentUser.username}`} </p>
       <p>{`email: ${currentUser.email}`} </p>
       <p>{`phone: ${currentUser.phone}`}</p>
