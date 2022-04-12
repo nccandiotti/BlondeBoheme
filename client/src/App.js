@@ -9,9 +9,9 @@ import NavBar from "./NavBar"
 import NewGuestConsultation from "./components/forms/NewGuestConsultation"
 import Container from "@mui/material/Container"
 
-import Button from "@mui/material/Button"
+// import Button from "@mui/material/Button"
 
-import MessengerFeed from "./components/messages/MessengerFeed"
+// import MessengerFeed from "./components/messages/MessengerFeed"
 import Education from "./components/Education"
 import Services from "./components/Services"
 import Policies from "./components/Policies"
@@ -20,8 +20,8 @@ import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import Link from "@mui/material/Link"
-import { ChatEngine } from "react-chat-engine"
-import ChatLogin from "./components/messages/ChatLogin"
+// import { ChatEngine } from "react-chat-engine"
+// import ChatLogin from "./components/messages/ChatLogin"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 // import { Client, Environment } from "square"
 
@@ -106,9 +106,7 @@ function App() {
           </Typography>
         </Box>
         <NavBar />
-        <Button onClick={() => navigate("/newguest")}>
-          Request an Appointment
-        </Button>
+
         {/* 
         <form class="payment-form" id="fast-checkout">
           <div class="wrapper">
@@ -194,6 +192,11 @@ function App() {
           borderTop: (theme) => `1px solid ${theme.palette.divider}`,
           mt: 8,
           py: [3, 6],
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          marginTop: "20px",
         }}
       >
         <Grid container spacing={4} justifyContent="space-evenly">

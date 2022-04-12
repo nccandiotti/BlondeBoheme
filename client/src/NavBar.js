@@ -1,5 +1,5 @@
 import { useState, useContext } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 // import AppBar from "@mui/material/AppBar"
 // import Box from "@mui/material/Box"
 // import Toolbar from "@mui/material/Toolbar"
@@ -12,16 +12,10 @@ import { Link, useNavigate } from "react-router-dom"
 // import MenuItem from "@mui/material/MenuItem"
 import { UserContext } from "./UserContext"
 
-import { createTheme, ThemeProvider } from "@mui/material/styles"
+import { createTheme } from "@mui/material/styles"
 
-const theme = createTheme({
-  typography: {
-    h6: { color: "black" },
-  },
-})
-
-const pages = ["/", "signup", "home"]
-const settings = ["Profile", "Logout"]
+// const pages = ["/", "signup", "home"]
+// const settings = ["Profile", "Logout"]
 
 function NavBar() {
   const { currentUser } = useContext(UserContext)
@@ -30,15 +24,15 @@ function NavBar() {
   const [anchorElUser, setAnchorElUser] = useState(null)
   //   const { currentUser } = useContext(UserContext)
   //   const { setCurrentUser } = useContext(UserContext)
-  let navigate = useNavigate()
+  // let navigate = useNavigate()
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget)
-  }
+  // const handleOpenUserMenu = (event) => {
+  //   setAnchorElUser(event.currentTarget)
+  // }
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
-  }
+  // const handleCloseNavMenu = () => {
+  //   setAnchorElNav(null)
+  // }
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)

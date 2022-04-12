@@ -1,22 +1,18 @@
 import React, { useState, useContext, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { UserContext } from "../UserContext"
 import StudentInquiryCard from "./StudentInquiryCard"
 import AppointmentCardsAdmin from "./AppointmentCardsAdmin"
-import { create } from "@mui/material/styles/createTransitions"
 
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
 import TextField from "@mui/material/TextField"
-import FormControlLabel from "@mui/material/FormControlLabel"
+
 import FormControl from "@mui/material/FormControl"
-import Checkbox from "@mui/material/Checkbox"
 
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
-import Radio from "@mui/material/Radio"
-import RadioGroup from "@mui/material/RadioGroup"
-import FormLabel from "@mui/material/FormLabel"
+
 import Modal from "@mui/material/Modal"
 
 import Typography from "@mui/material/Typography"
@@ -66,9 +62,6 @@ function AdminPortal() {
   ))
 
   const toggleClicked = () => setClicked((prevstate) => !prevstate)
-  function handleClick(e) {
-    toggleClicked()
-  }
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -139,7 +132,6 @@ function AdminPortal() {
                     <TextField
                       autoComplete="given-name"
                       name="firstName"
-                      required
                       fullWidth
                       id="firstName"
                       label="First Name"
@@ -152,10 +144,9 @@ function AdminPortal() {
                     <TextField
                       autoComplete="given-name"
                       name="firstName"
-                      required
                       fullWidth
                       id="firstName"
-                      label="First Name"
+                      label="Last Name"
                       autoFocus
                       value={lastname}
                       onChange={(e) => setLastname(e.target.value)}
@@ -163,12 +154,10 @@ function AdminPortal() {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <TextField
-                      autoComplete="given-name"
-                      name="firstName"
-                      required
+                      name="email"
                       fullWidth
-                      id="firstName"
-                      label="First Name"
+                      id="email"
+                      label="Email"
                       autoFocus
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -176,12 +165,10 @@ function AdminPortal() {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <TextField
-                      autoComplete="given-name"
-                      name="firstName"
-                      required
+                      name="phone"
                       fullWidth
-                      id="firstName"
-                      label="First Name"
+                      id="phone"
+                      label="Phone Number"
                       autoFocus
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
@@ -198,6 +185,15 @@ function AdminPortal() {
                 >
                   Submit
                 </Button>
+                <Button
+                  type="onClick"
+                  onChange={() => handleClose()}
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  cancel
+                </Button>
                 <Grid container justifyContent="flex-end"></Grid>
               </Box>
             </FormControl>
@@ -207,17 +203,7 @@ function AdminPortal() {
       </Modal>
 
       <h1>Admin portal</h1>
-      {/* <button onClick={handleClick}> Edit My Profile </button>
-      {clicked ? (
-        <form onSubmit={handleSubmit}>
-          <label>Edit firstname</label>
-          <input
-            value={firstname}
-            onChange={(e) => setFirstname(e.target.value)}
-          ></input>
-          <button onClick={handleSubmit}>Update</button>
-        </form>
-      ) : null} */}
+
       <div>
         <h1>Education Inquiries</h1>
         {createStudentInquiriesCard}

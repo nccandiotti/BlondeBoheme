@@ -1,12 +1,11 @@
-import { useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState, useContext, useEffect } from "react"
+// import { useNavigate } from "react-router-dom"
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
 import TextField from "@mui/material/TextField"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import FormControl from "@mui/material/FormControl"
 import Checkbox from "@mui/material/Checkbox"
-import Link from "@mui/material/Link"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import Radio from "@mui/material/Radio"
@@ -19,30 +18,23 @@ import Container from "@mui/material/Container"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 import { UserContext } from "../../UserContext"
-import { useDropzone } from "react-dropzone"
+// import { useDropzone } from "react-dropzone"
 
 const theme = createTheme()
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-}
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 400,
+//   bgcolor: "background.paper",
+//   border: "2px solid #000",
+//   boxShadow: 24,
+//   p: 4,
+// }
 
 function NewGuestConsultation() {
   const { currentUser } = useContext(UserContext)
-  const [files, setFiles] = useState([])
-  //   const { getRootProps, getInputProps } = useDropzone({
-  //     accept: "image/*",
-  //     onDrop: (acceptedFiles) => {
-  //         setFiles(acceptedFiles.map(file) =>Object.assign(file))
-  //     },
-  //   })
 
   const [firstname, setFirstName] = useState("")
   const [lastname, setLastName] = useState("")
@@ -53,6 +45,7 @@ function NewGuestConsultation() {
   const [hairHx, setHairHx] = useState("")
   const [mugshot, setMugshot] = useState("")
   const [inspo, setInspo] = useState("")
+  const [checked, setChecked] = useState(false)
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -68,6 +61,11 @@ function NewGuestConsultation() {
     boxShadow: 24,
     p: 4,
   }
+  useEffect(() => {
+    fetch("/user_consults")
+      .then((r) => r.json())
+      .then((data) => console.log(data))
+  }, [])
   function handleSubmit(e) {
     e.preventDefault()
     fetch("/user_consults", {
@@ -81,8 +79,8 @@ function NewGuestConsultation() {
         graycvg: graycvg,
         allergies: allergies,
         hairhx: hairHx,
-        mugshot: mugshot,
-        inspo: inspo,
+        mugshots: mugshot,
+        inspos: inspo,
         salon_id: 2,
         user_id: currentUser.id,
       }),
@@ -113,6 +111,10 @@ function NewGuestConsultation() {
   //     e.preventDefault()
   //     setLessonType(e.target.value)
   //   }
+
+  function toggleCheckbox(e) {
+    setChecked(e.target.checked)
+  }
 
   return (
     <>
@@ -265,6 +267,7 @@ function NewGuestConsultation() {
                     <Grid item xs={12} sm={6}>
                       <input
                         type="file"
+                        multiple
                         accept="image/*"
                         onChange={(e) => setMugshot(e.target.files[0])}
                       />
@@ -278,11 +281,22 @@ function NewGuestConsultation() {
                     </FormLabel>
                     <Grid item xs={12} sm={6}>
                       <input
-                        onChange={(e) => console.log(e.target.files[0])}
+                        onChange={(e) => setInspo(e.target.files[0])}
                         type="file"
+                        multiple
                         accept="image/*"
                       />
                     </Grid>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          required
+                          checked={checked}
+                          onChange={toggleCheckbox}
+                        />
+                      }
+                      label="I have reviewed The Blonde Boheme's policies and agree to all terms and conditions"
+                    />
                     <Button
                       type="submit"
                       onChange={handleSubmit}

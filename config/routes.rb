@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :user_images
   resources :user_consults
   resources :student_inquiries
   resources :services

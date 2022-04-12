@@ -14,6 +14,6 @@ class UserConsultsController < ApplicationController
 
     private 
     def consultparams
-        params.permit(:firstname, :lastname, :hairhx, :allergies, :email, :phone, :user_id, :salon_id, :inspo, :graycvg)
+        params.permit(:firstname, :lastname, :hairhx, :allergies, :email, :phone, :user_id, :salon_id, :graycvg)
     end
 end

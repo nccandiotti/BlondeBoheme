@@ -1,8 +1,6 @@
-import { useState, useEffect, useContext } from "react"
+import { useEffect, useContext } from "react"
 import AdminPortal from "./AdminPortal"
 import UserPortal from "./UserPortal"
-
-import { useParams } from "react-router-dom"
 import { UserContext } from "../UserContext"
 
 function UserHome() {
