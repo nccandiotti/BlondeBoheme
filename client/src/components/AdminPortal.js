@@ -199,7 +199,6 @@ function AdminPortal() {
             </FormControl>
           </Box>
         </Container>
-        {/* </ThemeProvider> */}
       </Modal>
 
       <h1>Admin portal</h1>

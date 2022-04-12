@@ -1,5 +1,5 @@
 class StudentInquiry < ApplicationRecord
-belongs_to :user 
-belongs_to :salon
+belongs_to :user, dependent: :destroy
+belongs_to :salon, dependent: :destroy
 
 end

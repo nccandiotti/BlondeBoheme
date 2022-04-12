@@ -73,7 +73,7 @@ function AboutSuzie() {
               </Paper>
             </Grid>
 
-            <Grid item xs={6}>
+            <Grid sx={{ alignSelf: "center" }} item xs={6}>
               <Typography
                 sx={{
                   fontSize: "20px",
@@ -92,7 +92,7 @@ function AboutSuzie() {
               </Typography>
             </Grid>
 
-            <Grid item xs={8}>
+            <Grid item xs={6}>
               <Typography
                 sx={{
                   fontSize: "20px",
@@ -124,7 +124,7 @@ function AboutSuzie() {
                 an independent education company, beginning 2021.{" "}
               </Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={6}>
               {" "}
               <Paper
                 sx={{
@@ -140,7 +140,7 @@ function AboutSuzie() {
                   style={{
                     display: "flex",
                     width: "100%",
-                    height: "600px",
+                    height: "auto",
                     objectFit: "cover",
                   }}
                   src={doinghair}

@@ -1,4 +1,4 @@
-import { Route, Routes, useNavigate } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { useState, useEffect } from "react"
 import { UserContext } from "./UserContext"
 import "./App.css"
@@ -8,10 +8,6 @@ import UserHome from "./components/UserHome"
 import NavBar from "./NavBar"
 import NewGuestConsultation from "./components/forms/NewGuestConsultation"
 import Container from "@mui/material/Container"
-
-// import Button from "@mui/material/Button"
-
-// import MessengerFeed from "./components/messages/MessengerFeed"
 import Education from "./components/Education"
 import Services from "./components/Services"
 import Policies from "./components/Policies"
@@ -20,10 +16,21 @@ import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import Link from "@mui/material/Link"
+import Card from "@mui/material/Card"
+import CardActions from "@mui/material/CardActions"
+import CardContent from "@mui/material/CardContent"
 // import { ChatEngine } from "react-chat-engine"
 // import ChatLogin from "./components/messages/ChatLogin"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
 // import { Client, Environment } from "square"
+// import Button from "@mui/material/Button"
+// import MessengerFeed from "./components/messages/MessengerFeed"
+import pic from "./assets/me.png"
+import hair2 from "./assets/hair2.png"
+import hair3 from "./assets/hair3.png"
+import hair4 from "./assets/hair4.png"
+import hair5 from "./assets/hair5.png"
+import hair6 from "./assets/hair6.png"
 
 const footers = [
   {
@@ -68,13 +75,12 @@ const footers = [
   },
 ]
 
-const appId = process.env.REACT_APP_SQUARE_APP_ID
-const locationId = process.env.REACT_APP_SQUARE_LOCATION_ID
+// const appId = process.env.REACT_APP_SQUARE_APP_ID
+// const locationId = process.env.REACT_APP_SQUARE_LOCATION_ID
 // const payments = Square.payments(appId, locationId)
 function App() {
   const [currentUser, setCurrentUser] = useState({})
   const ourMediaQuery = useMediaQuery("(min-width:400px)")
-  let navigate = useNavigate()
 
   useEffect(() => {
     fetch("/me")
@@ -147,7 +153,7 @@ function App() {
           </button>
         </form>
         <div id="payment-status-container"></div> */}
-        {/* <AboutSuzie /> */}
+        <AboutSuzie />
         <Routes>
           <Route exact path="/myaccount" element={<UserHome />} />
           {/* <Route exact path="/" element={<App />} /> */}
@@ -192,13 +198,123 @@ function App() {
           borderTop: (theme) => `1px solid ${theme.palette.divider}`,
           mt: 8,
           py: [3, 6],
-          position: "fixed",
+          // position: "fixed",
           bottom: 0,
           left: 0,
           right: 0,
           marginTop: "20px",
         }}
       >
+        <Typography
+          sx={{
+            fontFamily: "MontSerrat",
+            "&:hover": "textDecoration: 'underline'",
+          }}
+          onClick={() =>
+            window.open("https://www.instagram.com/the.blonde.boheme/")
+          }
+          variant="h3"
+        >
+          Follow @the.blonde.boheme
+        </Typography>
+        {/* <Grid sx={{ width: "100%" }} container spacing={4}> */}
+        <Grid
+          container
+          spacing={4}
+          xs={12}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <Grid item xs={2}>
+            <Card sx={{ minWidth: 275 }}>
+              <img
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+                src={hair2}
+                alt="instagram picture"
+              />
+            </Card>
+          </Grid>
+          <Grid sx={{ margin: "10px" }} item xs={2}>
+            <Card sx={{ margin: "10px", minWidth: 275 }}>
+              <img
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+                src={pic}
+                alt="instagram picture"
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={2}>
+            <Card sx={{ minWidth: 275 }}>
+              <img
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+                src={hair3}
+                alt="instagram picture"
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={2}>
+            <Card sx={{ minWidth: 275 }}>
+              <img
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+                src={hair4}
+                alt="instagram picture"
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={2}>
+            <Card sx={{ minWidth: 275 }}>
+              <img
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+                src={hair5}
+                alt="instagram picture"
+              />
+            </Card>
+          </Grid>
+          <Grid item xs={2}>
+            <Card sx={{ minWidth: 275 }}>
+              <img
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+                src={hair6}
+                alt="instagram picture"
+              />
+            </Card>
+          </Grid>
+        </Grid>
+
         <Grid container spacing={4} justifyContent="space-evenly">
           {footers.map((footer) => (
             <Grid item xs={6} sm={3} key={footer.title}>

@@ -8,7 +8,7 @@ gem "rails", "~> 7.0.2", ">= 7.0.2.3"
 gem "active_model_serializers"
 
 gem "irb"
-gem 'bcrypt'
+gem 'bcrypt', '~> 3.1.7'
 gem 'square.rb', '~> 18.1', '>= 18.1.0.20220316'
 gem 'stripe'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]

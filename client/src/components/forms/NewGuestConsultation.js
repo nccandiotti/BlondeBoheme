@@ -15,23 +15,9 @@ import Modal from "@mui/material/Modal"
 
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 import { UserContext } from "../../UserContext"
 // import { useDropzone } from "react-dropzone"
-
-const theme = createTheme()
-// const style = {
-//   position: "absolute",
-//   top: "50%",
-//   left: "50%",
-//   transform: "translate(-50%, -50%)",
-//   width: 400,
-//   bgcolor: "background.paper",
-//   border: "2px solid #000",
-//   boxShadow: 24,
-//   p: 4,
-// }
 
 function NewGuestConsultation() {
   const { currentUser } = useContext(UserContext)
@@ -126,192 +112,187 @@ function NewGuestConsultation() {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <ThemeProvider theme={theme}>
-            <Container component="main" maxWidth="s">
-              <CssBaseline />
-              <Box
-                sx={{
-                  marginTop: 8,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  backgroundColor: "rgba(255, 255, 255)",
-                  padding: "40px",
-                  borderRadius: "20px",
-                }}
-              >
-                <Typography component="h1" variant="h5">
-                  New Guest Consultation Form
-                </Typography>
+          <Container component="main" maxWidth="s">
+            <CssBaseline />
+            <Box
+              sx={{
+                marginTop: 8,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                backgroundColor: "rgba(255, 255, 255)",
+                padding: "40px",
+                borderRadius: "20px",
+              }}
+            >
+              <Typography component="h1" variant="h5">
+                New Guest Consultation Form
+              </Typography>
 
-                <FormControl>
-                  <Box
-                    component="form"
-                    noValidate
-                    onSubmit={handleSubmit}
-                    sx={{ mt: 3 }}
-                  >
-                    <Grid container spacing={2}>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          autoComplete="given-name"
-                          name="firstName"
-                          required
-                          fullWidth
-                          id="firstName"
-                          label="First Name"
-                          autoFocus
-                          value={firstname}
-                          onChange={(e) => setFirstName(e.target.value)}
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        <TextField
-                          required
-                          fullWidth
-                          id="lastName"
-                          label="Last Name"
-                          name="lastName"
-                          autoComplete="family-name"
-                          value={lastname}
-                          onChange={(e) => setLastName(e.target.value)}
-                        />
-                      </Grid>
-                      <Grid item xs={6}>
-                        <TextField
-                          required
-                          fullWidth
-                          id="email"
-                          label="Email Address"
-                          name="email"
-                          autoComplete="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                        />
-                      </Grid>
-
-                      <Grid item xs={6}>
-                        <TextField
-                          required
-                          fullWidth
-                          name="phone"
-                          label="phone"
-                          type="phone"
-                          id="phone"
-                          autoComplete="phone"
-                          value={phone}
-                          onChange={(e) => setPhone(e.target.value)}
-                        />
-                      </Grid>
-                    </Grid>
-                    <FormLabel id="which-technique">
-                      {" "}
-                      Do you require grey coverage?
-                    </FormLabel>
-
-                    <RadioGroup name="radio-buttons-group">
-                      <FormControlLabel
-                        value="yes"
-                        onChange={handleGrayCvg}
-                        control={<Radio />}
-                        label="yes"
-                      />
-                      <FormControlLabel
-                        value="no"
-                        onChange={handleGrayCvg}
-                        control={<Radio />}
-                        label="no"
-                      />
-                    </RadioGroup>
-                    <FormLabel id="size">
-                      Known allergies to chemicals{" "}
-                    </FormLabel>
+              <FormControl>
+                <Box
+                  component="form"
+                  noValidate
+                  onSubmit={handleSubmit}
+                  sx={{ mt: 3 }}
+                >
+                  <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                       <TextField
-                        name="hairHx"
+                        autoComplete="given-name"
+                        name="firstName"
                         required
                         fullWidth
                         id="firstName"
+                        label="First Name"
                         autoFocus
-                        value={allergies}
-                        onChange={(e) => setAllergies(e.target.value)}
+                        value={firstname}
+                        onChange={(e) => setFirstName(e.target.value)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        required
+                        fullWidth
+                        id="lastName"
+                        label="Last Name"
+                        name="lastName"
+                        autoComplete="family-name"
+                        value={lastname}
+                        onChange={(e) => setLastName(e.target.value)}
+                      />
+                    </Grid>
+                    <Grid item xs={6}>
+                      <TextField
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </Grid>
 
-                    <FormLabel id="which-technique">
-                      {" "}
-                      Detailed hair color history from *at least* the past 3
-                      years
-                    </FormLabel>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item xs={6}>
                       <TextField
-                        multiline
-                        minRows={4}
-                        name="hx"
                         required
                         fullWidth
-                        id="hx"
-                        autoFocus
-                        value={hairHx}
-                        onChange={(e) => setHairHx(e.target.value)}
+                        name="phone"
+                        label="phone"
+                        type="phone"
+                        id="phone"
+                        autoComplete="phone"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                       />
                     </Grid>
-                    {/* ------ */}
-                    <FormLabel id="current photos">
-                      {" "}
-                      "Mugshot" style photos of your current hair in indirect,
-                      natural lighting (in front of a window, or under an
-                      awning). 5 photos total: front, left side, back, right
-                      side, root area
-                    </FormLabel>
-                    <Grid item xs={12} sm={6}>
-                      <input
-                        type="file"
-                        multiple
-                        accept="image/*"
-                        onChange={(e) => setMugshot(e.target.files[0])}
-                      />
-                    </Grid>
-                    {/* ----------- */}
-                    <FormLabel id="inspo pics">
-                      {" "}
-                      *No more than 3* Inspiration photos of your desired look-
-                      bonus points if you submit ones from my Instagram!
-                      @the.blonde.boheme
-                    </FormLabel>
-                    <Grid item xs={12} sm={6}>
-                      <input
-                        onChange={(e) => setInspo(e.target.files[0])}
-                        type="file"
-                        multiple
-                        accept="image/*"
-                      />
-                    </Grid>
+                  </Grid>
+                  <FormLabel id="which-technique">
+                    {" "}
+                    Do you require grey coverage?
+                  </FormLabel>
+
+                  <RadioGroup name="radio-buttons-group">
                     <FormControlLabel
-                      control={
-                        <Checkbox
-                          required
-                          checked={checked}
-                          onChange={toggleCheckbox}
-                        />
-                      }
-                      label="I have reviewed The Blonde Boheme's policies and agree to all terms and conditions"
+                      value="yes"
+                      onChange={handleGrayCvg}
+                      control={<Radio />}
+                      label="yes"
                     />
-                    <Button
-                      type="submit"
-                      onChange={handleSubmit}
+                    <FormControlLabel
+                      value="no"
+                      onChange={handleGrayCvg}
+                      control={<Radio />}
+                      label="no"
+                    />
+                  </RadioGroup>
+                  <FormLabel id="size">Known allergies to chemicals </FormLabel>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      name="hairHx"
+                      required
                       fullWidth
-                      variant="contained"
-                      sx={{ mt: 3, mb: 2 }}
-                    >
-                      Submit
-                    </Button>
-                    <Grid container justifyContent="flex-end"></Grid>
-                  </Box>
-                </FormControl>
-              </Box>
-            </Container>
-          </ThemeProvider>
+                      id="firstName"
+                      autoFocus
+                      value={allergies}
+                      onChange={(e) => setAllergies(e.target.value)}
+                    />
+                  </Grid>
+
+                  <FormLabel id="which-technique">
+                    {" "}
+                    Detailed hair color history from *at least* the past 3 years
+                  </FormLabel>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      multiline
+                      minRows={4}
+                      name="hx"
+                      required
+                      fullWidth
+                      id="hx"
+                      autoFocus
+                      value={hairHx}
+                      onChange={(e) => setHairHx(e.target.value)}
+                    />
+                  </Grid>
+                  {/* ------ */}
+                  <FormLabel id="current photos">
+                    {" "}
+                    "Mugshot" style photos of your current hair in indirect,
+                    natural lighting (in front of a window, or under an awning).
+                    5 photos total: front, left side, back, right side, root
+                    area
+                  </FormLabel>
+                  <Grid item xs={12} sm={6}>
+                    <input
+                      type="file"
+                      multiple
+                      accept="image/*"
+                      onChange={(e) => setMugshot(e.target.files[0])}
+                    />
+                  </Grid>
+                  {/* ----------- */}
+                  <FormLabel id="inspo pics">
+                    {" "}
+                    *No more than 3* Inspiration photos of your desired look-
+                    bonus points if you submit ones from my Instagram!
+                    @the.blonde.boheme
+                  </FormLabel>
+                  <Grid item xs={12} sm={6}>
+                    <input
+                      onChange={(e) => setInspo(e.target.files[0])}
+                      type="file"
+                      multiple
+                      accept="image/*"
+                    />
+                  </Grid>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        required
+                        checked={checked}
+                        onChange={toggleCheckbox}
+                      />
+                    }
+                    label="I have reviewed The Blonde Boheme's policies and agree to all terms and conditions"
+                  />
+                  <Button
+                    type="submit"
+                    onChange={handleSubmit}
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Submit
+                  </Button>
+                  <Grid container justifyContent="flex-end"></Grid>
+                </Box>
+              </FormControl>
+            </Box>
+          </Container>
         </Modal>
       </div>
     </>

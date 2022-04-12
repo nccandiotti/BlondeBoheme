@@ -11,8 +11,8 @@ class ApplicationController < ActionController::API
     end 
 
     def authorize
-        return render json: {error: "Not Authorized"}, status: :unauthorized unless current_user
-    end 
+      return render json: {error: "Not Authorized"}, status: :unauthorized unless current_user
+  end 
     
       private
       def render_unprocessable_entity(exception)

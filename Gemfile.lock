@@ -278,7 +278,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   aws-sdk-s3
-  bcrypt
+  bcrypt (~> 3.1.7)
   bootsnap
   debug
   devise

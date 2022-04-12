@@ -20,23 +20,6 @@ import { createTheme } from "@mui/material/styles"
 function NavBar() {
   const { currentUser } = useContext(UserContext)
   const { setCurrentUser } = useContext(UserContext)
-  const [anchorElNav, setAnchorElNav] = useState(null)
-  const [anchorElUser, setAnchorElUser] = useState(null)
-  //   const { currentUser } = useContext(UserContext)
-  //   const { setCurrentUser } = useContext(UserContext)
-  // let navigate = useNavigate()
-
-  // const handleOpenUserMenu = (event) => {
-  //   setAnchorElUser(event.currentTarget)
-  // }
-
-  // const handleCloseNavMenu = () => {
-  //   setAnchorElNav(null)
-  // }
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
 
   function handleLogout() {
     fetch("/logout", { method: "DELETE" })
