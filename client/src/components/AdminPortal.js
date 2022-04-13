@@ -17,6 +17,7 @@ import Modal from "@mui/material/Modal"
 
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
+import { DataGrid } from "@mui/x-data-grid"
 
 function AdminPortal() {
   let navigate = useNavigate()
@@ -92,6 +93,44 @@ function AdminPortal() {
     boxShadow: 24,
     p: 4,
   }
+
+  const rows = appointments?.map((appt) => {
+    return {
+      id: appt.id,
+      lastName: appt.lastname,
+      firstName: appt.firstname,
+      age: 35,
+      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname} age: 42 },
+      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname}  age: 45 },
+      // { id: {appt.id} lastName: {appt.lastname}firstName: {appt.firstname}  16 },
+      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname}  age: null },
+      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname} age: 150 },
+      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname} age: 44 },
+      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname}  age: 36 },
+      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname}  age: 65 }
+    }
+  })
+
+  const columns = [
+    // { field: "id", headerName: "ID", width: 70 },
+    { field: "firstName", headerName: "First name", width: 130 },
+    { field: "lastName", headerName: "Last name", width: 130 },
+    {
+      field: "age",
+      headerName: "Age",
+      type: "number",
+      width: 90,
+    },
+    {
+      field: "fullName",
+      headerName: "Full name",
+      description: "This column has a value getter and is not sortable.",
+      sortable: false,
+      width: 160,
+      valueGetter: (params) =>
+        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+    },
+  ]
 
   return (
     <div>
@@ -207,10 +246,36 @@ function AdminPortal() {
         <h1>Education Inquiries</h1>
         {createStudentInquiriesCard}
       </div>
-      <div>
+      {/* <table>
+        <tr>
+          <th>Company</th>
+          <th>Contact</th>
+          <th>Country</th>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+        </tr>
+        <tr>
+          <td>Centro comercial Moctezuma</td>
+          <td>Francisco Chang</td>
+          <td>Mexico</td>
+        </tr>
+      </table> */}
+      <div style={{ height: 400, width: "100%" }}>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+        />
+      </div>
+      {/* <div>
         <h1> New Guest Inquiries</h1>
         {createAppointmentsCardAdmin}
-      </div>
+      </div> */}
     </div>
   )
 }

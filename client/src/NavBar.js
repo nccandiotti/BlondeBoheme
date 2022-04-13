@@ -71,9 +71,9 @@ function NavBar() {
         Policies
       </Link>
       <br />
-      <Link style={{ fontSize: "20px" }} to={`/about`}>
+      {/* <Link style={{ fontSize: "20px" }} to={`/about`}>
         About
-      </Link>
+      </Link> */}
       <br />
       <Link style={{ fontSize: "20px" }} to={`/services`}>
         Services

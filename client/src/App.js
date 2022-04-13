@@ -163,7 +163,7 @@ function App() {
           <Route exact path="/education" element={<Education />} />
           <Route exact path="/services" element={<Services />} />
           <Route exact path="/policies" element={<Policies />} />
-          <Route exact path="/about" element={<AboutSuzie />} />
+          <Route exact path="/" element={<AboutSuzie />} />
           <Route exact path="/newguest" element={<NewGuestConsultation />} />
         </Routes>
         {/* {!localStorage.getItem("username") ? (
