@@ -6,6 +6,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@date-io/date-fns": "^2.13.1",
+    "@emailjs/browser": "^3.6.2",
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@material-ui/icons": "^4.11.3",
