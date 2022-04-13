@@ -1,8 +1,18 @@
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 
 import { styled } from "@mui/material/styles"
 import Box from "@mui/material/Box"
 import Paper from "@mui/material/Paper"
+import Grid from "@mui/material/Grid"
+import FormLabel from "@mui/material/FormLabel"
+import FormControl from "@mui/material/FormControl"
+import FormControlLabel from "@mui/material/FormControlLabel"
+import RadioGroup from "@mui/material/RadioGroup"
+import Radio from "@mui/material/Radio"
+import services1 from "../assets/service1.png"
+import services2 from "../assets/service2.png"
+import services3 from "../assets/service3.png"
+
 // import Grid from "@mui/material/Grid"
 // import Card from "@mui/material/Card"
 // import CardActions from "@mui/material/CardActions"
@@ -60,8 +70,62 @@ function Services() {
   }, [])
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      {/* <Grid container spacing={3}>
+    <>
+      <Grid
+        sx={{
+          flexGrow: 1,
+          display: "flex",
+          flexDirection: "row",
+          marginTop: "150px",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        container
+        spacing={0}
+      >
+        <Grid xs={3} item sx={{ margin: "30px" }}>
+          <img
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "auto",
+              objectFit: "contain",
+            }}
+            src={services1}
+            alt="service1"
+          />
+        </Grid>
+        <Grid item xs={3} sx={{ margin: "30px" }}>
+          {" "}
+          <img
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "auto",
+              objectFit: "cover",
+            }}
+            src={services2}
+            alt="service1"
+          />
+        </Grid>
+        <Grid xs={3} item sx={{ margin: "30px" }}>
+          {" "}
+          <img
+            style={{
+              display: "flex",
+              width: "100%",
+              height: "auto",
+              objectFit: "cover",
+            }}
+            src={services3}
+            alt="service1"
+          />
+        </Grid>
+      </Grid>
+    </>
+    // <Box sx={{ flexGrow: 1 }}>
+    // {
+    /* <Grid container spacing={3}>
         <Grid sx={{ display: "flex", justifyContent: "center" }} item xs>
           <CardContent>
             <Typography variant="h5" component="div">
@@ -146,8 +210,9 @@ function Services() {
             </Typography>
           </CardContent>
         </Grid>
-      </Grid> */}
-    </Box>
+      </Grid> */
+    // }
+    // </Box>
   )
 }
 

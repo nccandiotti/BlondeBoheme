@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react"
+import { useState, useEffect, useContext } from "react"
 import AdminPortal from "./AdminPortal"
 import UserPortal from "./UserPortal"
 import { UserContext } from "../UserContext"
@@ -7,11 +7,17 @@ function UserHome() {
   // const { id } = useParams()
   const { currentUser } = useContext(UserContext)
   const { setCurrentUser } = useContext(UserContext)
+  const [appointmentsArray, setAppointmentsArray] = useState([])
 
   useEffect(() => {
     fetch(`/me`)
       .then((r) => r.json())
       .then(setCurrentUser)
+  }, [])
+  useEffect(() => {
+    fetch(`/appointments`)
+      .then((r) => r.json())
+      .then(setAppointmentsArray)
   }, [])
 
   return (
@@ -22,7 +28,11 @@ function UserHome() {
       <p>{`email: ${currentUser.email}`} </p>
       <p>{`phone: ${currentUser.phone}`}</p>
       {currentUser.admin ? <p>I'm an admin</p> : <p>Guest</p>}
-      {currentUser.admin ? <AdminPortal /> : <UserPortal />}
+      {currentUser.admin ? (
+        <AdminPortal appointmentsArray={appointmentsArray} />
+      ) : (
+        <UserPortal appointmentsArray={appointmentsArray} />
+      )}
     </div>
   )
 }

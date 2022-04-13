@@ -17,20 +17,20 @@ import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import Link from "@mui/material/Link"
 import Card from "@mui/material/Card"
-import CardActions from "@mui/material/CardActions"
-import CardContent from "@mui/material/CardContent"
-// import { ChatEngine } from "react-chat-engine"
-// import ChatLogin from "./components/messages/ChatLogin"
 import useMediaQuery from "@material-ui/core/useMediaQuery"
-// import { Client, Environment } from "square"
-// import Button from "@mui/material/Button"
-// import MessengerFeed from "./components/messages/MessengerFeed"
 import pic from "./assets/me.png"
 import hair2 from "./assets/hair2.png"
 import hair3 from "./assets/hair3.png"
 import hair4 from "./assets/hair4.png"
 import hair5 from "./assets/hair5.png"
 import hair6 from "./assets/hair6.png"
+import CardActions from "@mui/material/CardActions"
+import CardContent from "@mui/material/CardContent"
+// import { ChatEngine } from "react-chat-engine"
+// import ChatLogin from "./components/messages/ChatLogin"
+// import { Client, Environment } from "square"
+// import Button from "@mui/material/Button"
+// import MessengerFeed from "./components/messages/MessengerFeed"
 
 const footers = [
   {
@@ -153,10 +153,11 @@ function App() {
           </button>
         </form>
         <div id="payment-status-container"></div> */}
-        <AboutSuzie />
+        {/* <AboutSuzie /> */}
         <Routes>
           <Route exact path="/myaccount" element={<UserHome />} />
           {/* <Route exact path="/" element={<App />} /> */}
+          <Route exact path="/login" element={<SignIn />} />
           <Route exact path="/login" element={<SignIn />} />
           <Route exact path="/signup" element={<SignUp />} />
           <Route exact path="/education" element={<Education />} />
@@ -190,9 +191,8 @@ function App() {
           filter: "sepia(100%) saturate(100%)  hue-rotate(180deg)",
         }}
       ></iframe> */}
-
+      <div style={{ height: "40vh" }}></div>
       <Container
-        maxWidth="md"
         component="footer"
         sx={{
           borderTop: (theme) => `1px solid ${theme.palette.divider}`,
@@ -203,6 +203,7 @@ function App() {
           left: 0,
           right: 0,
           marginTop: "20px",
+          minWidth: "80%",
         }}
       >
         <Typography
@@ -220,7 +221,7 @@ function App() {
         {/* <Grid sx={{ width: "100%" }} container spacing={4}> */}
         <Grid
           container
-          spacing={4}
+          // spacing={1}
           xs={12}
           sx={{
             display: "flex",
@@ -230,89 +231,86 @@ function App() {
           }}
         >
           <Grid item xs={2}>
-            <Card sx={{ minWidth: 275 }}>
-              <img
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  height: "auto",
-                  objectFit: "cover",
-                }}
-                src={hair2}
-                alt="instagram picture"
-              />
-            </Card>
+            <img
+              style={{
+                display: "flex",
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+              }}
+              src={hair2}
+              alt="instagram picture"
+            />
           </Grid>
           <Grid sx={{ margin: "10px" }} item xs={2}>
-            <Card sx={{ margin: "10px", minWidth: 275 }}>
-              <img
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  height: "auto",
-                  objectFit: "cover",
-                }}
-                src={pic}
-                alt="instagram picture"
-              />
-            </Card>
+            <img
+              style={{
+                display: "flex",
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+              }}
+              src={hair3}
+              alt="instagram picture"
+            />
+          </Grid>
+          <Grid
+            sx={{
+              display: "flex",
+              width: "100%",
+              height: "auto",
+              objectFit: "cover",
+            }}
+            item
+            xs={2}
+          >
+            <img
+              style={{
+                display: "flex",
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+              }}
+              src={pic}
+              alt="instagram picture"
+            />
           </Grid>
           <Grid item xs={2}>
-            <Card sx={{ minWidth: 275 }}>
-              <img
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  height: "auto",
-                  objectFit: "cover",
-                }}
-                src={hair3}
-                alt="instagram picture"
-              />
-            </Card>
+            <img
+              style={{
+                display: "flex",
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+              }}
+              src={hair4}
+              alt="instagram picture"
+            />
           </Grid>
           <Grid item xs={2}>
-            <Card sx={{ minWidth: 275 }}>
-              <img
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  height: "auto",
-                  objectFit: "cover",
-                }}
-                src={hair4}
-                alt="instagram picture"
-              />
-            </Card>
+            <img
+              style={{
+                display: "flex",
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+              }}
+              src={hair5}
+              alt="instagram picture"
+            />
           </Grid>
-          <Grid item xs={2}>
-            <Card sx={{ minWidth: 275 }}>
-              <img
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  height: "auto",
-                  objectFit: "cover",
-                }}
-                src={hair5}
-                alt="instagram picture"
-              />
-            </Card>
-          </Grid>
-          <Grid item xs={2}>
-            <Card sx={{ minWidth: 275 }}>
-              <img
-                style={{
-                  display: "flex",
-                  width: "100%",
-                  height: "auto",
-                  objectFit: "cover",
-                }}
-                src={hair6}
-                alt="instagram picture"
-              />
-            </Card>
-          </Grid>
+          {/* <Grid item xs={2}>
+            <img
+              style={{
+                display: "flex",
+                width: "100%",
+                height: "auto",
+                objectFit: "cover",
+              }}
+              src={hair6}
+              alt="instagram picture"
+            />
+          </Grid> */}
         </Grid>
 
         <Grid container spacing={4} justifyContent="space-evenly">

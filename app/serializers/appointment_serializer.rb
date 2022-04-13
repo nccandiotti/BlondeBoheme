@@ -1,6 +1,6 @@
 class AppointmentSerializer < ActiveModel::Serializer
   attributes :id, :time, :duration, :firstname, :lastname
-  belongs_to :user
+  # belongs_to :user
   belongs_to :salon
   
   def firstname 

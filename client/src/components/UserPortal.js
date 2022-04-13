@@ -72,7 +72,7 @@ const steps = [
 //   },
 // })
 
-function UserPortal() {
+function UserPortal({ appointmentsArray }) {
   const [dateValue, setDateValue] = useState("")
   const [time, setTime] = useState("")
   const { currentUser } = useContext(UserContext)
@@ -90,7 +90,7 @@ function UserPortal() {
   const handleClose = () => setOpen(false)
   const handleApptOpen = () => setApptOpen(true)
   const handleApptClose = () => setApptOpen(false)
-
+  console.log(currentUser)
   const totalSteps = () => {
     return steps.length
   }
@@ -170,21 +170,36 @@ function UserPortal() {
   function filterWeekends(date) {
     return date.getDay() === 0
   }
+
+  // function filterAppointmentsArray(newAppointment) {
+  //   const doesApptExist = appointmentsArray?.find(
+  //     (appt) => appt.time === newAppointment.time
+  //   )
+  //   if (typeof doesApptExist === "string") true
+  //   else false
+  // }
+
   function handleBookAppointment(e) {
     e.preventDefault()
+
+    const doesApptExist = appointmentsArray.filter(
+      (appt) => appt.time === { time }
+    )
+
     fetch("/appointments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user_id: currentUser.id,
+        user_id: `${currentUser.id}`,
         time: time,
         duration: "1 hour",
         salon_id: 2,
       }),
-    }).then((r) => r.json())
-    setDateValue(null)
+    })
+      .then((r) => r.json())
+      .then(setDateValue(null))
   }
 
   return (
@@ -251,7 +266,7 @@ function UserPortal() {
             )}
           </div>
         </Box>
-        <Button onClick={handleOpen}>Edit Profile</Button>
+        <Button onClick={handleOpen}>Update Contact Information</Button>
         <Modal
           open={open}
           onClose={handleClose}
@@ -298,10 +313,10 @@ function UserPortal() {
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <TextField
-                        autoComplete="given-name"
-                        name="firstName"
+                        autoComplete="last-name"
+                        name="lastname"
                         fullWidth
-                        id="firstName"
+                        id="lastname"
                         label="Last Name"
                         autoFocus
                         value={lastname}
@@ -409,7 +424,7 @@ function UserPortal() {
                             color: "white",
                           },
                         }}
-                        // minutesStep="0"
+                        minutesStep="0"
                         shouldDisableDate={filterWeekends}
                         minTime={new Date(0, 0, 0, 10)}
                         maxTime={new Date(0, 0, 0, 14)}

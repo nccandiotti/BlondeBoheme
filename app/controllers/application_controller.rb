@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     # protect_from_forgery with: :exception
 
-    # before_action :authorize
+    before_action :authorize
 
     def current_user
         User.find_by(id:session[:user_id])
