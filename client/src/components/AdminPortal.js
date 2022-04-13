@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../UserContext"
 import StudentInquiryCard from "./StudentInquiryCard"
-import AppointmentCardsAdmin from "./AppointmentCardsAdmin"
 
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
@@ -51,16 +50,6 @@ function AdminPortal() {
       travel={inq.travel}
     />
   ))
-  const createAppointmentsCardAdmin = appointments?.map((appt) => (
-    <AppointmentCardsAdmin
-      key={appt.id}
-      firstname={appt.firstname}
-      lastname={appt.lastname}
-      time={appt.time}
-      duration={appt.duration}
-      deposit={appt.deposit_received}
-    />
-  ))
 
   const toggleClicked = () => setClicked((prevstate) => !prevstate)
 
@@ -99,7 +88,8 @@ function AdminPortal() {
       id: appt.id,
       lastName: appt.lastname,
       firstName: appt.firstname,
-      age: 35,
+      time: appt.time,
+      desposit: appt.deposit_received,
       // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname} age: 42 },
       // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname}  age: 45 },
       // { id: {appt.id} lastName: {appt.lastname}firstName: {appt.firstname}  16 },
@@ -116,9 +106,15 @@ function AdminPortal() {
     { field: "firstName", headerName: "First name", width: 130 },
     { field: "lastName", headerName: "Last name", width: 130 },
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
+      field: "time",
+      headerName: "Time",
+      type: "string",
+      width: 90,
+    },
+    {
+      field: "deposit_received",
+      headerName: "Deposit Received",
+      type: "boolean",
       width: 90,
     },
     {
@@ -274,7 +270,7 @@ function AdminPortal() {
       </div>
       {/* <div>
         <h1> New Guest Inquiries</h1>
-        {createAppointmentsCardAdmin}
+
       </div> */}
     </div>
   )
