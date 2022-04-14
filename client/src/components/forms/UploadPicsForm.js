@@ -63,7 +63,7 @@ function UploadPicsForm() {
       method: "POST",
       body: data,
     })
-      // .then((r) => r.json())
+      .then((r) => r.json())
       .catch((error) => console.log(error))
   }
 

@@ -21,7 +21,14 @@ function UserHome() {
   }, [])
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <p>{`firstname: ${currentUser.username}`}</p>
       <p>{`lastname: ${currentUser.lastname}`} </p>
       <p>{`username: ${currentUser.username}`} </p>

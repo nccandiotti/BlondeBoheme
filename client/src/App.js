@@ -17,7 +17,7 @@ import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import Link from "@mui/material/Link"
 import Card from "@mui/material/Card"
-import useMediaQuery from "@material-ui/core/useMediaQuery"
+
 import pic from "./assets/me.png"
 import hair2 from "./assets/hair2.png"
 import hair3 from "./assets/hair3.png"
@@ -80,7 +80,6 @@ const footers = [
 // const payments = Square.payments(appId, locationId)
 function App() {
   const [currentUser, setCurrentUser] = useState({})
-  const ourMediaQuery = useMediaQuery("(min-width:400px)")
 
   useEffect(() => {
     fetch("/me")
@@ -89,7 +88,7 @@ function App() {
   }, [])
 
   return (
-    <div className="App" style={{ ourMediaQuery }}>
+    <div className="App">
       <UserContext.Provider value={{ currentUser, setCurrentUser }}>
         <Box
           sx={{

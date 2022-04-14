@@ -41,16 +41,62 @@ function AdminPortal() {
       .then((data) => setSalon(data[0]))
   }, [])
 
-  const createStudentInquiriesCard = studentInquiries?.map((inq) => (
-    <StudentInquiryCard
-      key={inq.id}
-      firstname={inq.firstname}
-      lastname={inq.lastname}
-      lessonType={inq.lessonType}
-      phone={inq.phone}
-      travel={inq.travel}
-    />
-  ))
+  function handleRemoveInquiry(e) {
+    console.log(e.target.field)
+  }
+  const studentInquiryRows = studentInquiries?.map((inq) => {
+    return {
+      id: inq.id,
+      lastName: inq.lastname,
+      firstName: inq.firstname,
+      lessonType: inq.lessonType,
+      phone: inq.phone,
+      travel: inq.travel,
+    }
+  })
+
+  const studentInquiryColumnns = [
+    {
+      field: "lastName",
+      headerName: "Last Name",
+      width: 150,
+    },
+    { field: "firstName", headerName: "Last Name", width: 150 },
+    {
+      field: "lessonType",
+      headerName: "Lesson Type",
+      width: 150,
+    },
+    {
+      field: "phone",
+      headerName: "Phone Number",
+      width: 200,
+    },
+    {
+      field: "travel",
+      headerName: "Travel ?",
+      width: 100,
+    },
+    {
+      field: "cancel",
+      headerName: "Cancel Appointment",
+      width: 150,
+      renderCell: (params) => (
+        <strong>
+          {params.value?.getFullYear() ?? ""}
+          <Button
+            variant="contained"
+            color="warning"
+            size="small"
+            style={{ marginLeft: 16 }}
+            onClick={handleRemoveInquiry}
+          >
+            Cancel
+          </Button>
+        </strong>
+      ),
+    },
+  ]
 
   const toggleClicked = () => setClicked((prevstate) => !prevstate)
   const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
@@ -73,17 +119,6 @@ function AdminPortal() {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  }
 
   const rows = appointments?.map((appt) => {
     return {
@@ -103,7 +138,6 @@ function AdminPortal() {
   }
 
   const columns = [
-    // { field: "id", headerName: "ID", width: 70 },
     {
       field: "firstName",
       headerName: "First name",
@@ -144,7 +178,7 @@ function AdminPortal() {
   ]
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column" }}>
       <Button onClick={handleOpen}>Edit Profile</Button>
       <Modal
         open={open}
@@ -252,9 +286,28 @@ function AdminPortal() {
 
       <h1>Admin portal</h1>
 
-      <div>
-        <h1>Education Inquiries</h1>
-        {createStudentInquiriesCard}
+      {/* ---------------------------------------------------------------- */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h2" sx={{ fontFamily: "Montserrat" }}>
+          Student Education Inquiries
+        </Typography>
+
+        <div style={{ height: 400, width: "100%", display: "flex" }}>
+          <DataGrid
+            rows={studentInquiryRows}
+            columns={studentInquiryColumnns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+          />
+        </div>
       </div>
       <div
         style={{
@@ -264,6 +317,7 @@ function AdminPortal() {
           alignItems: "center",
         }}
       >
+        {/* ---------------------------------------------------------------- */}
         <Typography variant="h2" sx={{ fontFamily: "Montserrat" }}>
           Appointments
         </Typography>

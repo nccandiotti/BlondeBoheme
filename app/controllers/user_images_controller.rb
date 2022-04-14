@@ -7,7 +7,7 @@ class UserImagesController < ApplicationController
     def create
 
         post = UserImage.create!(user_image_params)
-        post.image.attach(params[:picture])
+        post.picture.attach(user_image_params[:picture])
         render json: post
 
         # post.image.attach(user_image_params[:picture])
