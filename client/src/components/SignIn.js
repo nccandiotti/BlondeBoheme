@@ -80,13 +80,13 @@ export default function SignIn() {
   // })
 
   return (
-    <>
+    <div style={{ marginTop: "20px" }}>
       {" "}
       {currentUser ? (
         <UserHome />
       ) : (
-        <div style={{ maxHeight: "200px" }}>
-          <Grid container component="main" sx={{ height: "100vh" }}>
+        <div>
+          <Grid container component="main">
             <CssBaseline />
 
             <Grid
@@ -105,7 +105,15 @@ export default function SignIn() {
               //   backgroundPosition: "center",
               // }}
             >
-              <img src={hair} />
+              <img
+                src={hair}
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+              />
             </Grid>
             <Grid
               item
@@ -125,7 +133,11 @@ export default function SignIn() {
                   alignItems: "center",
                 }}
               >
-                <Typography component="h1" variant="h5">
+                <Typography
+                  sx={{ fontFamily: "Sacramento" }}
+                  // component="h1"
+                  variant="h1"
+                >
                   Sign in
                 </Typography>
                 <Box
@@ -166,7 +178,7 @@ export default function SignIn() {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2, backgroundColor: "#cb8568" }}
                   >
                     Sign In
                   </Button>
@@ -189,6 +201,6 @@ export default function SignIn() {
           </Grid>
         </div>
       )}
-    </>
+    </div>
   )
 }

@@ -5,6 +5,7 @@ import emailjs from "@emailjs/browser"
 import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
+import Email from "./Email"
 
 function Education() {
   const [clicked, setClicked] = useState(false)
@@ -122,6 +123,7 @@ function Education() {
           <Typography variant="h6">Option 2</Typography>
         </Grid>
       </Grid>
+      <Email />
     </div>
   )
 }

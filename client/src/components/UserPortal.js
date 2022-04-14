@@ -1,27 +1,19 @@
 import React, { useContext, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import Button from "@mui/material/Button"
 import { UserContext } from "../UserContext"
 import UserApptCard from "./UserApptCard"
 import UploadPicsForm from "./forms/UploadPicsForm"
 import DateTimePicker from "@mui/lab/DateTimePicker"
 import TextField from "@mui/material/TextField"
-
 import CssBaseline from "@mui/material/CssBaseline"
-
 import Modal from "@mui/material/Modal"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
-import Alert from "@mui/material/Alert"
-import InputLabel from "@mui/material/InputLabel"
-import MenuItem from "@mui/material/MenuItem"
-import FormHelperText from "@mui/material/FormHelperText"
 import FormControl from "@mui/material/FormControl"
-import Select from "@mui/material/Select"
 import Grid from "@mui/material/Grid"
 import { format } from "date-fns"
-
 import Stepper from "@mui/material/Stepper"
 import Step from "@mui/material/Step"
 import StepButton from "@mui/material/StepButton"
@@ -32,45 +24,6 @@ const steps = [
   "Leave Deposit",
   "Select Date",
 ]
-// import { createTheme, ThemeProvider } from "@mui/material/styles"
-
-// const calendarTheme = createTheme({
-//   overrides: {
-//     Input: {
-//       color: "white",
-//     },
-//     MuiPickersToolbar: {
-//       toolbar: {
-//         backgroundColor: "black",
-//       },
-//     },
-//     MuiPickersCalendarHeader: {
-//       switchHeader: {
-//         // backgroundColor: lightBlue.A200,
-//         // color: "white",
-//       },
-//     },
-//     MuiPickersDay: {
-//       day: {
-//         color: "black",
-//       },
-//       daySelected: {
-//         backgroundColor: "blue",
-//       },
-//       dayDisabled: {
-//         color: "red",
-//       },
-//       current: {
-//         color: "black",
-//       },
-//     },
-//     MuiPickersModal: {
-//       dialogAction: {
-//         color: "black",
-//       },
-//     },
-//   },
-// })
 
 function UserPortal({ appointmentsArray }) {
   const [dateValue, setDateValue] = useState("")
@@ -90,7 +43,8 @@ function UserPortal({ appointmentsArray }) {
   const handleClose = () => setOpen(false)
   const handleApptOpen = () => setApptOpen(true)
   const handleApptClose = () => setApptOpen(false)
-  console.log(currentUser)
+  const { id } = useParams()
+
   const totalSteps = () => {
     return steps.length
   }
@@ -160,6 +114,16 @@ function UserPortal({ appointmentsArray }) {
     }).then((r) => r.json)
     handleClose()
   }
+
+  // function handleMakeDeposit(e) {
+  //   fetch(`/appointments/${id}`, {
+  //     method: "PATCH",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ deposit_received: true }),
+  //   })
+  //     .then((r) => r.json())
+  //     .then(window.open("https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww"))
+  // }
 
   function datePick(newDateValue) {
     console.log(newDateValue)
@@ -383,9 +347,6 @@ function UserPortal({ appointmentsArray }) {
         >
           Leave Deposit
         </Button>
-        <Button onClick={handleApptOpen}>Make an Appointment</Button>
-        {/* </Button>
-      Profile</Button> */}
         <Modal
           open={apptOpen}
           onClose={handleApptClose}

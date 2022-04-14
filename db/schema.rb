@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_12_162308) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_14_164112) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,7 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_162308) do
     t.string "duration"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "deposit_received"
+    t.boolean "deposit_received", default: false
     t.index ["salon_id"], name: "index_appointments_on_salon_id"
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end

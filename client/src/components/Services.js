@@ -86,6 +86,7 @@ function Services() {
         <Grid xs={3} item sx={{ margin: "30px" }}>
           <img
             style={{
+              borderRadius: "40px",
               display: "flex",
               width: "100%",
               height: "auto",
@@ -99,6 +100,7 @@ function Services() {
           {" "}
           <img
             style={{
+              borderRadius: "40px",
               display: "flex",
               width: "100%",
               height: "auto",
@@ -112,6 +114,7 @@ function Services() {
           {" "}
           <img
             style={{
+              borderRadius: "40px",
               display: "flex",
               width: "100%",
               height: "auto",

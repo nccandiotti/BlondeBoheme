@@ -155,15 +155,15 @@ function App() {
         <div id="payment-status-container"></div> */}
         {/* <AboutSuzie /> */}
         <Routes>
+          <Route exact path="/" element={<AboutSuzie />} />
           <Route exact path="/myaccount" element={<UserHome />} />
-          {/* <Route exact path="/" element={<App />} /> */}
+
           <Route exact path="/login" element={<SignIn />} />
           <Route exact path="/login" element={<SignIn />} />
           <Route exact path="/signup" element={<SignUp />} />
           <Route exact path="/education" element={<Education />} />
           <Route exact path="/services" element={<Services />} />
           <Route exact path="/policies" element={<Policies />} />
-          <Route exact path="/" element={<AboutSuzie />} />
           <Route exact path="/newguest" element={<NewGuestConsultation />} />
         </Routes>
         {/* {!localStorage.getItem("username") ? (
@@ -191,7 +191,14 @@ function App() {
           filter: "sepia(100%) saturate(100%)  hue-rotate(180deg)",
         }}
       ></iframe> */}
-      <div style={{ height: "40vh" }}></div>
+      <div
+        style={{
+          height: "40vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      ></div>
       <Container
         component="footer"
         sx={{

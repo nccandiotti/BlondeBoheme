@@ -57,7 +57,15 @@ export default function SignUp() {
 
   return (
     <>
-      <Container component="main" maxWidth="xs">
+      <Container
+        sx={{
+          backgroundColor: "white",
+          borderRadius: "30px",
+          padding: "10px",
+        }}
+        component="main"
+        maxWidth="xs"
+      >
         <CssBaseline />
         <Box
           sx={{
@@ -67,7 +75,11 @@ export default function SignUp() {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography
+            sx={{ fontFamily: "Sacramento" }}
+            component="h1"
+            variant="h2"
+          >
             Sign up
           </Typography>
           {/* <form> */}
@@ -75,7 +87,7 @@ export default function SignUp() {
             component="form"
             noValidate
             onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
+            sx={{ mt: 3, padding: "20px" }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>

@@ -15,6 +15,8 @@ import Modal from "@mui/material/Modal"
 
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
+import placeholder from "../../assets/bohoart2.png"
+import axios from "axios"
 
 import { UserContext } from "../../UserContext"
 
@@ -27,6 +29,8 @@ function UploadPicsForm() {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+
+  const API_URL = "/user_images"
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -97,9 +101,13 @@ function UploadPicsForm() {
               }}
             >
               <Typography component="h1" variant="h5">
-                New Guest Consultation Form
+                Inspo Pics
               </Typography>
-
+              <img
+                src={placeholder}
+                alt="inspo"
+                style={{ height: "200px", width: "200px" }}
+              />
               <FormControl>
                 <Box
                   component="form"

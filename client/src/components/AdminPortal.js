@@ -13,6 +13,7 @@ import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 
 import Modal from "@mui/material/Modal"
+import Alert from "@mui/material/Alert"
 
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
@@ -26,12 +27,12 @@ function AdminPortal() {
   const [lastname, setLastname] = useState(currentUser.lastname)
   const [email, setEmail] = useState(currentUser.email)
   const [phone, setPhone] = useState(currentUser.phone)
-
+  const [showAlert, setShowAlert] = useState(false)
   const [salon, setSalon] = useState([])
   const [studentInq, setStudentInq] = useState([])
   const studentInquiries = salon.student_inquiries
   const appointments = salon.appointments
-  console.log(appointments)
+  let date = new Date()
 
   useEffect(() => {
     fetch("./salons")
@@ -52,6 +53,7 @@ function AdminPortal() {
   ))
 
   const toggleClicked = () => setClicked((prevstate) => !prevstate)
+  const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -90,41 +92,54 @@ function AdminPortal() {
       firstName: appt.firstname,
       time: appt.time,
       desposit: appt.deposit_received,
-      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname} age: 42 },
-      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname}  age: 45 },
-      // { id: {appt.id} lastName: {appt.lastname}firstName: {appt.firstname}  16 },
-      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname}  age: null },
-      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname} age: 150 },
-      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname} age: 44 },
-      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname}  age: 36 },
-      // { id: {appt.id} lastName: {appt.lastname} firstName: {appt.firstname}  age: 65 }
     }
   })
 
+  function handleFirstDeleteButton(e) {
+    toggleAlert()
+  }
+  function handleHardDelete(e) {
+    // fetch(`/appointments/${id}`, { method: "DELETE" })
+  }
+
   const columns = [
     // { field: "id", headerName: "ID", width: 70 },
-    { field: "firstName", headerName: "First name", width: 130 },
-    { field: "lastName", headerName: "Last name", width: 130 },
+    {
+      field: "firstName",
+      headerName: "First name",
+      width: 150,
+    },
+    { field: "lastName", headerName: "Last name", width: 150 },
     {
       field: "time",
       headerName: "Time",
       type: "string",
-      width: 90,
+      width: 300,
     },
     {
       field: "deposit_received",
       headerName: "Deposit Received",
       type: "boolean",
-      width: 90,
+      width: 100,
     },
     {
-      field: "fullName",
-      headerName: "Full name",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+      field: "cancel",
+      headerName: "Cancel Appointment",
+      width: 150,
+      renderCell: (params) => (
+        <strong>
+          {params.value?.getFullYear() ?? ""}
+          <Button
+            variant="contained"
+            color="warning"
+            size="small"
+            style={{ marginLeft: 16 }}
+            onClick={handleFirstDeleteButton}
+          >
+            Cancel
+          </Button>
+        </strong>
+      ),
     },
   ]
 
@@ -137,7 +152,6 @@ function AdminPortal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        {/* <ThemeProvider theme={theme}> */}
         <Container component="main" maxWidth="s">
           <CssBaseline />
           <Box
@@ -242,36 +256,36 @@ function AdminPortal() {
         <h1>Education Inquiries</h1>
         {createStudentInquiriesCard}
       </div>
-      {/* <table>
-        <tr>
-          <th>Company</th>
-          <th>Contact</th>
-          <th>Country</th>
-        </tr>
-        <tr>
-          <td>Alfreds Futterkiste</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr>
-      </table> */}
-      <div style={{ height: 400, width: "100%" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
-          checkboxSelection
-        />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h2" sx={{ fontFamily: "Montserrat" }}>
+          Appointments
+        </Typography>
+        {!showAlert ? null : (
+          <Alert severity="warning">
+            You are about to delete this appointment - this action{" "}
+            <strong> cannot </strong> be undone, are you sure you want to
+            proceed?
+            <Button onClick={handleHardDelete}>Yes, Cancel Appointment</Button>
+            <Button onClick={() => setShowAlert(false)}>Back</Button>
+          </Alert>
+        )}
+        <div style={{ height: 400, width: "100%" }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+          />
+        </div>
       </div>
-      {/* <div>
-        <h1> New Guest Inquiries</h1>
-
-      </div> */}
     </div>
   )
 }
