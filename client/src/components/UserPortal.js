@@ -17,6 +17,7 @@ import { format } from "date-fns"
 import Stepper from "@mui/material/Stepper"
 import Step from "@mui/material/Step"
 import StepButton from "@mui/material/StepButton"
+import NewGuestConsultation from "./forms/NewGuestConsultation"
 
 const steps = [
   "Complete Consultation Paperwork",
@@ -38,11 +39,17 @@ function UserPortal({ appointmentsArray }) {
   const [phone, setPhone] = useState(currentUser.phone)
   const toggleClicked = () => setClicked(!clicked)
   const [open, setOpen] = useState(false)
+  const [formOpen, setFormOpen] = useState(false)
   const [apptOpen, setApptOpen] = useState(false)
+  const [consultOpen, setConsultOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-  const handleApptOpen = () => setApptOpen(true)
+  const handleFormOpen = () => setFormOpen(true)
+  const handleFormClose = () => setOpen(false)
   const handleApptClose = () => setApptOpen(false)
+  const handleApptOpen = () => setApptOpen(true)
+  const handleConsultOpen = () => setConsultOpen(true)
+  const handleConsultClose = () => setConsultOpen(false)
   const { id } = useParams()
 
   const totalSteps = () => {
@@ -100,7 +107,7 @@ function UserPortal({ appointmentsArray }) {
   function handleClick(e) {
     toggleClicked()
   }
-  function handleSubmit(e) {
+  function handleUpdateInfo(e) {
     e.preventDefault()
     fetch(`/users/${currentUser.id}`, {
       method: "PATCH",
@@ -115,16 +122,6 @@ function UserPortal({ appointmentsArray }) {
     handleClose()
   }
 
-  // function handleMakeDeposit(e) {
-  //   fetch(`/appointments/${id}`, {
-  //     method: "PATCH",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ deposit_received: true }),
-  //   })
-  //     .then((r) => r.json())
-  //     .then(window.open("https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww"))
-  // }
-
   function datePick(newDateValue) {
     console.log(newDateValue)
     setDateValue(newDateValue)
@@ -134,14 +131,6 @@ function UserPortal({ appointmentsArray }) {
   function filterWeekends(date) {
     return date.getDay() === 0
   }
-
-  // function filterAppointmentsArray(newAppointment) {
-  //   const doesApptExist = appointmentsArray?.find(
-  //     (appt) => appt.time === newAppointment.time
-  //   )
-  //   if (typeof doesApptExist === "string") true
-  //   else false
-  // }
 
   function handleBookAppointment(e) {
     e.preventDefault()
@@ -259,7 +248,7 @@ function UserPortal({ appointmentsArray }) {
                 <Box
                   component="form"
                   noValidate
-                  onSubmit={handleSubmit}
+                  onSubmit={handleUpdateInfo}
                   sx={{ mt: 3 }}
                 >
                   <Grid container spacing={2}>
@@ -313,7 +302,7 @@ function UserPortal({ appointmentsArray }) {
 
                   <Button
                     type="submit"
-                    onChange={handleSubmit}
+                    onChange={handleUpdateInfo}
                     fullWidth
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
@@ -335,9 +324,15 @@ function UserPortal({ appointmentsArray }) {
             </Box>
           </Container>
         </Modal>
-        <Button onClick={() => navigate("/newguest")}>
-          Request an Appointment
-        </Button>
+        <Button onClick={handleConsultOpen}>Complete Consultation Form</Button>
+        <Modal
+          open={consultOpen}
+          onClose={handleConsultClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <NewGuestConsultation />
+        </Modal>
         <Button onClick={handleClick}>Upload Pics</Button>
         {!clicked ? null : <UploadPicsForm />}
         <Button
@@ -347,6 +342,7 @@ function UserPortal({ appointmentsArray }) {
         >
           Leave Deposit
         </Button>
+        <Button onClick={handleApptOpen}>Select A Date</Button>
         <Modal
           open={apptOpen}
           onClose={handleApptClose}
