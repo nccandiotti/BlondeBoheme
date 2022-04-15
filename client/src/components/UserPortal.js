@@ -149,9 +149,13 @@ function UserPortal({ appointmentsArray }) {
         duration: "1 hour",
         salon_id: 2,
       }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then(setDateValue(null))
+      } else alert("no dice")
     })
-      .then((r) => r.json())
-      .then(setDateValue(null))
+    // .then((r) => r.json())
+    // .then(setDateValue(null))
   }
 
   return (
@@ -289,17 +293,25 @@ function UserPortal({ appointmentsArray }) {
                 <div style={{ height: "50px" }}></div>
                 {activeStep === 0 ? (
                   <>
-                    <Button onClick={handleConsultOpen}>
-                      Complete Consultation Form
-                    </Button>
-                    <Modal
-                      open={consultOpen}
-                      onClose={handleConsultClose}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
                     >
-                      <NewGuestConsultation />
-                    </Modal>{" "}
+                      <Button onClick={handleConsultOpen}>
+                        Complete Consultation Form
+                      </Button>
+                      <Modal
+                        open={consultOpen}
+                        onClose={handleConsultClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <NewGuestConsultation />
+                      </Modal>{" "}
+                    </div>
                   </>
                 ) : null}
                 {activeStep === 1 ? (
@@ -316,98 +328,117 @@ function UserPortal({ appointmentsArray }) {
                   </div>
                 ) : null}
                 {activeStep === 2 ? (
-                  <Button
-                    onClick={() =>
-                      window.open(
-                        "https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww"
-                      )
-                    }
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
                   >
-                    Leave Deposit
-                  </Button>
+                    <Button
+                      onClick={() =>
+                        window.open(
+                          "https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww"
+                        )
+                      }
+                    >
+                      Leave Deposit
+                    </Button>
+                  </div>
                 ) : null}
                 {activeStep === 3 ? (
                   <>
-                    {" "}
-                    <Button onClick={handleApptOpen}>Select A Date</Button>
-                    <Modal
-                      open={apptOpen}
-                      onClose={handleApptClose}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
                     >
-                      <Container component="main" maxWidth="s">
-                        <CssBaseline />
-                        <Box
-                          sx={{
-                            marginTop: 8,
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            backgroundColor: "rgba(255, 255, 255)",
-                            padding: "40px",
-                            borderRadius: "20px",
-                          }}
-                        >
-                          <Typography component="h1" variant="h5">
-                            Schedule
-                          </Typography>
+                      <Button onClick={handleApptOpen}>Select A Date</Button>
+                      <Modal
+                        open={apptOpen}
+                        onClose={handleApptClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Container component="main" maxWidth="s">
+                          <CssBaseline />
+                          <Box
+                            sx={{
+                              marginTop: 8,
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                              backgroundColor: "rgba(255, 255, 255)",
+                              padding: "40px",
+                              borderRadius: "20px",
+                            }}
+                          >
+                            <Typography component="h1" variant="h5">
+                              Schedule
+                            </Typography>
 
-                          <FormControl>
-                            <Box
-                              component="form"
-                              noValidate
-                              onSubmit={handleBookAppointment}
-                              sx={{ mt: 3 }}
-                            >
-                              <Grid container spacing={2}>
-                                <Grid item xs={6} sm={6}>
-                                  <DateTimePicker
-                                    sx={{
-                                      button: {
-                                        color: "white",
-                                      },
-                                    }}
-                                    minutesStep="0"
-                                    shouldDisableDate={filterWeekends}
-                                    minTime={new Date(0, 0, 0, 10)}
-                                    maxTime={new Date(0, 0, 0, 14)}
-                                    maxDate={new Date("2022-12-31")}
-                                    minDate={new Date()}
-                                    renderInput={(props) => (
-                                      <TextField {...props} />
-                                    )}
-                                    value={dateValue}
-                                    onChange={(newDateValue) => {
-                                      datePick(newDateValue)
-                                    }}
-                                  />
-                                </Grid>
-
-                                <Grid item xs={6} sm={6}>
-                                  <Button>10:00</Button>
-                                  <Button>11:00</Button> <Button>12:00</Button>{" "}
-                                  <Button>1:00</Button> <Button>2:00</Button>{" "}
-                                  <Button>3:00</Button> <Button>4:00</Button>{" "}
-                                </Grid>
-                              </Grid>
-
-                              <Button
-                                type="submit"
-                                onChange={handleBookAppointment}
-                                fullWidth
-                                variant="contained"
-                                sx={{ mt: 3, mb: 2 }}
+                            <FormControl>
+                              <Box
+                                component="form"
+                                noValidate
+                                onSubmit={handleBookAppointment}
+                                sx={{ mt: 3 }}
                               >
-                                Submit
-                              </Button>
+                                <Grid container spacing={2}>
+                                  <Grid item xs={6} sm={6}>
+                                    <DateTimePicker
+                                      sx={{
+                                        button: {
+                                          color: "white",
+                                        },
+                                      }}
+                                      minutesStep="0"
+                                      shouldDisableDate={filterWeekends}
+                                      minTime={new Date(0, 0, 0, 10)}
+                                      maxTime={new Date(0, 0, 0, 14)}
+                                      maxDate={new Date("2022-12-31")}
+                                      minDate={new Date()}
+                                      renderInput={(props) => (
+                                        <TextField {...props} />
+                                      )}
+                                      value={dateValue}
+                                      onChange={(newDateValue) => {
+                                        datePick(newDateValue)
+                                      }}
+                                    />
+                                  </Grid>
 
-                              <Grid container justifyContent="flex-end"></Grid>
-                            </Box>
-                          </FormControl>
-                        </Box>
-                      </Container>
-                    </Modal>{" "}
+                                  <Grid item xs={6} sm={6}>
+                                    <Button>10:00</Button>
+                                    <Button>11:00</Button>{" "}
+                                    <Button>12:00</Button> <Button>1:00</Button>{" "}
+                                    <Button>2:00</Button> <Button>3:00</Button>{" "}
+                                    <Button>4:00</Button>{" "}
+                                  </Grid>
+                                </Grid>
+
+                                <Button
+                                  type="submit"
+                                  onChange={handleBookAppointment}
+                                  fullWidth
+                                  variant="contained"
+                                  sx={{ mt: 3, mb: 2 }}
+                                >
+                                  Submit
+                                </Button>
+
+                                <Grid
+                                  container
+                                  justifyContent="flex-end"
+                                ></Grid>
+                              </Box>
+                            </FormControl>
+                          </Box>
+                        </Container>
+                      </Modal>{" "}
+                    </div>
                   </>
                 ) : null}
                 <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>

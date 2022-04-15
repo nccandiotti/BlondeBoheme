@@ -16,8 +16,6 @@ import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 import Link from "@mui/material/Link"
-import Card from "@mui/material/Card"
-
 import pic from "./assets/me.png"
 import hair2 from "./assets/hair2.png"
 import hair3 from "./assets/hair3.png"
