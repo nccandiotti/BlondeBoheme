@@ -51,7 +51,6 @@ function Services() {
   const [simpleServicesArray, setSimpleServicesArray] = useState([])
   const [therapeuticServicesArray, setTherapeuticServicesArray] = useState([])
   const [luxuryServicesArray, setLuxuryServicesArray] = useState([])
-  console.log(simpleServicesArray)
 
   useEffect(() => {
     fetch("/simpleServices")

@@ -62,6 +62,8 @@ export default function SignUp() {
           backgroundColor: "white",
           borderRadius: "30px",
           padding: "10px",
+          justifyContent: "center",
+          display: "flex",
         }}
         component="main"
         maxWidth="xs"

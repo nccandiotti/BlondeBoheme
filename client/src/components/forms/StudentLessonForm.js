@@ -74,7 +74,6 @@ function StudentLessonForm() {
     e.preventDefault()
     setLessonType(e.target.value)
   }
-  console.log(lessonType)
 
   return (
     <>

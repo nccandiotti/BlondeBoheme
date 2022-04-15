@@ -12,7 +12,6 @@ function NavBar() {
   function handleLogout() {
     fetch("/logout", { method: "DELETE" })
 
-    console.log(currentUser)
     setCurrentUser("")
   }
 

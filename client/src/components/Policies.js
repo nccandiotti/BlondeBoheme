@@ -19,7 +19,7 @@ function Policies() {
   return (
     <div style={{ margin: "40px", borderRadius: "20px" }}>
       {" "}
-      <Accordion sx={{ borderRadius: "20px", backgroundColor: "#d6bfc2" }}>
+      <Accordion sx={{ borderRadius: "20px", backgroundColor: "#c88d6f" }}>
         <AccordionSummary
           //   expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -69,7 +69,7 @@ function Policies() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion sx={{ borderRadius: "20px", backgroundColor: "#d6bfc2" }}>
+      <Accordion sx={{ borderRadius: "20px", backgroundColor: "#c88d6f" }}>
         <AccordionSummary
           //   expandIcon={<ExpandMore />}
           aria-controls="panel2a-content"
@@ -116,7 +116,7 @@ function Policies() {
           </Typography>
         </AccordionDetails>
       </Accordion>
-      <Accordion sx={{ borderRadius: "20px", backgroundColor: "#d6bfc2" }}>
+      <Accordion sx={{ borderRadius: "20px", backgroundColor: "#c88d6f" }}>
         <AccordionSummary
           //   expandIcon={<ExpandMore />}
           aria-controls="panel2a-content"

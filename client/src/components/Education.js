@@ -4,8 +4,11 @@ import SendEmail from "./forms/SendEmail"
 import emailjs from "@emailjs/browser"
 import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
+import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import Email from "./Email"
+import FlareIcon from "@mui/icons-material/Flare"
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
 
 function Education() {
   const [clicked, setClicked] = useState(false)
@@ -51,7 +54,9 @@ function Education() {
         <input type="submit" value="Send" />
       </form>
       <div sx={{ backgroundColor: "white" }}> hi</div>
-      <div
+      <Grid
+        container
+        spacing={1}
         sx={{
           flexGrow: 1,
           display: "flex",
@@ -60,6 +65,7 @@ function Education() {
           marginTop: "150px",
           justifyContent: "center",
           alignItems: "center",
+          padding: "20px",
         }}
       >
         <Grid xs={6} item sx={{ margin: "30px", backgroundColor: "white" }}>
@@ -122,14 +128,29 @@ function Education() {
           </Typography>
         </Grid>
         <Grid xs={6} item sx={{ margin: "30px", backgroundColor: "white" }}>
-          <Typography sx={{ fontFamily: "Sacramento" }} variant="h2">
+          <Typography
+            sx={{
+              fontFamily: "Sacramento",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            variant="h2"
+          >
             You can never be overdressed or overeducated:
           </Typography>
-          <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+          <Typography
+            sx={{
+              fontFamily: "Montserrat",
+              display: "flex",
+              justifyContent: "center",
+            }}
+            variant="h6"
+          >
             What We Offer
           </Typography>
+          <br />
 
-          <Grid container spacing={2}>
+          <Grid container spacing={2} sx={{ padding: "30px" }}>
             <Grid item xs={6}>
               <Typography variant="h6">
                 Level Up Behind the Chair: One-on-One with @the.blonde.boheme
@@ -142,29 +163,113 @@ function Education() {
               </Typography>
               <br />
               <Typography variant="body">
-                Class Descriptions: (choose one of the following)
+                <strong>
+                  Class Descriptions: (choose one of the following):{" "}
+                </strong>
               </Typography>
-
+              <br />
               <Typography variant="body">
                 NBB- A foolproof application method designed to take the
                 guesswork out of sectioning and placement.
               </Typography>
+              <br />
+              <br />
               <Typography variant="body">
                 MDM- a three-tiered blonding technique designed to create low
                 maintenance yet high-impact look.
               </Typography>
+              <br />
+              <br />
               <Typography variant="body">
                 The Works- A Blueprinted technique layering light and depth
                 simultaneously in a single application for maximum contrast and
                 dimension.
               </Typography>
+              <br />
+              <br />
               <Typography variant="body">
                 <strong>How does it work?</strong>
               </Typography>
+              <br />
+              <Typography variant="body">
+                Select your class option from the drop-down menu, and then we
+                contact you with dates for you to meet Suzie in her private
+                studio in Rochester, NY.
+              </Typography>
+              <Typography variant="body">
+                <strong>What's included?</strong>
+              </Typography>
+              <br />
+              <Typography variant="body">- Demo on a model</Typography>
+              <br />
+              <Typography variant="body">
+                - Goodies bag with our favorite things!
+              </Typography>
+              <br />
+              <Typography variant="body">
+                - DMannequin (provided for hands-on options)
+              </Typography>
+              <br />
+              <Typography variant="body">
+                <strong>Things to note: </strong>
+              </Typography>
+              <Typography variant="body">
+                -Travel fees are not included. Students are responsible for
+                their own travel and accommodations.
+              </Typography>
+              <Button
+                onClick={() =>
+                  window.open("https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww")
+                }
+              >
+                <br />
+                Purchase
+              </Button>
             </Grid>
             <Grid item xs={6}>
-              <Typography variant="body">Hi</Typography>
-              <Typography variant="body">Hi</Typography>
+              <Typography variant="body">
+                Shadow Experience with: One-on-One with @shes.sew.extra
+              </Typography>
+              <br />
+              <Typography variant="caption"> $850.00</Typography>
+              <br />
+              <br />
+              <Typography variant="body">
+                <strong>
+                  The Shadow Experience with Lesley D. Flanagan includes:
+                </strong>
+              </Typography>
+              <br />
+              <br />
+              <Typography variant="body">
+                ⭐️ 30 Minute Assessment of your Extension business currently
+              </Typography>
+              <br />
+              <Typography variant="body">
+                ⭐️ 2 Extension Model Demos
+              </Typography>
+              <br />
+              <Typography variant="body">
+                ⭐️ 2 Extension Model Demos
+              </Typography>
+              <br />
+              <Typography variant="body">
+                ⭐️ Q & A Session and end of day wrap up
+              </Typography>
+              <br />
+              <br />
+              <div style={{ display: "flex", justifyContent: "Center" }}>
+                {" "}
+                <Button
+                  onClick={() =>
+                    window.open(
+                      "https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww"
+                    )
+                  }
+                >
+                  Purchase
+                </Button>
+              </div>
             </Grid>
           </Grid>
           {/* <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
@@ -172,7 +277,7 @@ function Education() {
           </Typography>
           <Typography variant="h6">Option 2</Typography> */}
         </Grid>
-      </div>
+      </Grid>
       <Email />
     </div>
   )

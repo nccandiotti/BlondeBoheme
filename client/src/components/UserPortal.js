@@ -123,7 +123,6 @@ function UserPortal({ appointmentsArray }) {
   }
 
   function datePick(newDateValue) {
-    console.log(newDateValue)
     setDateValue(newDateValue)
     const formattedDate = format(newDateValue, "EEEE, MMM d yyyy 'at' h:mmaaa")
     setTime(formattedDate.toString())
@@ -154,12 +153,116 @@ function UserPortal({ appointmentsArray }) {
       .then((r) => r.json())
       .then(setDateValue(null))
   }
-  console.log(activeStep)
+
   return (
     <>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Button onClick={handleOpen}>Update Contact Information</Button>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Container component="main" maxWidth="s">
+            <CssBaseline />
+            <Box
+              sx={{
+                marginTop: 8,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                backgroundColor: "rgba(255, 255, 255)",
+                padding: "40px",
+                borderRadius: "20px",
+              }}
+            >
+              <Typography component="h1" variant="h5">
+                My Profile Details
+              </Typography>
+
+              <FormControl>
+                <Box
+                  component="form"
+                  noValidate
+                  onSubmit={handleUpdateInfo}
+                  sx={{ mt: 3 }}
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        autoComplete="given-name"
+                        name="firstName"
+                        fullWidth
+                        id="firstName"
+                        label="First Name"
+                        autoFocus
+                        value={firstname}
+                        onChange={(e) => setFirstname(e.target.value)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        autoComplete="last-name"
+                        name="lastname"
+                        fullWidth
+                        id="lastname"
+                        label="Last Name"
+                        autoFocus
+                        value={lastname}
+                        onChange={(e) => setLastname(e.target.value)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        name="email"
+                        fullWidth
+                        id="email"
+                        label="Email"
+                        autoFocus
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        name="phone"
+                        fullWidth
+                        id="phone"
+                        label="Phone Number"
+                        autoFocus
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                      />
+                    </Grid>
+                  </Grid>
+
+                  <Button
+                    type="submit"
+                    onChange={handleUpdateInfo}
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Submit
+                  </Button>
+                  <Button
+                    type="onClick"
+                    onChange={() => handleClose()}
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    cancel
+                  </Button>
+                  <Grid container justifyContent="flex-end"></Grid>
+                </Box>
+              </FormControl>
+            </Box>
+          </Container>
+        </Modal>
+      </div>
       <div>
-        UserPortal
-        <div>New Guest Form</div>
         <Box sx={{ width: "100%" }}>
           <Stepper nonLinear activeStep={activeStep}>
             {steps.map((label, index) => (
@@ -183,10 +286,7 @@ function UserPortal({ appointmentsArray }) {
               </>
             ) : (
               <>
-                <Typography sx={{ mt: 2, mb: 1 }}>
-                  {/* Step {activeStep + 1} */}
-                  Hello
-                </Typography>
+                <div style={{ height: "50px" }}></div>
                 {activeStep === 0 ? (
                   <>
                     <Button onClick={handleConsultOpen}>
@@ -203,11 +303,17 @@ function UserPortal({ appointmentsArray }) {
                   </>
                 ) : null}
                 {activeStep === 1 ? (
-                  <>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
                     <Button onClick={handleClick}>Upload Pics</Button>
 
                     {!clicked ? null : <UploadPicsForm />}
-                  </>
+                  </div>
                 ) : null}
                 {activeStep === 2 ? (
                   <Button
@@ -337,111 +443,6 @@ function UserPortal({ appointmentsArray }) {
             )}
           </div>
         </Box>
-        <Button onClick={handleOpen}>Update Contact Information</Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          {/* <ThemeProvider theme={theme}> */}
-          <Container component="main" maxWidth="s">
-            <CssBaseline />
-            <Box
-              sx={{
-                marginTop: 8,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                backgroundColor: "rgba(255, 255, 255)",
-                padding: "40px",
-                borderRadius: "20px",
-              }}
-            >
-              <Typography component="h1" variant="h5">
-                My Profile Details
-              </Typography>
-
-              <FormControl>
-                <Box
-                  component="form"
-                  noValidate
-                  onSubmit={handleUpdateInfo}
-                  sx={{ mt: 3 }}
-                >
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        autoComplete="given-name"
-                        name="firstName"
-                        fullWidth
-                        id="firstName"
-                        label="First Name"
-                        autoFocus
-                        value={firstname}
-                        onChange={(e) => setFirstname(e.target.value)}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        autoComplete="last-name"
-                        name="lastname"
-                        fullWidth
-                        id="lastname"
-                        label="Last Name"
-                        autoFocus
-                        value={lastname}
-                        onChange={(e) => setLastname(e.target.value)}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        name="email"
-                        fullWidth
-                        id="email"
-                        label="Email"
-                        autoFocus
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        name="phone"
-                        fullWidth
-                        id="phone"
-                        label="Phone Number"
-                        autoFocus
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                      />
-                    </Grid>
-                  </Grid>
-
-                  <Button
-                    type="submit"
-                    onChange={handleUpdateInfo}
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                  >
-                    Submit
-                  </Button>
-                  <Button
-                    type="onClick"
-                    onChange={() => handleClose()}
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                  >
-                    cancel
-                  </Button>
-                  <Grid container justifyContent="flex-end"></Grid>
-                </Box>
-              </FormControl>
-            </Box>
-          </Container>
-        </Modal>
       </div>
     </>
   )
