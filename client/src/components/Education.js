@@ -51,7 +51,7 @@ function Education() {
         <input type="submit" value="Send" />
       </form>
       <div sx={{ backgroundColor: "white" }}> hi</div>
-      <Grid
+      <div
         sx={{
           flexGrow: 1,
           display: "flex",
@@ -61,15 +61,14 @@ function Education() {
           justifyContent: "center",
           alignItems: "center",
         }}
-        container
-        spacing={2}
       >
         <Grid xs={6} item sx={{ margin: "30px", backgroundColor: "white" }}>
-          <Typography variant="h2">
+          <Typography sx={{ fontFamily: "Sacramento" }} variant="h2">
             {" "}
             We Believe in Changing the Status Quo
           </Typography>
-          <Typography variant="h6">
+          <br />
+          <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
             {" "}
             As stylists, we love education. We take classes year after year to
             perfect our craft; we get so excited and inspired by it. When we get
@@ -79,22 +78,26 @@ function Education() {
             <br />
           </Typography>{" "}
           <br />
-          <Typography variant="body">
+          <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
             {" "}
             You see, we vastly consume education for our technical skills but
             never how to cover our costs, price according to our demand, and
             calculate profit. Let's go back to that scene above for a minute.
           </Typography>{" "}
           <br />
-          <Typography variant="body">
+          <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
             {" "}
             Consultation is crucial and quoting pricing before you even drape
             your client. No matter what!
           </Typography>
           <br />
-          <Typography variant="body"> That's where we come in.</Typography>
+          <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
+            {" "}
+            That's where we come in.
+          </Typography>
           <br />
-          <Typography variant="body">
+          <br />
+          <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
             {" "}
             We are Lesley and Suzie of Local Lux.u.ry, and we teach you
             profitable techniques to save you time behind the chair and put more
@@ -107,22 +110,69 @@ function Education() {
             service, not just balayage.
           </Typography>
           <br />
-          <Typography variant="h6">
-            We teach you the hard and soft skills you need to apply to your
-            business today. You'll be able to assess and evaluate the knowledge
-            you need to turn a profit, not just break even. So you can make more
-            money behind the chair.
+          <br />
+          <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+            <strong>
+              {" "}
+              We teach you the hard and soft skills you need to apply to your
+              business today. You'll be able to assess and evaluate the
+              knowledge you need to turn a profit, not just break even. So you
+              can make more money behind the chair.
+            </strong>
           </Typography>
         </Grid>
         <Grid xs={6} item sx={{ margin: "30px", backgroundColor: "white" }}>
-          <Typography variant="h2">
+          <Typography sx={{ fontFamily: "Sacramento" }} variant="h2">
             You can never be overdressed or overeducated:
           </Typography>
-          <Typography variant="h6">What We Offer</Typography>
-          <Typography variant="h6">Option 1</Typography>
-          <Typography variant="h6">Option 2</Typography>
+          <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+            What We Offer
+          </Typography>
+
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <Typography variant="h6">
+                Level Up Behind the Chair: One-on-One with @the.blonde.boheme
+              </Typography>
+              <Typography variant="caption">from $700.00</Typography>
+              <br />
+              <Typography variant="body">
+                Level Up Behind the Chair: One-on-One with @the.blonde.boheme,
+                Suzie Bernhardt.
+              </Typography>
+              <br />
+              <Typography variant="body">
+                Class Descriptions: (choose one of the following)
+              </Typography>
+
+              <Typography variant="body">
+                NBB- A foolproof application method designed to take the
+                guesswork out of sectioning and placement.
+              </Typography>
+              <Typography variant="body">
+                MDM- a three-tiered blonding technique designed to create low
+                maintenance yet high-impact look.
+              </Typography>
+              <Typography variant="body">
+                The Works- A Blueprinted technique layering light and depth
+                simultaneously in a single application for maximum contrast and
+                dimension.
+              </Typography>
+              <Typography variant="body">
+                <strong>How does it work?</strong>
+              </Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="body">Hi</Typography>
+              <Typography variant="body">Hi</Typography>
+            </Grid>
+          </Grid>
+          {/* <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+            Option 1
+          </Typography>
+          <Typography variant="h6">Option 2</Typography> */}
         </Grid>
-      </Grid>
+      </div>
       <Email />
     </div>
   )

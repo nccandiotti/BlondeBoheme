@@ -154,7 +154,7 @@ function UserPortal({ appointmentsArray }) {
       .then((r) => r.json())
       .then(setDateValue(null))
   }
-
+  console.log(activeStep)
   return (
     <>
       <div>
@@ -184,8 +184,126 @@ function UserPortal({ appointmentsArray }) {
             ) : (
               <>
                 <Typography sx={{ mt: 2, mb: 1 }}>
-                  Step {activeStep + 1}
+                  {/* Step {activeStep + 1} */}
+                  Hello
                 </Typography>
+                {activeStep === 0 ? (
+                  <>
+                    <Button onClick={handleConsultOpen}>
+                      Complete Consultation Form
+                    </Button>
+                    <Modal
+                      open={consultOpen}
+                      onClose={handleConsultClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                      <NewGuestConsultation />
+                    </Modal>{" "}
+                  </>
+                ) : null}
+                {activeStep === 1 ? (
+                  <>
+                    <Button onClick={handleClick}>Upload Pics</Button>
+
+                    {!clicked ? null : <UploadPicsForm />}
+                  </>
+                ) : null}
+                {activeStep === 2 ? (
+                  <Button
+                    onClick={() =>
+                      window.open(
+                        "https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww"
+                      )
+                    }
+                  >
+                    Leave Deposit
+                  </Button>
+                ) : null}
+                {activeStep === 3 ? (
+                  <>
+                    {" "}
+                    <Button onClick={handleApptOpen}>Select A Date</Button>
+                    <Modal
+                      open={apptOpen}
+                      onClose={handleApptClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                      <Container component="main" maxWidth="s">
+                        <CssBaseline />
+                        <Box
+                          sx={{
+                            marginTop: 8,
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            backgroundColor: "rgba(255, 255, 255)",
+                            padding: "40px",
+                            borderRadius: "20px",
+                          }}
+                        >
+                          <Typography component="h1" variant="h5">
+                            Schedule
+                          </Typography>
+
+                          <FormControl>
+                            <Box
+                              component="form"
+                              noValidate
+                              onSubmit={handleBookAppointment}
+                              sx={{ mt: 3 }}
+                            >
+                              <Grid container spacing={2}>
+                                <Grid item xs={6} sm={6}>
+                                  <DateTimePicker
+                                    sx={{
+                                      button: {
+                                        color: "white",
+                                      },
+                                    }}
+                                    minutesStep="0"
+                                    shouldDisableDate={filterWeekends}
+                                    minTime={new Date(0, 0, 0, 10)}
+                                    maxTime={new Date(0, 0, 0, 14)}
+                                    maxDate={new Date("2022-12-31")}
+                                    minDate={new Date()}
+                                    renderInput={(props) => (
+                                      <TextField {...props} />
+                                    )}
+                                    value={dateValue}
+                                    onChange={(newDateValue) => {
+                                      datePick(newDateValue)
+                                    }}
+                                  />
+                                </Grid>
+
+                                <Grid item xs={6} sm={6}>
+                                  <Button>10:00</Button>
+                                  <Button>11:00</Button> <Button>12:00</Button>{" "}
+                                  <Button>1:00</Button> <Button>2:00</Button>{" "}
+                                  <Button>3:00</Button> <Button>4:00</Button>{" "}
+                                </Grid>
+                              </Grid>
+
+                              <Button
+                                type="submit"
+                                onChange={handleBookAppointment}
+                                fullWidth
+                                variant="contained"
+                                sx={{ mt: 3, mb: 2 }}
+                              >
+                                Submit
+                              </Button>
+
+                              <Grid container justifyContent="flex-end"></Grid>
+                            </Box>
+                          </FormControl>
+                        </Box>
+                      </Container>
+                    </Modal>{" "}
+                  </>
+                ) : null}
                 <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                   <Button
                     color="inherit"
@@ -318,101 +436,6 @@ function UserPortal({ appointmentsArray }) {
                   >
                     cancel
                   </Button>
-                  <Grid container justifyContent="flex-end"></Grid>
-                </Box>
-              </FormControl>
-            </Box>
-          </Container>
-        </Modal>
-        <Button onClick={handleConsultOpen}>Complete Consultation Form</Button>
-        <Modal
-          open={consultOpen}
-          onClose={handleConsultClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <NewGuestConsultation />
-        </Modal>
-        <Button onClick={handleClick}>Upload Pics</Button>
-        {!clicked ? null : <UploadPicsForm />}
-        <Button
-          onClick={() =>
-            window.open("https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww")
-          }
-        >
-          Leave Deposit
-        </Button>
-        <Button onClick={handleApptOpen}>Select A Date</Button>
-        <Modal
-          open={apptOpen}
-          onClose={handleApptClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Container component="main" maxWidth="s">
-            <CssBaseline />
-            <Box
-              sx={{
-                marginTop: 8,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                backgroundColor: "rgba(255, 255, 255)",
-                padding: "40px",
-                borderRadius: "20px",
-              }}
-            >
-              <Typography component="h1" variant="h5">
-                Schedule
-              </Typography>
-
-              <FormControl>
-                <Box
-                  component="form"
-                  noValidate
-                  onSubmit={handleBookAppointment}
-                  sx={{ mt: 3 }}
-                >
-                  <Grid container spacing={2}>
-                    <Grid item xs={6} sm={6}>
-                      <DateTimePicker
-                        sx={{
-                          button: {
-                            color: "white",
-                          },
-                        }}
-                        minutesStep="0"
-                        shouldDisableDate={filterWeekends}
-                        minTime={new Date(0, 0, 0, 10)}
-                        maxTime={new Date(0, 0, 0, 14)}
-                        maxDate={new Date("2022-12-31")}
-                        minDate={new Date()}
-                        renderInput={(props) => <TextField {...props} />}
-                        value={dateValue}
-                        onChange={(newDateValue) => {
-                          datePick(newDateValue)
-                        }}
-                      />
-                    </Grid>
-
-                    <Grid item xs={6} sm={6}>
-                      <Button>10:00</Button>
-                      <Button>11:00</Button> <Button>12:00</Button>{" "}
-                      <Button>1:00</Button> <Button>2:00</Button>{" "}
-                      <Button>3:00</Button> <Button>4:00</Button>{" "}
-                    </Grid>
-                  </Grid>
-
-                  <Button
-                    type="submit"
-                    onChange={handleBookAppointment}
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                  >
-                    Submit
-                  </Button>
-
                   <Grid container justifyContent="flex-end"></Grid>
                 </Box>
               </FormControl>
