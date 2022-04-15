@@ -5,9 +5,8 @@ class UserImagesController < ApplicationController
     end
     
     def create
-
         post = UserImage.create!(user_image_params)
-        post.picture.attach(user_image_params[:picture])
+      
         render json: post
 
         # post.image.attach(user_image_params[:picture])
@@ -28,7 +27,7 @@ class UserImagesController < ApplicationController
 
     private
     def user_image_params
-        params.permit(:picture)
+        params.permit(:user_id, :picture)
     end
 
     # def set_storage_url

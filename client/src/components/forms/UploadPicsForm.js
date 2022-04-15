@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useRef, useContext } from "react"
 // import { DirectUpload } from "@rails/activestorage"
 import CssBaseline from "@mui/material/CssBaseline"
 import Button from "@mui/material/Button"
@@ -8,73 +8,38 @@ import FormControl from "@mui/material/FormControl"
 import Checkbox from "@mui/material/Checkbox"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
-import Radio from "@mui/material/Radio"
-import RadioGroup from "@mui/material/RadioGroup"
 import FormLabel from "@mui/material/FormLabel"
 import Modal from "@mui/material/Modal"
 
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import placeholder from "../../assets/bohoart2.png"
-import axios from "axios"
-
 import { UserContext } from "../../UserContext"
+import axios from "axios"
 
 function UploadPicsForm() {
   const { currentUser } = useContext(UserContext)
-  const [picture, setPicture] = useState()
-  const [image, setImage] = useState(null)
-  const [imageURL, setImageURL] = useState(null)
-  const [inspo, setInspo] = useState([])
+  const [picture, setPicture] = useState(null)
+  const imageUpload = useRef()
+  // const [inspo, setInspo] = useState([])
+
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
 
-  const API_URL = "/user_images"
+  function handleSubmit(e) {
+    e.preventDefault()
+    console.log(imageUpload.current)
 
-  function handleSubmit(event) {
-    event.preventDefault()
+    const formData = new FormData()
 
-    const data = new FormData()
-    data.append("picture", picture)
-    // let headers = new Headers()
-    // headers.append("Access-Control-Allow-Origin", "*")
-    // headers.append(
-    //   "Access-Control-Allow-Methods",
-    //   "POST, PUT, DELETE, GET, OPTIONS"
-    // )
-    // headers.append(
-    //   "Access-Control-Allow-Headers",
-    //   "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-    // )
-    // headers["Access-Control-Allow-Origin"] = "*"
-    // // headers["Access-Control-Allow-Methods"] = "POST, PUT, DELETE, GET, OPTIONS"
-    // headers["Access-Control-Request-Method"] = "*"
-    // headers["Access-Control-Allow-Headers"] =
+    formData.append("picture", picture)
+    formData.append("user_id", currentUser.id)
 
-    // let headers = new Headers()
-
-    // headers.append("Content-Type", "application/json")
-    // headers.append("Accept", "application/json")
-
-    // headers.append("Access-Control-Allow-Origin", "http://localhost:3000")
-
-    fetch("http://localhost:3000/user_images", {
+    fetch("/user_images", {
       method: "POST",
-      body: data,
+      body: formData,
     })
-      .then((r) => r.json())
-      .catch((error) => console.log(error))
-  }
-
-  // function handleChange(event) {
-  //   this.setState({
-  //     [event.target.name]: event.target.value,
-  //   })
-  // }
-
-  function handleFileUpload(event) {
-    setPicture(event.target.files[0])
   }
 
   return (
@@ -127,10 +92,11 @@ function UploadPicsForm() {
                     <Grid item xs={12} sm={6}>
                       <input
                         //   enctype="multipart/form-data"
-                        name="name"
+
                         type="file"
+                        ref={imageUpload}
                         // accept="image/*"
-                        onChange={handleFileUpload}
+                        onChange={(e) => setPicture(e.target.files[0])}
                       />
                     </Grid>
                     {/* ----------- */}
@@ -168,8 +134,6 @@ function UploadPicsForm() {
             </Box>
           </Container>
         </Modal>
-
-        {!!imageURL ? <img src={imageURL} alt="img" /> : null}
       </div>
     </>
   )
