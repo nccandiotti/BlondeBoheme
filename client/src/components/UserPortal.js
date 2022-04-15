@@ -33,10 +33,10 @@ function UserPortal({ appointmentsArray }) {
   const [activeStep, setActiveStep] = useState(0)
   const [completed, setCompleted] = useState({})
   const [clicked, setClicked] = useState(false)
-  const [firstname, setFirstname] = useState(currentUser.firstname)
-  const [lastname, setLastname] = useState(currentUser.lastname)
-  const [email, setEmail] = useState(currentUser.email)
-  const [phone, setPhone] = useState(currentUser.phone)
+  const [userFirstname, setUserFirstname] = useState(currentUser.firstname)
+  const [userLastname, setUserLastname] = useState(currentUser.lastname)
+  const [userEmail, setUserEmail] = useState(currentUser.email)
+  const [userPhone, setUserPhone] = useState(currentUser.phone)
   const toggleClicked = () => setClicked(!clicked)
   const [open, setOpen] = useState(false)
   const [formOpen, setFormOpen] = useState(false)
@@ -113,10 +113,10 @@ function UserPortal({ appointmentsArray }) {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        phone: phone,
+        firstname: userFirstname,
+        lastname: userLastname,
+        email: userEmail,
+        phone: userPhone,
       }),
     }).then((r) => r.json)
     handleClose()
@@ -201,8 +201,8 @@ function UserPortal({ appointmentsArray }) {
                         id="firstName"
                         label="First Name"
                         autoFocus
-                        value={firstname}
-                        onChange={(e) => setFirstname(e.target.value)}
+                        value={userFirstname}
+                        onChange={(e) => setUserFirstname(e.target.value)}
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -213,8 +213,8 @@ function UserPortal({ appointmentsArray }) {
                         id="lastname"
                         label="Last Name"
                         autoFocus
-                        value={lastname}
-                        onChange={(e) => setLastname(e.target.value)}
+                        value={userLastname}
+                        onChange={(e) => setUserLastname(e.target.value)}
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -224,8 +224,8 @@ function UserPortal({ appointmentsArray }) {
                         id="email"
                         label="Email"
                         autoFocus
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={userEmail}
+                        onChange={(e) => setUserEmail(e.target.value)}
                       />
                     </Grid>
                     <Grid item xs={12} sm={6}>
@@ -235,8 +235,8 @@ function UserPortal({ appointmentsArray }) {
                         id="phone"
                         label="Phone Number"
                         autoFocus
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
+                        value={userPhone}
+                        onChange={(e) => setUserPhone(e.target.value)}
                       />
                     </Grid>
                   </Grid>

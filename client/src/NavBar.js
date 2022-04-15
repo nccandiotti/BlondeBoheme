@@ -11,8 +11,8 @@ function NavBar() {
 
   function handleLogout() {
     fetch("/logout", { method: "DELETE" })
-
-    setCurrentUser("")
+      .then(setCurrentUser(null))
+      .then(console.log(currentUser))
   }
 
   return (
@@ -55,15 +55,10 @@ function NavBar() {
         Services
       </Link>
       <br />
-      {currentUser ? (
-        <Link
-          onClick={handleLogout}
-          style={{ fontSize: "20px" }}
-          to={`/signup`}
-        >
-          Log Out
-        </Link>
-      ) : null}
+
+      <Link onClick={handleLogout} style={{ fontSize: "20px" }} to={`/signup`}>
+        Log Out
+      </Link>
     </div>
   )
 }

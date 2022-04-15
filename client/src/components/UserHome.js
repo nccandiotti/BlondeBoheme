@@ -21,7 +21,7 @@ function UserHome() {
       .then((r) => r.json())
       .then(setAppointmentsArray)
   }, [])
-
+  console.log(currentUser)
   return (
     <>
       <Grid
