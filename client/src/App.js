@@ -24,13 +24,6 @@ import hair3 from "./assets/hair3.png"
 import hair4 from "./assets/hair4.png"
 import hair5 from "./assets/hair5.png"
 import hair6 from "./assets/hair6.png"
-import CardActions from "@mui/material/CardActions"
-import CardContent from "@mui/material/CardContent"
-// import { ChatEngine } from "react-chat-engine"
-// import ChatLogin from "./components/messages/ChatLogin"
-// import { Client, Environment } from "square"
-// import Button from "@mui/material/Button"
-// import MessengerFeed from "./components/messages/MessengerFeed"
 
 const footers = [
   {
@@ -75,9 +68,6 @@ const footers = [
   },
 ]
 
-// const appId = process.env.REACT_APP_SQUARE_APP_ID
-// const locationId = process.env.REACT_APP_SQUARE_LOCATION_ID
-// const payments = Square.payments(appId, locationId)
 function App() {
   const [currentUser, setCurrentUser] = useState({})
 
@@ -112,47 +102,6 @@ function App() {
         </Box>
         <NavBar />
 
-        {/* 
-        <form class="payment-form" id="fast-checkout">
-          <div class="wrapper">
-            <div id="apple-pay-button" alt="apple-pay" type="button"></div>
-            <div id="google-pay-button" alt="google-pay" type="button"></div>
-            <div class="border">
-              <span>OR</span>
-            </div>
-            <div id="ach-wrapper">
-              <label for="ach-account-holder-name">Full Name</label>
-              <input
-                id="ach-account-holder-name"
-                type="text"
-                placeholder="Jane Doe"
-                name="ach-account-holder-name"
-                autocomplete="name"
-              />
-              <span id="ach-message"></span>
-              <button id="ach-button" type="button">
-                Pay with Bank Account
-              </button>
-            </div>
-            <div class="border">
-              <span>OR</span>
-            </div>
-            <div id="card-container"></div>
-            <button id="card-button" type="button">
-              Pay with Card
-            </button>
-            <span id="payment-flow-message"></span>
-          </div>
-        </form>
-        <form id="payment-form">
-          <div id="card-container"></div>
-
-          <button id="card-button" type="button">
-            Pay
-          </button>
-        </form>
-        <div id="payment-status-container"></div> */}
-        {/* <AboutSuzie /> */}
         <Routes>
           <Route exact path="/" element={<AboutSuzie />} />
           <Route exact path="/myaccount" element={<UserHome />} />
@@ -165,19 +114,6 @@ function App() {
           <Route exact path="/policies" element={<Policies />} />
           <Route exact path="/newguest" element={<NewGuestConsultation />} />
         </Routes>
-        {/* {!localStorage.getItem("username") ? (
-          <ChatLogin />
-        ) : (
-          <ChatEngine
-            height=" 50vh"
-            projectID={process.env.REACT_APP_PROJECT_ID}
-            userName={localStorage.getItem("username")}
-            userSecret={localStorage.getItem("password")}
-            renderChatFeed={(chatAppProps) => (
-              <MessengerFeed {...chatAppProps} />
-            )}
-          />
-        )} */}
       </UserContext.Provider>
       {/* <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2907.753123155224!2d-77.6623780845272!3d43.21466717913881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b1496fdd8883%3A0xab84c4616032acac!2s1401%20Stone%20Rd%2C%20Rochester%2C%20NY%2014615!5e0!3m2!1sen!2sus!4v1649279418765!5m2!1sen!2sus"
@@ -224,7 +160,7 @@ function App() {
         >
           Follow @the.blonde.boheme
         </Typography>
-        {/* <Grid sx={{ width: "100%" }} container spacing={4}> */}
+
         <Grid
           container
           // spacing={1}
@@ -305,18 +241,6 @@ function App() {
               alt="instagram picture"
             />
           </Grid>
-          {/* <Grid item xs={2}>
-            <img
-              style={{
-                display: "flex",
-                width: "100%",
-                height: "auto",
-                objectFit: "cover",
-              }}
-              src={hair6}
-              alt="instagram picture"
-            />
-          </Grid> */}
         </Grid>
 
         <Grid container spacing={4} justifyContent="space-evenly">
