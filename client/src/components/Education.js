@@ -61,14 +61,13 @@ function Education() {
           flexGrow: 1,
           display: "flex",
           flexDirection: "row",
-
           marginTop: "150px",
           justifyContent: "center",
           alignItems: "center",
           padding: "20px",
         }}
       >
-        <Grid xs={6} item sx={{ margin: "30px", backgroundColor: "white" }}>
+        <Grid xs={12} item sx={{ margin: "30px", backgroundColor: "white" }}>
           <Typography sx={{ fontFamily: "Sacramento" }} variant="h2">
             {" "}
             We Believe in Changing the Status Quo
@@ -127,7 +126,7 @@ function Education() {
             </strong>
           </Typography>
         </Grid>
-        <Grid xs={6} item sx={{ margin: "30px", backgroundColor: "white" }}>
+        <Grid xs={12} item sx={{ margin: "30px", backgroundColor: "white" }}>
           <Typography
             sx={{
               fontFamily: "Sacramento",
@@ -272,10 +271,6 @@ function Education() {
               </div>
             </Grid>
           </Grid>
-          {/* <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
-            Option 1
-          </Typography>
-          <Typography variant="h6">Option 2</Typography> */}
         </Grid>
       </Grid>
       <Email />

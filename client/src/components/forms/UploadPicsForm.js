@@ -1,11 +1,8 @@
 import React, { useState, useRef, useContext } from "react"
-// import { DirectUpload } from "@rails/activestorage"
 import CssBaseline from "@mui/material/CssBaseline"
 import Button from "@mui/material/Button"
-import TextField from "@mui/material/TextField"
-import FormControlLabel from "@mui/material/FormControlLabel"
 import FormControl from "@mui/material/FormControl"
-import Checkbox from "@mui/material/Checkbox"
+
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import FormLabel from "@mui/material/FormLabel"
@@ -93,8 +90,6 @@ function UploadPicsForm() {
                     </FormLabel>
                     <Grid item xs={12} sm={6}>
                       <input
-                        //   enctype="multipart/form-data"
-
                         type="file"
                         accept="image/*"
                         onChange={(e) => setPicture(e.target.files[0])}
@@ -107,26 +102,7 @@ function UploadPicsForm() {
                         onChange={(e) => setPictureTwo(e.target.files[0])}
                       />
                     </Grid>
-                    {/* ----------- */}
-                    {/* <FormLabel id="inspo pics">
-                        {" "}
-                        *No more than 3* Inspiration photos of your desired
-                        look- bonus points if you submit ones from my Instagram!
-                        @the.blonde.boheme
-                      </FormLabel> */}
-                    {/* <Grid item xs={12} sm={6}>
-                        <input
-                          //   enctype="multipart/form-data"
-                          name="inspos"
-                          //   onChange={(e) => setInspo(e.target.files[0])}
-                          onChange={handleImageUpload}
-                          type="file"
-                          multiple
-                          accept="image/*"
-                        />
-                      </Grid> */}
                   </Grid>
-
                   <Button
                     type="submit"
                     onSubmit={handleSubmit}
