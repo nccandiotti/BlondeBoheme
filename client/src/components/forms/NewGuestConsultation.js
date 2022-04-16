@@ -18,7 +18,7 @@ import Container from "@mui/material/Container"
 
 import { UserContext } from "../../UserContext"
 // import { useDropzone } from "react-dropzone"
-
+let arr = []
 function NewGuestConsultation() {
   const { currentUser } = useContext(UserContext)
 
@@ -29,13 +29,15 @@ function NewGuestConsultation() {
   const [graycvg, setGrayCvg] = useState("")
   const [allergies, setAllergies] = useState("")
   const [hairHx, setHairHx] = useState("")
-  const [mugshot, setMugshot] = useState("")
-  const [inspo, setInspo] = useState("")
   const [checked, setChecked] = useState(false)
-
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const [mugshotone, setmugshotone] = useState(null)
+  const [mugshottwo, setmugshottwo] = useState(null)
+  const [mugshotthree, setmugshotthree] = useState(null)
+  const [mugshotfour, setmugshotfour] = useState(null)
+  const [mugshotfive, setmugshotfive] = useState(null)
 
   useEffect(() => {
     fetch("/user_consults")
@@ -44,35 +46,63 @@ function NewGuestConsultation() {
   }, [])
   function handleSubmit(e) {
     e.preventDefault()
+
+    const formData = new FormData()
+
+    formData.append("mugshotone", mugshotone)
+    formData.append("mugshottwo", mugshottwo)
+    formData.append("mugshotthree", mugshotthree)
+    formData.append("mugshotfour", mugshotfour)
+    formData.append("mugshotfive", mugshotfive)
+    formData.append("user_id", currentUser.id)
+    formData.append("firstname", firstname)
+    formData.append("lastname", lastname)
+    formData.append("email", email)
+    formData.append("phone", phone)
+    formData.append("graycvg", graycvg)
+    formData.append("allergies", allergies)
+    formData.append("hairhx", hairHx)
+    formData.append("salon_id", 2)
+
     fetch("/user_consults", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        phone: phone,
-        graycvg: graycvg,
-        allergies: allergies,
-        hairhx: hairHx,
-        mugshots: mugshot,
-        inspos: inspo,
-        salon_id: 2,
-        user_id: currentUser.id,
-      }),
-    }).then((r) => {
-      if (r.ok) {
-        r.json()
-        // r.json().then((currentUser) => setCurrentUser(currentUser))
-        // setFirstName = ""
-        // navigate("/login")
-        setFirstName("")
-        setLastName("")
-        setEmail("")
-        setPhone("")
-      } else alert("Error")
+      body: formData,
     })
+    setFirstName("")
+    setLastName("")
+    setEmail("")
+    setPhone("")
   }
+
+  // fetch("/user_consults", {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify({
+  //     firstname: firstname,
+  //     lastname: lastname,
+  //     email: email,
+  //     phone: phone,
+  //     graycvg: graycvg,
+  //     allergies: allergies,
+  //     hairhx: hairHx,
+  //     mugshots: mugshot,
+  //     inspos: inspo,
+  //     salon_id: 2,
+  //     user_id: currentUser.id,
+  //   }),
+  //   }).then((r) => {
+  //     if (r.ok) {
+  //       r.json()
+  //       // r.json().then((currentUser) => setCurrentUser(currentUser))
+  //       // setFirstName = ""
+  //       // navigate("/login")
+  //       setFirstName("")
+  //       setLastName("")
+  //       setEmail("")
+  //       setPhone("")
+  //     } else alert("Error")
+  //   })
+  // }
 
   function handleGrayCvg(e) {
     e.preventDefault()
@@ -94,7 +124,7 @@ function NewGuestConsultation() {
 
   return (
     <>
-      <Container component="main" maxWidth="s">
+      <Container sx={{ overflow: "scroll" }} component="main" maxWidth="s">
         <CssBaseline />
         <Box
           sx={{
@@ -227,16 +257,48 @@ function NewGuestConsultation() {
                 lighting (in front of a window, or under an awning). 5 photos
                 total: front, left side, back, right side, root area
               </FormLabel>
+              <FormLabel id="current photos">front</FormLabel>
               <Grid item xs={12} sm={6}>
                 <input
                   type="file"
-                  multiple
                   accept="image/*"
-                  onChange={(e) => setMugshot(e.target.files[0])}
+                  onChange={(e) => setmugshotone(e.target.files[0])}
+                />
+              </Grid>
+              <FormLabel id="current photos">left side</FormLabel>
+              <Grid item xs={12} sm={6}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setmugshottwo(e.target.files[0])}
+                />
+              </Grid>
+              <FormLabel id="current photos">right side</FormLabel>
+              <Grid item xs={12} sm={6}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setmugshotthree(e.target.files[0])}
+                />
+              </Grid>
+              <FormLabel id="current photos">back</FormLabel>
+              <Grid item xs={12} sm={6}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setmugshotfour(e.target.files[0])}
+                />
+              </Grid>
+              <FormLabel id="current photos">roots</FormLabel>
+              <Grid item xs={12} sm={6}>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => setmugshotfive(e.target.files[0])}
                 />
               </Grid>
               {/* ----------- */}
-              <FormLabel id="inspo pics">
+              {/* <FormLabel id="inspo pics">
                 {" "}
                 *No more than 3* Inspiration photos of your desired look- bonus
                 points if you submit ones from my Instagram! @the.blonde.boheme
@@ -248,7 +310,7 @@ function NewGuestConsultation() {
                   multiple
                   accept="image/*"
                 />
-              </Grid>
+              </Grid> */}
               <FormControlLabel
                 control={
                   <Checkbox

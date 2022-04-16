@@ -7,13 +7,12 @@ class UserConsultsController < ApplicationController
     def create
         consult = UserConsult.create!(consultparams)
         render json: consult, status: :created
-        
     end
 
 
 
     private 
     def consultparams
-        params.permit(:firstname, :lastname, :hairhx, :allergies, :email, :phone, :user_id, :salon_id, :graycvg)
+        params.permit(:firstname, :lastname, :hairhx, :allergies, :email, :phone, :user_id, :salon_id, :graycvg, :mugshotone, :mugshottwo, :mugshotthree, :mugshotfour, :mugshotfive)
     end
 end

@@ -6,32 +6,11 @@ class UserImagesController < ApplicationController
     
     def create
         post = UserImage.create!(user_image_params)
-      
         render json: post
-
-        # post.image.attach(user_image_params[:picture])
-        # render json: {
-        #     picture: post.picture,
-        #     url: url_for(post.picture)
-        # }
-        # render json: post
     end
-
-    # def show 
-    #     post = UserImage.find(params[:id])
-    #     render json: {
-    #         picture: post.picture,
-    #         url: post.picture.service_url
-    #     }
-    # end
 
     private
     def user_image_params
         params.permit(:user_id, :picture)
     end
-
-    # def set_storage_url
-    #     ActiveStorage::Current.url_options= request.base_url
-    #     # ActiveStorage::Current.host = request.base_url
-    # end
 end

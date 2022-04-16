@@ -12,30 +12,10 @@ import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
 
 import Typography from "@mui/material/Typography"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
+
 import { UserContext } from "../UserContext"
 import UserHome from "./UserHome"
 import hair from "../assets/hair.png"
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  )
-}
-
-const theme = createTheme()
 
 export default function SignIn() {
   const [username, setUsername] = useState("")
@@ -70,13 +50,6 @@ export default function SignIn() {
       } else alert("No dice")
     })
   }
-
-  // .then((response) => {
-  //   if (response.ok) {
-  //     response.json().then((currentUser) => setCurrentUser(currentUser))
-  //     navigate("/home")
-  //   } else setValidUser(false)
-  // })
 
   return (
     <div style={{ marginTop: "20px" }}>
