@@ -1,6 +1,6 @@
 class UserImageSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :picture
+  attributes :id, :picture, :picturetwo
   belongs_to :user
   def picture
     if object.picture.attached?
@@ -10,10 +10,14 @@ class UserImageSerializer < ActiveModel::Serializer
     end
   end
 
-  # def serializable_hash(adapter_options = nil, options = {}, adapter_instance = self.class.serialization_adapter_instance)
-  #   hash = super
-  #   hash.each { |key, value| hash.delete(key) if value.nil? }
-  #   hash
-  # end
+  def picturetwo
+    if object.picturetwo.attached?
+      {
+        url: rails_blob_url(object.picturetwo)
+      }
+    end
+  end
+
+
 
 end

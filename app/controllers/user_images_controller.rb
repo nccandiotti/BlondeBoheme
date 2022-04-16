@@ -11,6 +11,6 @@ class UserImagesController < ApplicationController
 
     private
     def user_image_params
-        params.permit(:user_id, :picture)
+        params.permit(:user_id, :picture, :picturetwo)
     end
 end

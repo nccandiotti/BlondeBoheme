@@ -18,6 +18,7 @@ import Stepper from "@mui/material/Stepper"
 import Step from "@mui/material/Step"
 import StepButton from "@mui/material/StepButton"
 import NewGuestConsultation from "./forms/NewGuestConsultation"
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 
 const steps = [
   "Complete Consultation Paperwork",
@@ -154,8 +155,6 @@ function UserPortal({ appointmentsArray }) {
         r.json().then(setDateValue(null))
       } else alert("no dice")
     })
-    // .then((r) => r.json())
-    // .then(setDateValue(null))
   }
 
   return (
@@ -262,6 +261,93 @@ function UserPortal({ appointmentsArray }) {
                   <Grid container justifyContent="flex-end"></Grid>
                 </Box>
               </FormControl>
+
+              <Grid container spacing={1}>
+                {currentUser.user_images ? (
+                  <>
+                    <Grid sx={{ marginBottom: "20px" }} item xs={12}>
+                      <Typography variant="h4">My Pictures</Typography>
+                    </Grid>
+                    <div style={{ height: "50px" }}></div>
+                    <Grid item xs={2}>
+                      <img
+                        style={{
+                          height: "100px",
+                          width: "100px",
+                          borderRadius: "100px",
+                        }}
+                        src={currentUser.user_images[0]?.picture.url}
+                        alt="picture"
+                      />{" "}
+                    </Grid>
+                    <Grid item xs={2}>
+                      <img
+                        style={{
+                          height: "100px",
+                          width: "100px",
+                          borderRadius: "100px",
+                        }}
+                        src={currentUser.user_images[1]?.picture.url}
+                        alt="picture"
+                      />
+                    </Grid>
+                    <Grid item xs={2}>
+                      <img
+                        style={{
+                          height: "100px",
+                          width: "100px",
+                          borderRadius: "100px",
+                        }}
+                        src={currentUser.user_images[2]?.picture.url}
+                        alt="picture"
+                      />
+                    </Grid>
+                    <Grid item xs={2}>
+                      <img
+                        style={{
+                          height: "100px",
+                          width: "100px",
+                          borderRadius: "100px",
+                        }}
+                        src={currentUser.user_images[3]?.picture.url}
+                        alt="picture"
+                      />
+                    </Grid>
+                    <Grid item xs={2}>
+                      <img
+                        style={{
+                          height: "100px",
+                          width: "100px",
+                          borderRadius: "100px",
+                        }}
+                        src={currentUser.user_images[4]?.picture.url}
+                        alt="picture"
+                      />
+                    </Grid>{" "}
+                    <Grid container spacing={1}>
+                      <Grid item xs={12}>
+                        Inspo Pics
+                      </Grid>
+                      <Grid item xs={4}>
+                        Img
+                      </Grid>
+                      <Grid item xs={4}>
+                        Img
+                      </Grid>
+                      <Grid item xs={4}>
+                        Img
+                      </Grid>
+                    </Grid>
+                  </>
+                ) : (
+                  <Grid item xs={12}>
+                    {" "}
+                    <Typography variant="body">
+                      Complete consult form and upload your pictures!
+                    </Typography>{" "}
+                  </Grid>
+                )}
+              </Grid>
             </Box>
           </Container>
         </Modal>
@@ -474,6 +560,13 @@ function UserPortal({ appointmentsArray }) {
             )}
           </div>
         </Box>
+        <div>
+          <div>
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h5">
+              View My Consults <ExpandMoreIcon />
+            </Typography>
+          </div>
+        </div>
       </div>
     </>
   )

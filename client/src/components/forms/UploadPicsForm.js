@@ -20,6 +20,7 @@ import axios from "axios"
 function UploadPicsForm() {
   const { currentUser } = useContext(UserContext)
   const [picture, setPicture] = useState(null)
+  const [pictureTwo, setPictureTwo] = useState(null)
   const imageUpload = useRef()
   // const [inspo, setInspo] = useState([])
 
@@ -34,6 +35,7 @@ function UploadPicsForm() {
     const formData = new FormData()
 
     formData.append("picture", picture)
+    formData.append("picturetwo", pictureTwo)
     formData.append("user_id", currentUser.id)
 
     fetch("/user_images", {
@@ -94,9 +96,15 @@ function UploadPicsForm() {
                         //   enctype="multipart/form-data"
 
                         type="file"
-                        ref={imageUpload}
-                        // accept="image/*"
+                        accept="image/*"
                         onChange={(e) => setPicture(e.target.files[0])}
+                      />
+                      <input
+                        //   enctype="multipart/form-data"
+
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setPictureTwo(e.target.files[0])}
                       />
                     </Grid>
                     {/* ----------- */}

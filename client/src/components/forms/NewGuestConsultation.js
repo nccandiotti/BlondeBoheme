@@ -297,20 +297,7 @@ function NewGuestConsultation() {
                   onChange={(e) => setmugshotfive(e.target.files[0])}
                 />
               </Grid>
-              {/* ----------- */}
-              {/* <FormLabel id="inspo pics">
-                {" "}
-                *No more than 3* Inspiration photos of your desired look- bonus
-                points if you submit ones from my Instagram! @the.blonde.boheme
-              </FormLabel>
-              <Grid item xs={12} sm={6}>
-                <input
-                  onChange={(e) => setInspo(e.target.files[0])}
-                  type="file"
-                  multiple
-                  accept="image/*"
-                />
-              </Grid> */}
+
               <FormControlLabel
                 control={
                   <Checkbox
