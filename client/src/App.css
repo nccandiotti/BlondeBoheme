@@ -4,6 +4,7 @@
 }
 body {
   background-image: url("./assets/bohoart3.png");
+  opacity: 0.8;
   background-size: cover;
   height: 100%;
   background-repeat: no-repeat;

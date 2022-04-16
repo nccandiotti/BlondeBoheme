@@ -23,14 +23,7 @@ export default function SignIn() {
   const { currentUser } = useContext(UserContext)
   const { setCurrentUser } = useContext(UserContext)
   const navigate = useNavigate()
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-  //   const data = new FormData(event.currentTarget)
-  //   console.log({
-  //     email: data.get("email"),
-  //     password: data.get("password"),
-  //   })
-  // }
+
   function handleLogin(e) {
     e.preventDefault()
     fetch("/login", {
@@ -45,8 +38,6 @@ export default function SignIn() {
     }).then((response) => {
       if (response.ok) {
         response.json().then((currentUser) => setCurrentUser(currentUser))
-
-        navigate("/myaccount")
       } else alert("No dice")
     })
   }

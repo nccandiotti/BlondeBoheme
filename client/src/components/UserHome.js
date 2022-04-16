@@ -27,20 +27,32 @@ function UserHome() {
       <Grid
         sx={{
           display: "flex",
+
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
+          padding: "20px",
         }}
         container
         spacing={2}
       >
+        <Grid item xs={6}>
+          <img
+            style={{
+              height: "200px",
+              borderRadius: "100px",
+              float: "right",
+            }}
+            src={drawing}
+            alt="drawing"
+          />
+        </Grid>
         <Grid item xs={6}>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              alignItems: "flex-end",
               fontSize: "30px",
             }}
           >
@@ -60,13 +72,6 @@ function UserHome() {
               style={{ fontFamily: "MontSerrat" }}
             >{`phone: ${currentUser.phone}`}</p>{" "}
           </div>
-        </Grid>
-        <Grid item xs={6}>
-          <img
-            style={{ height: "200px", borderRadius: "100px" }}
-            src={drawing}
-            alt="drawing"
-          />
         </Grid>
 
         {/* bottom of grid container */}

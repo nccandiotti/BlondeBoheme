@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react"
+import React, { useState, useContext, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../UserContext"
 import StudentInquiryCard from "./StudentInquiryCard"
@@ -21,6 +21,7 @@ import { DataGrid } from "@mui/x-data-grid"
 
 function AdminPortal() {
   let navigate = useNavigate()
+  const selectedAppointment = useRef()
   const { currentUser } = useContext(UserContext)
   const [clicked, setClicked] = useState(false)
   const [firstname, setFirstname] = useState(currentUser.firstname)
@@ -284,8 +285,6 @@ function AdminPortal() {
         </Container>
       </Modal>
 
-      <h1>Admin portal</h1>
-
       {/* ---------------------------------------------------------------- */}
       <div
         style={{
@@ -293,14 +292,24 @@ function AdminPortal() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          padding: "40px",
         }}
       >
         <Typography variant="h2" sx={{ fontFamily: "Montserrat" }}>
           Student Education Inquiries
         </Typography>
 
-        <div style={{ height: 400, width: "100%", display: "flex" }}>
+        <div
+          style={{
+            backgroundColor: "#edccb9",
+            height: 400,
+            width: "80%",
+            display: "flex",
+            borderRadius: "40px",
+          }}
+        >
           <DataGrid
+            sx={{ borderColor: "#9f6755", boxShadow: 2 }}
             rows={studentInquiryRows}
             columns={studentInquiryColumnns}
             pageSize={5}
@@ -330,8 +339,18 @@ function AdminPortal() {
             <Button onClick={() => setShowAlert(false)}>Back</Button>
           </Alert>
         )}
-        <div style={{ height: 400, width: "100%" }}>
+        <div
+          style={{
+            backgroundColor: "#edccb9",
+            height: 400,
+            width: "80%",
+            display: "flex",
+            borderRadius: "40px",
+          }}
+        >
           <DataGrid
+            sx={{ boxShadow: 2 }}
+            onSelectionModelChange={(e) => console.log(e)}
             rows={rows}
             columns={columns}
             pageSize={5}
