@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
-import { UserContext } from "../UserContext"
-import StudentInquiryCard from "./StudentInquiryCard"
+import { UserContext } from "../../UserContext"
+// import StudentInquiryCard from "../StudentInquiryCard"
 
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
@@ -180,7 +180,16 @@ function AdminPortal() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <Button onClick={handleOpen}>Edit Profile</Button>
+      <Button
+        sx={{
+          backgroundColor: "#b5b8a3",
+          borderRadius: "10px",
+          color: "white",
+        }}
+        onClick={handleOpen}
+      >
+        Edit Profile
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -200,7 +209,11 @@ function AdminPortal() {
               borderRadius: "20px",
             }}
           >
-            <Typography component="h1" variant="h5">
+            <Typography
+              sx={{ fontFamily: "Sacramento", color: " #807b67" }}
+              // component="h1"
+              variant="h2"
+            >
               My Profile Details
             </Typography>
 
@@ -265,7 +278,7 @@ function AdminPortal() {
                   onChange={handleSubmit}
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, backgroundColor: "#b26446 " }}
                 >
                   Submit
                 </Button>
@@ -274,7 +287,7 @@ function AdminPortal() {
                   onChange={() => handleClose()}
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, backgroundColor: "#b26446 " }}
                 >
                   cancel
                 </Button>

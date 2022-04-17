@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
 import Email from "./Email"
+import face from "../assets/face.png"
 
 function Education() {
   const [clicked, setClicked] = useState(false)
@@ -65,12 +66,22 @@ function Education() {
           padding: "20px",
         }}
       >
-        <Grid xs={12} item sx={{ margin: "30px", backgroundColor: "white" }}>
+        <Grid
+          xs={12}
+          item
+          sx={{
+            borderRadius: "20px",
+            padding: "30px",
+            margin: "30px",
+            backgroundColor: "white",
+          }}
+        >
           <Typography
             sx={{
               fontFamily: "Sacramento",
               display: "flex",
               justifyContent: "center",
+              paddingTop: "20px",
             }}
             variant="h2"
           >
@@ -131,12 +142,21 @@ function Education() {
             </strong>
           </Typography>
         </Grid>
-        <Grid xs={12} item sx={{ margin: "30px", backgroundColor: "white" }}>
+        <Grid
+          xs={12}
+          item
+          sx={{
+            borderRadius: "20px",
+            margin: "30px",
+            backgroundColor: "#f4eddd",
+          }}
+        >
           <Typography
             sx={{
               fontFamily: "Sacramento",
               display: "flex",
               justifyContent: "center",
+              paddingTop: "20px",
             }}
             variant="h2"
           >
@@ -153,9 +173,9 @@ function Education() {
             What We Offer
           </Typography>
           <br />
-
+          {/* -----------------------Grid 2 ----------------------------- */}
           <Grid container spacing={2} sx={{ padding: "30px" }}>
-            <Grid item xs={12}>
+            <Grid item xs={8}>
               <Typography
                 sx={{ fontFamily: "Montserrat", fontWeight: "700" }}
                 variant="h6"
@@ -229,6 +249,7 @@ function Education() {
               </Typography>
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <Button
+                  sx={{ color: "#807b67 " }}
                   onClick={() =>
                     window.open(
                       "https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww"
@@ -239,6 +260,18 @@ function Education() {
                   Purchase
                 </Button>
               </div>
+            </Grid>
+            <Grid item xs={4}>
+              <img
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+                src={face}
+                alt="stock image "
+              />
             </Grid>
           </Grid>
         </Grid>

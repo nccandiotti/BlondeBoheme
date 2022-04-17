@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Button from "@mui/material/Button"
-import { UserContext } from "../UserContext"
-import UserApptCard from "./UserApptCard"
-import UploadPicsForm from "./forms/UploadPicsForm"
+import { UserContext } from "../../UserContext"
+
+import UploadPicsForm from "../forms/UploadPicsForm"
 import DateTimePicker from "@mui/lab/DateTimePicker"
 import TextField from "@mui/material/TextField"
 import CssBaseline from "@mui/material/CssBaseline"
@@ -17,7 +17,7 @@ import { format } from "date-fns"
 import Stepper from "@mui/material/Stepper"
 import Step from "@mui/material/Step"
 import StepButton from "@mui/material/StepButton"
-import NewGuestConsultation from "./forms/NewGuestConsultation"
+import NewGuestConsultation from "../forms/NewGuestConsultation"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 
 const steps = [
@@ -101,9 +101,6 @@ function UserPortal({ appointmentsArray }) {
 
   let navigate = useNavigate()
   const [appointments, setAppointments] = useState(currentUser.appointments)
-  const userApptCards = appointments?.map((appt) => (
-    <UserApptCard key={appt.id} time={appt.time} duration={appt.duration} />
-  ))
 
   function handleClick(e) {
     toggleClicked()
@@ -160,7 +157,18 @@ function UserPortal({ appointmentsArray }) {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <Button onClick={handleOpen}>Update Contact Information</Button>
+        <div style={{ backgroundColor: "#b5b8a3", borderRadius: "10px" }}>
+          <Button
+            sx={{
+              color: "white",
+              backgroundColor: "#b5b8a3",
+              borderRadius: "10px",
+            }}
+            onClick={handleOpen}
+          >
+            Update Contact Information
+          </Button>
+        </div>
         <Modal
           open={open}
           onClose={handleClose}
@@ -180,7 +188,11 @@ function UserPortal({ appointmentsArray }) {
                 borderRadius: "20px",
               }}
             >
-              <Typography component="h1" variant="h5">
+              <Typography
+                sx={{ fontFamily: "Sacramento", color: " #807b67" }}
+                // component="h1"
+                variant="h2"
+              >
                 My Profile Details
               </Typography>
 
@@ -245,7 +257,7 @@ function UserPortal({ appointmentsArray }) {
                     onChange={handleUpdateInfo}
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2, backgroundColor: "#b26446 " }}
                   >
                     Submit
                   </Button>
@@ -254,7 +266,7 @@ function UserPortal({ appointmentsArray }) {
                     onChange={() => handleClose()}
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2, backgroundColor: "#b26446 " }}
                   >
                     cancel
                   </Button>
@@ -352,11 +364,24 @@ function UserPortal({ appointmentsArray }) {
           </Container>
         </Modal>
       </div>
-      <div>
-        <Box sx={{ width: "100%" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Box
+          sx={{
+            padding: "20px",
+            width: "100%",
+            backgroundColor: "white",
+            borderRadius: "20px",
+          }}
+        >
           <Stepper nonLinear activeStep={activeStep}>
             {steps.map((label, index) => (
-              <Step key={label} completed={completed[index]}>
+              <Step sx={{}} key={label} completed={completed[index]}>
                 <StepButton color="inherit" onClick={handleStep(index)}>
                   {label}
                 </StepButton>
@@ -386,7 +411,10 @@ function UserPortal({ appointmentsArray }) {
                         alignItems: "center",
                       }}
                     >
-                      <Button onClick={handleConsultOpen}>
+                      <Button
+                        sx={{ color: "#b26446" }}
+                        onClick={handleConsultOpen}
+                      >
                         Complete Consultation Form
                       </Button>
                       <Modal
@@ -408,7 +436,9 @@ function UserPortal({ appointmentsArray }) {
                       alignItems: "center",
                     }}
                   >
-                    <Button onClick={handleClick}>Upload Pics</Button>
+                    <Button sx={{ color: "#b26446" }} onClick={handleClick}>
+                      Upload Pics
+                    </Button>
 
                     {!clicked ? null : <UploadPicsForm />}
                   </div>
@@ -422,6 +452,7 @@ function UserPortal({ appointmentsArray }) {
                     }}
                   >
                     <Button
+                      sx={{ color: "#b26446" }}
                       onClick={() =>
                         window.open(
                           "https://buy.stripe.com/test_fZe7sKfho7Vhe9G8ww"
@@ -441,7 +472,12 @@ function UserPortal({ appointmentsArray }) {
                         alignItems: "center",
                       }}
                     >
-                      <Button onClick={handleApptOpen}>Select A Date</Button>
+                      <Button
+                        sx={{ color: "#b26446" }}
+                        onClick={handleApptOpen}
+                      >
+                        Select A Date
+                      </Button>
                       <Modal
                         open={apptOpen}
                         onClose={handleApptClose}
@@ -532,12 +568,15 @@ function UserPortal({ appointmentsArray }) {
                     color="inherit"
                     disabled={activeStep === 0}
                     onClick={handleBack}
-                    sx={{ mr: 1 }}
+                    sx={{ color: "#748067 ", mr: 1 }}
                   >
                     Back
                   </Button>
                   <Box sx={{ flex: "1 1 auto" }} />
-                  <Button onClick={handleNext} sx={{ mr: 1 }}>
+                  <Button
+                    onClick={handleNext}
+                    sx={{ color: "#748067 ", mr: 1 }}
+                  >
                     Next
                   </Button>
                   {activeStep !== steps.length &&
@@ -549,7 +588,10 @@ function UserPortal({ appointmentsArray }) {
                         Step {activeStep + 1} already completed
                       </Typography>
                     ) : (
-                      <Button onClick={handleComplete}>
+                      <Button
+                        sx={{ color: "#748067 " }}
+                        onClick={handleComplete}
+                      >
                         {completedSteps() === totalSteps() - 1
                           ? "Finish"
                           : "Complete Step"}

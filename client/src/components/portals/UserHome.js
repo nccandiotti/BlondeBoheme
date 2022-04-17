@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from "react"
 import AdminPortal from "./AdminPortal"
 import UserPortal from "./UserPortal"
-import { UserContext } from "../UserContext"
+import { UserContext } from "../../UserContext"
 import Grid from "@mui/material/Grid"
-import drawing from "../assets/silhouette.png"
+import drawing from "../../assets/silhouette.png"
 
 function UserHome() {
   // const { id } = useParams()

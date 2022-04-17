@@ -10,8 +10,8 @@ import Box from "@mui/material/Box"
 
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
-import flower from "./flower1.png"
-import { UserContext } from "./UserContext"
+import flower from "../assets/flower1.png"
+import { UserContext } from "../UserContext"
 
 export default function SignUp() {
   let navigate = useNavigate()
