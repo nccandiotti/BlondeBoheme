@@ -90,7 +90,11 @@ function StudentLessonForm() {
             borderRadius: "20px",
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography
+            sx={{ fontFamily: "Sacramento" }}
+            component="h1"
+            variant="h2"
+          >
             Student Education Inquiry
           </Typography>
           {/* <form> */}
@@ -228,7 +232,7 @@ function StudentLessonForm() {
                 onChange={handleSubmit}
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, backgroundColor: " #cdadaf " }}
               >
                 Submit
               </Button>

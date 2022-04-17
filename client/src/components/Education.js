@@ -41,18 +41,6 @@ function Education() {
 
   return (
     <div>
-      <button onClick={handleClick}>Request Eduction</button>
-      {clicked ? <StudentLessonForm /> : null}
-      <form ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
-        <input type="text" name="user_name" />
-        <label>Email</label>
-        <input type="email" name="user_email" />
-        <label>Message</label>
-        <textarea name="message" />
-        <input type="submit" value="Send" />
-      </form>
-
       <Grid
         container
         spacing={1}
@@ -73,7 +61,7 @@ function Education() {
             borderRadius: "20px",
             padding: "30px",
             margin: "30px",
-            backgroundColor: "white",
+            backgroundColor: " #cdadaf ",
           }}
         >
           <Typography
@@ -132,15 +120,22 @@ function Education() {
           </Typography>
           <br />
           <br />
-          <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
-            <strong>
-              {" "}
-              We teach you the hard and soft skills you need to apply to your
-              business today. You'll be able to assess and evaluate the
-              knowledge you need to turn a profit, not just break even. So you
-              can make more money behind the chair.
-            </strong>
+          <Typography sx={{ fontFamily: "Montserrat" }} variant="h5">
+            {" "}
+            We teach you the hard and soft skills you need to apply to your
+            business today. You'll be able to assess and evaluate the knowledge
+            you need to turn a profit, not just break even. So you can make more
+            money behind the chair.
           </Typography>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button
+              sx={{ color: "  #807b67  ", fontWeight: "bold" }}
+              onClick={handleClick}
+            >
+              Interested in learning more? Please send us an inquiry here!
+            </Button>
+          </div>
+          {clicked ? <StudentLessonForm /> : null}
         </Grid>
         <Grid
           xs={12}
