@@ -38,7 +38,11 @@ function UserHome() {
       >
         <div
           className="blurb"
-          style={{ flexDirection: "row", maxWidth: "60%" }}
+          style={{
+            flexDirection: "row",
+            maxWidth: "60%",
+            paddingRight: "15px",
+          }}
         >
           <Grid item xs={6}>
             <img

@@ -89,13 +89,13 @@ function App() {
         >
           {" "}
           <Typography
-            sx={{ fontFamily: "Sacramento", fontSize: "200px" }}
+            sx={{ fontFamily: "Sacramento", fontSize: "10vw" }}
             variant="h1"
           >
             The Blonde Boheme
           </Typography>
           <Typography
-            sx={{ fontFamily: "Montserrat", fontWeight: "bold" }}
+            sx={{ fontFamily: "Montserrat", fontSize: "2vw" }}
             variant="h6"
           >
             Luxury Color Services | Laid Back Vibe
@@ -125,14 +125,7 @@ function App() {
           filter: "sepia(100%) saturate(100%)  hue-rotate(180deg)",
         }}
       ></iframe> */}
-      <div
-        style={{
-          height: "40vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      ></div>
+
       <Container
         component="footer"
         sx={{

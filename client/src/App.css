@@ -14,7 +14,7 @@ body {
   font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
-  font-size: 24px; /* Preferred icon size */
+  font-size: 24px;
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -23,21 +23,17 @@ body {
   white-space: nowrap;
   direction: ltr;
 
-  /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
+
   text-rendering: optimizeLegibility;
 
-  /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
 
-  /* Support for IE. */
   font-feature-settings: "liga";
 }
 
 .blurb,
 .blurb2 {
-  /* font-size: 20px; */
   background-color: #d3a38c;
   border-radius: 60% 40% 40% 20%;
   height: 100%;

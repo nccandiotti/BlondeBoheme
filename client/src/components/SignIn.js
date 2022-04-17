@@ -10,12 +10,22 @@ import Link from "@mui/material/Link"
 import Paper from "@mui/material/Paper"
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
+import ButtonUnstyled from "@mui/base/ButtonUnstyled"
 
 import Typography from "@mui/material/Typography"
 
 import { UserContext } from "../UserContext"
 import UserHome from "./UserHome"
 import hair from "../assets/hair.png"
+import { createTheme, ThemeProvider, styled } from "@mui/material/styles"
+
+const theme = createTheme({
+  button: {
+    "&:hover": {
+      background: "#f00",
+    },
+  },
+})
 
 export default function SignIn() {
   const [username, setUsername] = useState("")
@@ -97,7 +107,7 @@ export default function SignIn() {
                 }}
               >
                 <Typography
-                  sx={{ fontFamily: "Sacramento" }}
+                  sx={{ fontFamily: "Sacramento", color: "#2c3d26" }}
                   // component="h1"
                   variant="h1"
                 >
@@ -137,17 +147,23 @@ export default function SignIn() {
                     control={<Checkbox value="remember" color="primary" />}
                     label="Remember me"
                   />
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2, backgroundColor: "#cb8568" }}
-                  >
-                    Sign In
-                  </Button>
+                  <ThemeProvider theme={theme}>
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      sx={{ mt: 3, mb: 2, backgroundColor: "#cb8568" }}
+                    >
+                      Sign In
+                    </Button>
+                  </ThemeProvider>
                   <Grid container>
                     <Grid item>
-                      <Link href="/signup" variant="body2">
+                      <Link
+                        sx={{ color: "#2c3d26" }}
+                        href="/signup"
+                        variant="body2"
+                      >
                         {"Don't have an account? Sign Up"}
                       </Link>
                     </Grid>
