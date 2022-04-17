@@ -5,7 +5,7 @@ import "./App.css"
 import SignIn from "./components/SignIn"
 import SignUp from "./SignUp"
 import UserHome from "./components/UserHome"
-import NavBar from "./NavBar"
+import NavBar from "./components/NavBar"
 import NewGuestConsultation from "./components/forms/NewGuestConsultation"
 import Container from "@mui/material/Container"
 import Education from "./components/Education"
@@ -88,7 +88,10 @@ function App() {
           }}
         >
           {" "}
-          <Typography sx={{ fontFamily: "Sacramento" }} variant="h1">
+          <Typography
+            sx={{ fontFamily: "Sacramento", fontSize: "200px" }}
+            variant="h1"
+          >
             The Blonde Boheme
           </Typography>
           <Typography

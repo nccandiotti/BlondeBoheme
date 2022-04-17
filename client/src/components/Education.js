@@ -51,7 +51,7 @@ function Education() {
         <textarea name="message" />
         <input type="submit" value="Send" />
       </form>
-      <div sx={{ backgroundColor: "white" }}> hi</div>
+
       <Grid
         container
         spacing={1}

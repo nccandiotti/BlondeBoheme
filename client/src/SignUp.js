@@ -10,7 +10,7 @@ import Box from "@mui/material/Box"
 
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
-
+import flower from "./flower1.png"
 import { UserContext } from "./UserContext"
 
 export default function SignUp() {
@@ -59,7 +59,7 @@ export default function SignUp() {
     <>
       <Container
         sx={{
-          backgroundColor: "white",
+          backgroundImage: `url(${flower})`,
           borderRadius: "30px",
           padding: "10px",
           justifyContent: "center",

@@ -36,44 +36,48 @@ function UserHome() {
         container
         spacing={2}
       >
-        <Grid item xs={6}>
-          <img
-            style={{
-              height: "200px",
-              borderRadius: "100px",
-              float: "right",
-            }}
-            src={drawing}
-            alt="drawing"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              fontSize: "30px",
-            }}
-          >
-            <p
-              style={{ fontFamily: "MontSerrat" }}
-            >{`firstname: ${currentUser.username}`}</p>
-            <p style={{ fontFamily: "MontSerrat" }}>
-              {`lastname: ${currentUser.lastname}`}{" "}
-            </p>
-            <p style={{ fontFamily: "MontSerrat" }}>
-              {`username: ${currentUser.username}`}{" "}
-            </p>
-            <p style={{ fontFamily: "MontSerrat" }}>
-              {`email: ${currentUser.email}`}{" "}
-            </p>
-            <p
-              style={{ fontFamily: "MontSerrat" }}
-            >{`phone: ${currentUser.phone}`}</p>{" "}
-          </div>
-        </Grid>
-
+        <div
+          className="blurb"
+          style={{ flexDirection: "row", maxWidth: "60%" }}
+        >
+          <Grid item xs={6}>
+            <img
+              style={{
+                height: "300px",
+                borderRadius: "100px",
+                float: "right",
+              }}
+              src={drawing}
+              alt="drawing"
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                fontSize: "30px",
+              }}
+            >
+              <p
+                style={{ fontFamily: "MontSerrat", fontSize: "2vw" }}
+              >{`firstname: ${currentUser.username}`}</p>
+              <p style={{ fontFamily: "MontSerrat", fontSize: "2vw" }}>
+                {`lastname: ${currentUser.lastname}`}{" "}
+              </p>
+              <p style={{ fontFamily: "MontSerrat", fontSize: "2vw" }}>
+                {`username: ${currentUser.username}`}{" "}
+              </p>
+              <p style={{ fontFamily: "MontSerrat", fontSize: "2vw" }}>
+                {`email: ${currentUser.email}`}{" "}
+              </p>
+              <p
+                style={{ fontFamily: "MontSerrat", fontSize: "2vw" }}
+              >{`phone: ${currentUser.phone}`}</p>{" "}
+            </div>
+          </Grid>
+        </div>
         {/* bottom of grid container */}
       </Grid>
 
