@@ -1,20 +1,14 @@
 import React, { useState, useContext, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../UserContext"
-// import StudentInquiryCard from "../StudentInquiryCard"
-
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
 import TextField from "@mui/material/TextField"
-
 import FormControl from "@mui/material/FormControl"
-
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
-
 import Modal from "@mui/material/Modal"
 import Alert from "@mui/material/Alert"
-
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import { DataGrid } from "@mui/x-data-grid"
@@ -33,6 +27,17 @@ function AdminPortal() {
   const [studentInq, setStudentInq] = useState([])
   const studentInquiries = salon.student_inquiries
   const appointments = salon.appointments
+  const [open, setOpen] = useState(false)
+  const [openApptEdit, setOpenApptEdit] = useState(false)
+  const [selectedApptFirstname, setSelectedApptFirstname] = useState("")
+  const [selectedApptLastname, setSelectedApptLastname] = useState("")
+  const [selectedApptTime, setSelectedApptTime] = useState("")
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
+  const handleOpenApptEdit = () => setOpenApptEdit(true)
+  const handleCloseApptEdit = () => setOpenApptEdit(false)
+  const toggleClicked = () => setClicked((prevstate) => !prevstate)
+  const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
   let date = new Date()
 
   useEffect(() => {
@@ -43,8 +48,41 @@ function AdminPortal() {
   }, [])
 
   function handleRemoveInquiry(e) {
-    console.log(e.target.field)
+    console.log(rows)
   }
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    fetch(`/users/${currentUser.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        phone: phone,
+      }),
+    }).then((r) => r.json)
+    handleClose()
+  }
+  function handleEditAppointment(e) {
+    handleOpenApptEdit()
+    setSelectedApptFirstname(e.row.firstName)
+    setSelectedApptLastname(e.row.lastName)
+    setSelectedApptTime(e.row.time)
+    console.log(e)
+    console.log(e.row.id)
+  }
+  const rows = appointments?.map((appt) => {
+    return {
+      id: appt.id,
+      lastName: appt.lastname,
+      firstName: appt.firstname,
+      time: appt.time,
+      desposit: appt.deposit_received,
+    }
+  })
+
   const studentInquiryRows = studentInquiries?.map((inq) => {
     return {
       id: inq.id,
@@ -98,44 +136,6 @@ function AdminPortal() {
       ),
     },
   ]
-
-  const toggleClicked = () => setClicked((prevstate) => !prevstate)
-  const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
-
-  function handleSubmit(e) {
-    e.preventDefault()
-    fetch(`/users/${currentUser.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        phone: phone,
-      }),
-    }).then((r) => r.json)
-    handleClose()
-  }
-
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
-
-  const rows = appointments?.map((appt) => {
-    return {
-      id: appt.id,
-      lastName: appt.lastname,
-      firstName: appt.firstname,
-      time: appt.time,
-      desposit: appt.deposit_received,
-    }
-  })
-
-  function handleFirstDeleteButton(e) {
-    toggleAlert()
-  }
-  function handleHardDelete(e) {}
-
   const columns = [
     {
       field: "firstName",
@@ -175,6 +175,11 @@ function AdminPortal() {
       ),
     },
   ]
+
+  function handleFirstDeleteButton(e) {
+    toggleAlert()
+  }
+  function handleHardDelete(e) {}
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -316,7 +321,6 @@ function AdminPortal() {
             height: 400,
             width: "80%",
             display: "flex",
-            borderRadius: "40px",
           }}
         >
           <DataGrid
@@ -356,12 +360,12 @@ function AdminPortal() {
             height: 400,
             width: "80%",
             display: "flex",
-            borderRadius: "40px",
           }}
         >
           <DataGrid
-            sx={{ boxShadow: 2 }}
-            onSelectionModelChange={(e) => console.log(e)}
+            sx={{ boxShadow: 2, border: "none" }}
+            // onSelectionModelChange={}
+            onCellClick={handleEditAppointment}
             rows={rows}
             columns={columns}
             pageSize={5}
@@ -369,6 +373,58 @@ function AdminPortal() {
             checkboxSelection
           />
         </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <Modal
+          open={openApptEdit}
+          onClose={handleCloseApptEdit}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "rgba(255, 255, 255)",
+              padding: "40px",
+              borderRadius: "20px",
+              width: "50%",
+            }}
+          >
+            <Typography
+              sx={{ fontFamily: "Sacramento" }}
+              id="modal-modal-title"
+              variant="h3"
+            >
+              Modify Appointment
+            </Typography>
+            <Typography
+              id="modal-modal-title"
+              variant="body"
+              sx={{ fontFamily: "Montserrat" }}
+            >{`Guest : ${selectedApptFirstname} ${selectedApptLastname}`}</Typography>
+            <Typography
+              id="modal-modal-title"
+              variant="body"
+              sx={{ fontFamily: "Montserrat" }}
+            >{`Time : ${selectedApptTime} `}</Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Change time
+            </Typography>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              Cancel
+            </Typography>
+          </Box>
+        </Modal>
       </div>
     </div>
   )
