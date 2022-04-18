@@ -150,6 +150,7 @@ function UserPortal({ appointmentsArray }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then(setDateValue(null))
+        handleApptClose()
       } else alert("no dice")
     })
   }

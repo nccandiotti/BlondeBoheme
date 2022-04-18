@@ -188,11 +188,17 @@ function AdminPortal() {
   function handleFirstDeleteButton(e) {
     toggleAlert()
   }
+
+  function updateApptsArrayAfterDelete(id) {
+    const filter = appointments.filter((appt) => appt.id !== id)
+    return filter
+  }
   function handleHardDelete(e) {
     fetch(`/appointments/${selectedApptid}`, {
       method: "DELETE",
     }).then((r) => {
       if (r.ok) {
+        updateApptsArrayAfterDelete(`${selectedApptid}`)
         toggleAlert()
         toggleDeleteSuccessAlert()
       }
