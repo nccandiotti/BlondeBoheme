@@ -21,7 +21,7 @@ class AppointmentsController < ApplicationController
     end
 
     def destroy 
-        appt = Appointments.find(params[:id])
+        appt = Appointment.find(params[:id])
         appt.destroy
         render json: {}
     end

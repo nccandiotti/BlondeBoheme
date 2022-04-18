@@ -29,6 +29,7 @@ function AdminPortal() {
   const appointments = salon.appointments
   const [open, setOpen] = useState(false)
   const [openApptEdit, setOpenApptEdit] = useState(false)
+  const [selectedApptid, setSelectedApptid] = useState(0)
   const [selectedApptFirstname, setSelectedApptFirstname] = useState("")
   const [selectedApptLastname, setSelectedApptLastname] = useState("")
   const [selectedApptTime, setSelectedApptTime] = useState("")
@@ -70,6 +71,7 @@ function AdminPortal() {
     setSelectedApptFirstname(e.row.firstName)
     setSelectedApptLastname(e.row.lastName)
     setSelectedApptTime(e.row.time)
+    setSelectedApptid(e.row.id)
     console.log(e)
     console.log(e.row.id)
   }
@@ -169,7 +171,7 @@ function AdminPortal() {
             style={{ marginLeft: 16 }}
             onClick={handleFirstDeleteButton}
           >
-            Cancel
+            Modify Appointment
           </Button>
         </strong>
       ),
@@ -179,7 +181,11 @@ function AdminPortal() {
   function handleFirstDeleteButton(e) {
     toggleAlert()
   }
-  function handleHardDelete(e) {}
+  function handleHardDelete(e) {
+    fetch(`/appointments/${selectedApptid}`, {
+      method: "DELETE",
+    })
+  }
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -345,15 +351,7 @@ function AdminPortal() {
         <Typography variant="h2" sx={{ fontFamily: "Montserrat" }}>
           Appointments
         </Typography>
-        {!showAlert ? null : (
-          <Alert severity="warning">
-            You are about to delete this appointment - this action{" "}
-            <strong> cannot </strong> be undone, are you sure you want to
-            proceed?
-            <Button onClick={handleHardDelete}>Yes, Cancel Appointment</Button>
-            <Button onClick={() => setShowAlert(false)}>Back</Button>
-          </Alert>
-        )}
+
         <div
           style={{
             backgroundColor: "#edccb9",
@@ -407,6 +405,8 @@ function AdminPortal() {
             >
               Modify Appointment
             </Typography>
+            <br />
+            <br />
             <Typography
               id="modal-modal-title"
               variant="body"
@@ -417,12 +417,23 @@ function AdminPortal() {
               variant="body"
               sx={{ fontFamily: "Montserrat" }}
             >{`Time : ${selectedApptTime} `}</Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <Button id="modal-modal-description" sx={{ mt: 2 }}>
               Change time
-            </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Cancel
-            </Typography>
+            </Button>
+            {showAlert ? null : (
+              <Alert severity="warning">
+                You are about to delete this appointment - this action{" "}
+                <strong> cannot </strong> be undone, are you sure you want to
+                proceed?
+                <Button onClick={handleHardDelete}>
+                  Yes, Cancel Appointment
+                </Button>
+                <Button onClick={() => setShowAlert(false)}>Back</Button>
+              </Alert>
+            )}
+            <Button onClick={handleFirstDeleteButton}>
+              Cancel This Appointment
+            </Button>
           </Box>
         </Modal>
       </div>
