@@ -23,10 +23,11 @@ function AdminPortal() {
   const [email, setEmail] = useState(currentUser.email)
   const [phone, setPhone] = useState(currentUser.phone)
   const [showAlert, setShowAlert] = useState(false)
+  const [successfulDeleteAlert, setSuccessfulDeleteAlert] = useState(true)
   const [salon, setSalon] = useState([])
   const [studentInq, setStudentInq] = useState([])
   const studentInquiries = salon.student_inquiries
-  const appointments = salon.appointments
+  const [appointments, setAppointments] = useState(salon.appointments)
   const [open, setOpen] = useState(false)
   const [openApptEdit, setOpenApptEdit] = useState(false)
   const [selectedApptid, setSelectedApptid] = useState(0)
@@ -39,13 +40,19 @@ function AdminPortal() {
   const handleCloseApptEdit = () => setOpenApptEdit(false)
   const toggleClicked = () => setClicked((prevstate) => !prevstate)
   const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
+  const toggleDeleteSuccessAlert = () => setShowAlert((prevstate) => !prevstate)
   let date = new Date()
-
   useEffect(() => {
     fetch("./salons")
       .then((r) => r.json())
 
       .then((data) => setSalon(data[0]))
+  }, [])
+  useEffect(() => {
+    fetch("./salons")
+      .then((r) => r.json())
+
+      .then((data) => setAppointments(data[0].appointments))
   }, [])
 
   function handleRemoveInquiry(e) {
@@ -184,6 +191,11 @@ function AdminPortal() {
   function handleHardDelete(e) {
     fetch(`/appointments/${selectedApptid}`, {
       method: "DELETE",
+    }).then((r) => {
+      if (r.ok) {
+        toggleAlert()
+        toggleDeleteSuccessAlert()
+      }
     })
   }
 
@@ -420,6 +432,14 @@ function AdminPortal() {
             <Button id="modal-modal-description" sx={{ mt: 2 }}>
               Change time
             </Button>
+            {successfulDeleteAlert ? null : (
+              <Alert severity="success">
+                Appointment Successfully Deleted
+                <Button onClick={() => setSuccessfulDeleteAlert(false)}>
+                  X
+                </Button>
+              </Alert>
+            )}
             {showAlert ? null : (
               <Alert severity="warning">
                 You are about to delete this appointment - this action{" "}
