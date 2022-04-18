@@ -22,7 +22,7 @@ function AdminPortal() {
   const [lastname, setLastname] = useState(currentUser.lastname)
   const [email, setEmail] = useState(currentUser.email)
   const [phone, setPhone] = useState(currentUser.phone)
-  const [showAlert, setShowAlert] = useState(false)
+  const [showAlert, setShowAlert] = useState(true)
   const [successfulDeleteAlert, setSuccessfulDeleteAlert] = useState(true)
   const [salon, setSalon] = useState([])
   const [studentInq, setStudentInq] = useState([])
@@ -197,11 +197,10 @@ function AdminPortal() {
     updateApptsArrayAfterDelete(selectedApptid)
     fetch(`/appointments/${selectedApptid}`, {
       method: "DELETE",
-    })
-      .then(toggleAlert())
-      .then(toggleDeleteSuccessAlert())
+    }).then(setShowAlert(true))
+    handleCloseApptEdit()
   }
-
+  console.log(showAlert)
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Button
@@ -435,14 +434,6 @@ function AdminPortal() {
             <Button id="modal-modal-description" sx={{ mt: 2 }}>
               Change time
             </Button>
-            {successfulDeleteAlert ? null : (
-              <Alert severity="success">
-                Appointment Successfully Deleted
-                <Button onClick={() => setSuccessfulDeleteAlert(false)}>
-                  X
-                </Button>
-              </Alert>
-            )}
             {showAlert ? null : (
               <Alert severity="warning">
                 You are about to delete this appointment - this action{" "}
@@ -451,7 +442,7 @@ function AdminPortal() {
                 <Button onClick={handleHardDelete}>
                   Yes, Cancel Appointment
                 </Button>
-                <Button onClick={() => setShowAlert(false)}>Back</Button>
+                <Button onClick={() => setShowAlert(true)}>Back</Button>
               </Alert>
             )}
             <Button onClick={handleFirstDeleteButton}>
