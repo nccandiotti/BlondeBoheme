@@ -59,7 +59,7 @@ export default function SignUp() {
     <>
       <Container
         sx={{
-          backgroundImage: `url(${flower})`,
+          backgroundColor: "white ",
           borderRadius: "30px",
           padding: "10px",
           justifyContent: "center",
@@ -175,14 +175,14 @@ export default function SignUp() {
               onChange={handleSubmit}
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, backgroundColor: "#ebc696" }}
             >
               Sign Up
             </Button>
 
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/login" variant="body2">
+                <Link sx={{ color: "#807b67 " }} href="/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

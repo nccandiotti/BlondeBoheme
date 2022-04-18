@@ -19,6 +19,7 @@ import Step from "@mui/material/Step"
 import StepButton from "@mui/material/StepButton"
 import NewGuestConsultation from "../forms/NewGuestConsultation"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import sun from "../../assets/sun.png"
 
 const steps = [
   "Complete Consultation Paperwork",
@@ -28,9 +29,9 @@ const steps = [
 ]
 
 function UserPortal({ appointmentsArray }) {
+  const { currentUser } = useContext(UserContext)
   const [dateValue, setDateValue] = useState("")
   const [time, setTime] = useState("")
-  const { currentUser } = useContext(UserContext)
   const [activeStep, setActiveStep] = useState(0)
   const [completed, setCompleted] = useState({})
   const [clicked, setClicked] = useState(false)
@@ -52,7 +53,7 @@ function UserPortal({ appointmentsArray }) {
   const handleConsultOpen = () => setConsultOpen(true)
   const handleConsultClose = () => setConsultOpen(false)
   const { id } = useParams()
-
+  console.log(currentUser.firstname)
   const totalSteps = () => {
     return steps.length
   }
@@ -212,7 +213,7 @@ function UserPortal({ appointmentsArray }) {
                         id="firstName"
                         label="First Name"
                         autoFocus
-                        value={userFirstname}
+                        value={currentUser.firstname}
                         onChange={(e) => setUserFirstname(e.target.value)}
                       />
                     </Grid>
@@ -224,7 +225,7 @@ function UserPortal({ appointmentsArray }) {
                         id="lastname"
                         label="Last Name"
                         autoFocus
-                        value={userLastname}
+                        value={currentUser.lastname}
                         onChange={(e) => setUserLastname(e.target.value)}
                       />
                     </Grid>
@@ -235,7 +236,7 @@ function UserPortal({ appointmentsArray }) {
                         id="email"
                         label="Email"
                         autoFocus
-                        value={userEmail}
+                        value={currentUser.email}
                         onChange={(e) => setUserEmail(e.target.value)}
                       />
                     </Grid>
@@ -246,7 +247,7 @@ function UserPortal({ appointmentsArray }) {
                         id="phone"
                         label="Phone Number"
                         autoFocus
-                        value={userPhone}
+                        value={currentUser.phone}
                         onChange={(e) => setUserPhone(e.target.value)}
                       />
                     </Grid>
@@ -275,7 +276,7 @@ function UserPortal({ appointmentsArray }) {
               </FormControl>
 
               <Grid container spacing={1}>
-                {currentUser.user_images ? (
+                {currentUser?.user_images?.length > 0 ? (
                   <>
                     <Grid sx={{ marginBottom: "20px" }} item xs={12}>
                       <Typography variant="h4">My Pictures</Typography>
@@ -299,7 +300,11 @@ function UserPortal({ appointmentsArray }) {
                           width: "100px",
                           borderRadius: "100px",
                         }}
-                        src={currentUser.user_images[1]?.picture.url}
+                        src={
+                          currentUser.user_images[1]?.picture.url
+                            ? currentUser.user_images[1]?.picture.url
+                            : { sun }
+                        }
                         alt="picture"
                       />
                     </Grid>
@@ -354,7 +359,7 @@ function UserPortal({ appointmentsArray }) {
                 ) : (
                   <Grid item xs={12}>
                     {" "}
-                    <Typography variant="body">
+                    <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
                       Complete consult form and upload your pictures!
                     </Typography>{" "}
                   </Grid>
@@ -546,7 +551,11 @@ function UserPortal({ appointmentsArray }) {
                                   onChange={handleBookAppointment}
                                   fullWidth
                                   variant="contained"
-                                  sx={{ mt: 3, mb: 2 }}
+                                  sx={{
+                                    mt: 3,
+                                    mb: 2,
+                                    backgroundColor: "#b26446",
+                                  }}
                                 >
                                   Submit
                                 </Button>

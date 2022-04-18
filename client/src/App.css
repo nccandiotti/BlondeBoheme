@@ -2,12 +2,13 @@
 /* #b5b8a3 */
 /* #807b67 */
 /* #b26446 */
+/* #ebc696 */
 /* .App {
   display: block;
 } */
 body {
   background-image: url("./assets/newpic.png");
-  opacity: 0.8;
+  opacity: 0.9;
   background-size: cover;
   height: 100%;
   background-repeat: no-repeat;
@@ -45,9 +46,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
+  padding: 30px;
+  margin-right: 100px;
 }
 .blurb2 {
   background-color: #d5a082;
-  border-radius: 60% 60% 40% 80%;
+  border-radius: 60% 60% 40% 60%;
 }

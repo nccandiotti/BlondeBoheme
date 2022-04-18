@@ -40,7 +40,7 @@ function AboutSuzie() {
               flexDirection: "row",
             }}
             container
-            spacing={6}
+            spacing={10}
           >
             <Grid item xs={6}>
               {" "}
@@ -71,7 +71,7 @@ function AboutSuzie() {
               <div className="blurb2">
                 <div
                   style={{
-                    padding: "20px",
+                    padding: "30px",
                     display: "flex",
                     flexDirection: "column",
                     maxWidth: "60%",
@@ -79,11 +79,9 @@ function AboutSuzie() {
                 >
                   <Typography
                     sx={{
+                      padding: "10px",
                       fontSize: "1.5vw",
                       fontFamily: "Montserrat",
-
-                      height: "auto",
-                      objectFit: "cover",
                     }}
                     gutterBottom
                     variant="subtitle1"
@@ -104,15 +102,19 @@ function AboutSuzie() {
               <div className="blurb">
                 <div
                   style={{
-                    padding: "20px",
+                    // padding: "30px",
                     display: "flex",
                     flexDirection: "column",
                     maxWidth: "60%",
                   }}
                 >
+                  <br />
+                  <br />
+                  <br />
+                  <br />
                   <Typography
                     sx={{
-                      fontSize: "1vw",
+                      fontSize: "1.5vw",
 
                       fontFamily: "Montserrat",
 
@@ -131,10 +133,9 @@ function AboutSuzie() {
 
                   <Typography
                     sx={{
-                      fontSize: "1vw",
+                      fontSize: "1.5vw",
                       fontFamily: "Montserrat",
                     }}
-                    gutterBottom
                     variant="subtitle1"
                     component="div"
                   >

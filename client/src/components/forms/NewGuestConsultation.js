@@ -11,21 +11,18 @@ import Box from "@mui/material/Box"
 import Radio from "@mui/material/Radio"
 import RadioGroup from "@mui/material/RadioGroup"
 import FormLabel from "@mui/material/FormLabel"
-import Modal from "@mui/material/Modal"
 
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 
 import { UserContext } from "../../UserContext"
-// import { useDropzone } from "react-dropzone"
-let arr = []
 function NewGuestConsultation() {
   const { currentUser } = useContext(UserContext)
 
-  const [firstname, setFirstName] = useState("")
-  const [lastname, setLastName] = useState("")
-  const [phone, setPhone] = useState("")
-  const [email, setEmail] = useState("")
+  const [firstname, setFirstName] = useState(currentUser.firstname)
+  const [lastname, setLastName] = useState(currentUser.lastname)
+  const [phone, setPhone] = useState(currentUser.phone)
+  const [email, setEmail] = useState(currentUser.email)
   const [graycvg, setGrayCvg] = useState("")
   const [allergies, setAllergies] = useState("")
   const [hairHx, setHairHx] = useState("")
@@ -137,8 +134,12 @@ function NewGuestConsultation() {
             borderRadius: "20px",
           }}
         >
-          <Typography component="h1" variant="h5">
-            New Guest Consultation Form
+          <Typography
+            sx={{ fontSize: "80px", fontFamily: "Sacramento" }}
+            component="h1"
+            variant="h5"
+          >
+            New Guest Intake Form
           </Typography>
 
           <FormControl>
@@ -260,6 +261,7 @@ function NewGuestConsultation() {
               <FormLabel id="current photos">front</FormLabel>
               <Grid item xs={12} sm={6}>
                 <input
+                  required
                   type="file"
                   accept="image/*"
                   onChange={(e) => setmugshotone(e.target.files[0])}
@@ -268,6 +270,7 @@ function NewGuestConsultation() {
               <FormLabel id="current photos">left side</FormLabel>
               <Grid item xs={12} sm={6}>
                 <input
+                  required
                   type="file"
                   accept="image/*"
                   onChange={(e) => setmugshottwo(e.target.files[0])}
@@ -276,6 +279,7 @@ function NewGuestConsultation() {
               <FormLabel id="current photos">right side</FormLabel>
               <Grid item xs={12} sm={6}>
                 <input
+                  required
                   type="file"
                   accept="image/*"
                   onChange={(e) => setmugshotthree(e.target.files[0])}
@@ -284,6 +288,7 @@ function NewGuestConsultation() {
               <FormLabel id="current photos">back</FormLabel>
               <Grid item xs={12} sm={6}>
                 <input
+                  required
                   type="file"
                   accept="image/*"
                   onChange={(e) => setmugshotfour(e.target.files[0])}
@@ -292,6 +297,7 @@ function NewGuestConsultation() {
               <FormLabel id="current photos">roots</FormLabel>
               <Grid item xs={12} sm={6}>
                 <input
+                  required
                   type="file"
                   accept="image/*"
                   onChange={(e) => setmugshotfive(e.target.files[0])}
@@ -313,7 +319,7 @@ function NewGuestConsultation() {
                 onChange={handleSubmit}
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ mt: 3, mb: 2, backgroundColor: " #cdadaf" }}
               >
                 Submit
               </Button>

@@ -27,7 +27,6 @@ function UserHome() {
       <Grid
         sx={{
           display: "flex",
-
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
@@ -65,19 +64,19 @@ function UserHome() {
               }}
             >
               <p
-                style={{ fontFamily: "MontSerrat", fontSize: "2vw" }}
+                style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}
               >{`firstname: ${currentUser.username}`}</p>
-              <p style={{ fontFamily: "MontSerrat", fontSize: "2vw" }}>
+              <p style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}>
                 {`lastname: ${currentUser.lastname}`}{" "}
               </p>
-              <p style={{ fontFamily: "MontSerrat", fontSize: "2vw" }}>
+              <p style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}>
                 {`username: ${currentUser.username}`}{" "}
               </p>
-              <p style={{ fontFamily: "MontSerrat", fontSize: "2vw" }}>
+              <p style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}>
                 {`email: ${currentUser.email}`}{" "}
               </p>
               <p
-                style={{ fontFamily: "MontSerrat", fontSize: "2vw" }}
+                style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}
               >{`phone: ${currentUser.phone}`}</p>{" "}
             </div>
           </Grid>

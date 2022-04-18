@@ -33,7 +33,12 @@ function NavBar() {
       </Link>
       <br />
       <Link
-        style={{ fontSize: "20px", textDecoration: "none", color: "black" }}
+        style={{
+          color: "#b5b8a3",
+          fontSize: "20px",
+          textDecoration: "none",
+          color: "black",
+        }}
         to={`/login`}
       >
         Login

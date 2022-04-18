@@ -64,14 +64,14 @@ function UploadPicsForm() {
                 borderRadius: "20px",
               }}
             >
-              <Typography component="h1" variant="h5">
+              <Typography
+                style={{ fontFamily: "Sacramento", fontSize: "8vw" }}
+                component="h1"
+                variant="h5"
+              >
                 Inspo Pics
               </Typography>
-              <img
-                src={placeholder}
-                alt="inspo"
-                style={{ height: "200px", width: "200px" }}
-              />
+
               <FormControl>
                 <Box
                   component="form"
@@ -83,10 +83,8 @@ function UploadPicsForm() {
                   <Grid container spacing={2}>
                     <FormLabel id="current photos">
                       {" "}
-                      "Mugshot" style photos of your current hair in indirect,
-                      natural lighting (in front of a window, or under an
-                      awning). 5 photos total: front, left side, back, right
-                      side, root area
+                      Please share some of your hair #goals - bonus if they're
+                      from my instagram!
                     </FormLabel>
                     <Grid item xs={12} sm={6}>
                       <input
@@ -109,7 +107,7 @@ function UploadPicsForm() {
                     value="Upload"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+                    sx={{ mt: 3, mb: 2, backgroundColor: " #cdadaf " }}
                   >
                     Submit
                   </Button>
@@ -124,46 +122,3 @@ function UploadPicsForm() {
 }
 
 export default UploadPicsForm
-//   const input = document.querySelector("input[type=file]")
-//   input.addEventListener("change", () => {
-//     for (const file of input.files) {
-//       const formData = new FormData()
-//       formData.append("collection_id", this.id)
-//       formData.append("mugshots", file)
-//       formData.append("inspos", file)
-//       pictureApiCall.uploadPictures(formData)
-//     }
-//   })
-
-// function handleImageUpload(e) {
-//   e.preventDefault()
-//   // setInspo(e.target.files[0])
-//   setMugshot(e.target.files[0])
-//   //
-//   const formData = new FormData()
-
-//   formData.append(inspo, formData)
-//   formData.append(mugshot, formData)
-//   //
-//   fetch(`/user_images`, {
-//     method: "POST",
-//     body: formData,
-//   })
-//   //
-// }
-// function handleSubmit(e) {
-//   e.preventDefault()
-//   fetch("/user_images", {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({
-//       mugshots: mugshot,
-//       inspos: inspo,
-//     }),
-//   }).then((r) => {
-//     if (r.ok) {
-//       r.json()
-//       handleImageUpload()
-//     } else alert("Error")
-//   })
-// }

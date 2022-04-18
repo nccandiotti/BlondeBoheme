@@ -95,7 +95,10 @@ function App() {
             The Blonde Boheme
           </Typography>
           <Typography
-            sx={{ fontFamily: "Montserrat", fontSize: "2vw" }}
+            sx={{
+              fontFamily: "Montserrat",
+              fontSize: "2vw",
+            }}
             variant="h6"
           >
             Luxury Color Services | Laid Back Vibe
