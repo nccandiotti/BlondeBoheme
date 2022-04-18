@@ -19,7 +19,6 @@ function UploadPicsForm() {
   const [picture, setPicture] = useState(null)
   const [pictureTwo, setPictureTwo] = useState(null)
   const imageUpload = useRef()
-  // const [inspo, setInspo] = useState([])
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -88,13 +87,14 @@ function UploadPicsForm() {
                     </FormLabel>
                     <Grid item xs={12} sm={6}>
                       <input
+                        required
                         type="file"
                         accept="image/*"
                         onChange={(e) => setPicture(e.target.files[0])}
                       />
                       <input
                         //   enctype="multipart/form-data"
-
+                        required
                         type="file"
                         accept="image/*"
                         onChange={(e) => setPictureTwo(e.target.files[0])}

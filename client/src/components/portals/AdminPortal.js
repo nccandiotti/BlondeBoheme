@@ -134,9 +134,7 @@ function AdminPortal() {
   function handleFirstDeleteButton(e) {
     toggleAlert()
   }
-  function handleHardDelete(e) {
-    // fetch(`/appointments/${id}`, { method: "DELETE" })
-  }
+  function handleHardDelete(e) {}
 
   const columns = [
     {

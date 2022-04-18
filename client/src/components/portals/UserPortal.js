@@ -20,6 +20,7 @@ import StepButton from "@mui/material/StepButton"
 import NewGuestConsultation from "../forms/NewGuestConsultation"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import sun from "../../assets/sun.png"
+import bohoart4 from "../../assets/bohoart4.png"
 
 const steps = [
   "Complete Consultation Paperwork",
@@ -73,9 +74,7 @@ function UserPortal({ appointmentsArray }) {
   const handleNext = () => {
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
-        ? // It's the last step, but not all steps have been completed,
-          // find the first step that has been completed
-          steps.findIndex((step, i) => !(i in completed))
+        ? steps.findIndex((step, i) => !(i in completed))
         : activeStep + 1
     setActiveStep(newActiveStep)
   }
@@ -154,7 +153,7 @@ function UserPortal({ appointmentsArray }) {
       } else alert("no dice")
     })
   }
-
+  console.log(currentUser.user_consult)
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -276,94 +275,146 @@ function UserPortal({ appointmentsArray }) {
               </FormControl>
 
               <Grid container spacing={1}>
-                {currentUser?.user_images?.length > 0 ? (
-                  <>
-                    <Grid sx={{ marginBottom: "20px" }} item xs={12}>
-                      <Typography variant="h4">My Pictures</Typography>
+                {/* {currentUser.user_images ? ( */}
+                <>
+                  <Grid sx={{ marginBottom: "20px" }} item xs={12}>
+                    <Typography sx={{ fontFamily: "Sacramento" }} variant="h3">
+                      My Pictures (complete steps one and two to show your
+                      current and inspo pictures below!)
+                    </Typography>
+                  </Grid>
+                  <div style={{ height: "50px" }}></div>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        currentUser.user_consults
+                          ? currentUser.user_consults[0].mugshotone.url
+                          : bohoart4
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        currentUser.user_consults
+                          ? currentUser.user_consults[0].mugshottwo.url
+                          : bohoart4
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        currentUser.user_consults
+                          ? currentUser.user_consults[0].mugshotthree.url
+                          : bohoart4
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        currentUser.user_consults
+                          ? currentUser.user_consults[0].mugshotfour.url
+                          : bohoart4
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        currentUser.user_consults
+                          ? currentUser.user_consults[0].mugshotfive.url
+                          : bohoart4
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>{" "}
+                  <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                      <Typography
+                        sx={{ fontFamily: "Sacramento" }}
+                        variant="h3"
+                      >
+                        <br />
+                        My Inspo Pictures
+                      </Typography>
                     </Grid>
-                    <div style={{ height: "50px" }}></div>
-                    <Grid item xs={2}>
+                    <Grid item xs={4}>
                       <img
                         style={{
                           height: "100px",
                           width: "100px",
+                          height: "150px",
                           borderRadius: "100px",
+                          objectFit: "cover",
                         }}
-                        src={currentUser.user_images[0]?.picture.url}
+                        src={
+                          currentUser.user_images
+                            ? currentUser.user_images[0]?.picture.url
+                            : bohoart4
+                        }
                         alt="picture"
                       />{" "}
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={4}>
                       <img
                         style={{
                           height: "100px",
                           width: "100px",
+                          height: "150px",
                           borderRadius: "100px",
+                          objectFit: "cover",
                         }}
                         src={
-                          currentUser.user_images[1]?.picture.url
-                            ? currentUser.user_images[1]?.picture.url
-                            : { sun }
+                          currentUser.user_images && currentUser.admin === false
+                            ? currentUser.user_images[0].picturetwo.url
+                            : bohoart4
                         }
                         alt="picture"
-                      />
+                      />{" "}
                     </Grid>
-                    <Grid item xs={2}>
-                      <img
-                        style={{
-                          height: "100px",
-                          width: "100px",
-                          borderRadius: "100px",
-                        }}
-                        src={currentUser.user_images[2]?.picture.url}
-                        alt="picture"
-                      />
-                    </Grid>
-                    <Grid item xs={2}>
-                      <img
-                        style={{
-                          height: "100px",
-                          width: "100px",
-                          borderRadius: "100px",
-                        }}
-                        src={currentUser.user_images[3]?.picture.url}
-                        alt="picture"
-                      />
-                    </Grid>
-                    <Grid item xs={2}>
-                      <img
-                        style={{
-                          height: "100px",
-                          width: "100px",
-                          borderRadius: "100px",
-                        }}
-                        src={currentUser.user_images[4]?.picture.url}
-                        alt="picture"
-                      />
-                    </Grid>{" "}
-                    <Grid container spacing={1}>
-                      <Grid item xs={12}>
-                        Inspo Pics
-                      </Grid>
-                      <Grid item xs={4}>
-                        Img
-                      </Grid>
-                      <Grid item xs={4}>
-                        Img
-                      </Grid>
-                      <Grid item xs={4}>
-                        Img
-                      </Grid>
-                    </Grid>
-                  </>
-                ) : (
-                  <Grid item xs={12}>
-                    {" "}
-                    <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
-                      Complete consult form and upload your pictures!
-                    </Typography>{" "}
                   </Grid>
-                )}
+                </>
               </Grid>
             </Box>
           </Container>
@@ -416,12 +467,18 @@ function UserPortal({ appointmentsArray }) {
                         alignItems: "center",
                       }}
                     >
-                      <Button
-                        sx={{ color: "#b26446" }}
-                        onClick={handleConsultOpen}
-                      >
-                        Complete Consultation Form
-                      </Button>
+                      {!currentUser.user_consults ? (
+                        <Button sx={{ color: "#b26446" }} disabled>
+                          Consultation paperwork completed, thank you!
+                        </Button>
+                      ) : (
+                        <Button
+                          sx={{ color: "#b26446" }}
+                          onClick={handleConsultOpen}
+                        >
+                          Complete Consultation Form
+                        </Button>
+                      )}
                       <Modal
                         open={consultOpen}
                         onClose={handleConsultClose}
@@ -441,9 +498,15 @@ function UserPortal({ appointmentsArray }) {
                       alignItems: "center",
                     }}
                   >
-                    <Button sx={{ color: "#b26446" }} onClick={handleClick}>
-                      Upload Pics
-                    </Button>
+                    {!currentUser.user_images ? (
+                      <Button sx={{ color: "#b26446" }} disabled>
+                        Inspation Pics uploaded, thank you!
+                      </Button>
+                    ) : (
+                      <Button sx={{ color: "#b26446" }} onClick={handleClick}>
+                        Upload Pics
+                      </Button>
+                    )}
 
                     {!clicked ? null : <UploadPicsForm />}
                   </div>

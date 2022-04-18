@@ -121,7 +121,11 @@ function NewGuestConsultation() {
 
   return (
     <>
-      <Container sx={{ overflow: "scroll" }} component="main" maxWidth="s">
+      <Container
+        sx={{ overflow: "scroll", height: "90vh" }}
+        component="main"
+        maxWidth="s"
+      >
         <CssBaseline />
         <Box
           sx={{
@@ -304,16 +308,6 @@ function NewGuestConsultation() {
                 />
               </Grid>
 
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    required
-                    checked={checked}
-                    onChange={toggleCheckbox}
-                  />
-                }
-                label="I have reviewed The Blonde Boheme's policies and agree to all terms and conditions"
-              />
               <Button
                 type="submit"
                 onChange={handleSubmit}
