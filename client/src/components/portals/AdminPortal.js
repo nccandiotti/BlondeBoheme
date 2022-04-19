@@ -17,6 +17,7 @@ function AdminPortal() {
   let navigate = useNavigate()
   const selectedAppointment = useRef()
   const { currentUser } = useContext(UserContext)
+  const [usersArray, setUsersArray] = useState([])
   const [clicked, setClicked] = useState(false)
   const [firstname, setFirstname] = useState(currentUser.firstname)
   const [lastname, setLastname] = useState(currentUser.lastname)
@@ -34,6 +35,7 @@ function AdminPortal() {
   const [selectedApptFirstname, setSelectedApptFirstname] = useState("")
   const [selectedApptLastname, setSelectedApptLastname] = useState("")
   const [selectedApptTime, setSelectedApptTime] = useState("")
+  const [selectedGuest, setSelectedGuest] = useState({})
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const handleOpenApptEdit = () => setOpenApptEdit(true)
@@ -41,7 +43,7 @@ function AdminPortal() {
   const toggleClicked = () => setClicked((prevstate) => !prevstate)
   const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
   const toggleDeleteSuccessAlert = () => setShowAlert((prevstate) => !prevstate)
-  let date = new Date()
+
   useEffect(() => {
     fetch("./salons")
       .then((r) => r.json())
@@ -49,14 +51,27 @@ function AdminPortal() {
       .then((data) => setSalon(data[0]))
   }, [])
   useEffect(() => {
-    fetch("./salons")
+    fetch("./appointments")
       .then((r) => r.json())
 
-      .then((data) => setAppointments(data[0].appointments))
+      .then((data) => setAppointments(data))
   }, [])
 
-  function handleRemoveInquiry(e) {
-    console.log(rows)
+  useEffect(() => {
+    fetch("./users")
+      .then((r) => r.json())
+      .then(setUsersArray)
+  }, [])
+  // console.log(usersArray)
+  // console.log(appointments)
+
+  function findGuest(e) {
+    const guest = usersArray.filter((user) => user.appointments.id === e.row.id)
+
+    // const guest = usersArray.filter(
+    //   (user) => user.appointments.time === e.row.time
+    // )
+    setSelectedGuest(guest)
   }
 
   function handleSubmit(e) {
@@ -79,9 +94,12 @@ function AdminPortal() {
     setSelectedApptLastname(e.row.lastName)
     setSelectedApptTime(e.row.time)
     setSelectedApptid(e.row.id)
-    console.log(e)
-    console.log(e.row.id)
+    // _______________________ OMG THIS WORKS ____________________________
+    console.log(usersArray.find((user) => user.appointments[0]))
+    // console.log(usersArray.filter((user) => user.appointments.id === e.row.id))
+    // console.log(e.row)
   }
+  // console.log(usersArray)
   const rows = appointments?.map((appt) => {
     return {
       id: appt.id,
@@ -125,25 +143,25 @@ function AdminPortal() {
       headerName: "Travel ?",
       width: 100,
     },
-    {
-      field: "cancel",
-      headerName: "Cancel Appointment",
-      width: 150,
-      renderCell: (params) => (
-        <strong>
-          {params.value?.getFullYear() ?? ""}
-          <Button
-            variant="contained"
-            color="warning"
-            size="small"
-            style={{ marginLeft: 16 }}
-            onClick={handleRemoveInquiry}
-          >
-            Cancel
-          </Button>
-        </strong>
-      ),
-    },
+    // {
+    //   field: "cancel",
+    //   headerName: "Cancel Appointment",
+    //   width: 150,
+    //   renderCell: (params) => (
+    //     <strong>
+    //       {params.value?.getFullYear() ?? ""}
+    //       <Button
+    //         variant="contained"
+    //         color="warning"
+    //         size="small"
+    //         style={{ marginLeft: 16 }}
+    //         onClick={handleRemoveInquiry}
+    //       >
+    //         Cancel
+    //       </Button>
+    //     </strong>
+    //   ),
+    // },
   ]
   const columns = [
     {
@@ -158,15 +176,10 @@ function AdminPortal() {
       type: "string",
       width: 300,
     },
-    {
-      field: "deposit_received",
-      headerName: "Deposit Received",
-      type: "boolean",
-      width: 100,
-    },
+
     {
       field: "cancel",
-      headerName: "Cancel Appointment",
+      headerName: "Modify Appointment",
       width: 150,
       renderCell: (params) => (
         <strong>
@@ -200,7 +213,7 @@ function AdminPortal() {
     }).then(setShowAlert(true))
     handleCloseApptEdit()
   }
-  console.log(showAlert)
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Button
@@ -448,6 +461,13 @@ function AdminPortal() {
             <Button onClick={handleFirstDeleteButton}>
               Cancel This Appointment
             </Button>
+            <Typography
+              id="modal-modal-title"
+              variant="body"
+              sx={{ fontFamily: "Montserrat" }}
+            >
+              Guest Details:{" "}
+            </Typography>
           </Box>
         </Modal>
       </div>

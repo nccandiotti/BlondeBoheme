@@ -54,7 +54,7 @@ function UserPortal({ appointmentsArray }) {
   const handleConsultOpen = () => setConsultOpen(true)
   const handleConsultClose = () => setConsultOpen(false)
   const { id } = useParams()
-  console.log(currentUser.firstname)
+
   const totalSteps = () => {
     return steps.length
   }
@@ -154,7 +154,7 @@ function UserPortal({ appointmentsArray }) {
       } else alert("no dice")
     })
   }
-  console.log(currentUser.user_consult)
+
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>

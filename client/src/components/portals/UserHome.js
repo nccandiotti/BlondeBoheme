@@ -6,7 +6,6 @@ import Grid from "@mui/material/Grid"
 import drawing from "../../assets/silhouette.png"
 
 function UserHome() {
-  // const { id } = useParams()
   const { currentUser } = useContext(UserContext)
   const { setCurrentUser } = useContext(UserContext)
   const [appointmentsArray, setAppointmentsArray] = useState([])
@@ -21,7 +20,7 @@ function UserHome() {
       .then((r) => r.json())
       .then(setAppointmentsArray)
   }, [])
-  console.log(currentUser)
+
   return (
     <>
       <Grid
