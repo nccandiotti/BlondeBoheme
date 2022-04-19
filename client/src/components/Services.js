@@ -1,220 +1,410 @@
-import React, { useState, useEffect } from "react"
-
-import { styled } from "@mui/material/styles"
-import Box from "@mui/material/Box"
-import Paper from "@mui/material/Paper"
 import Grid from "@mui/material/Grid"
-import FormLabel from "@mui/material/FormLabel"
-import FormControl from "@mui/material/FormControl"
-import FormControlLabel from "@mui/material/FormControlLabel"
-import RadioGroup from "@mui/material/RadioGroup"
-import Radio from "@mui/material/Radio"
 import services1 from "../assets/service1.png"
 import services2 from "../assets/service2.png"
 import services3 from "../assets/service3.png"
 
-// import Grid from "@mui/material/Grid"
-// import Card from "@mui/material/Card"
-// import CardActions from "@mui/material/CardActions"
-// import CardContent from "@mui/material/CardContent"
-// import Button from "@mui/material/Button"
-// import Typography from "@mui/material/Typography"
-
-// import Table from "@mui/material/Table"
-// import TableBody from "@mui/material/TableBody"
-// import TableCell from "@mui/material/TableCell"
-// import TableContainer from "@mui/material/TableContainer"
-// import TableHead from "@mui/material/TableHead"
-// import TableRow from "@mui/material/TableRow"
-
-function createData(name, price, time) {
-  return { name, price, time }
-}
-
-const rows = [
-  createData("Gloss + Blowout", "$90+", "1hr"),
-  createData("Gloss + Cut + Blowout", "$135+", "1.5hr"),
-  createData("Virgin Retouch + Gloss + Blowout", "$180+", "2hr"),
-  createData("Virgin Retouch + Gloss + Blowout", "$180+", "2hr"),
-  createData("Virgin Retouch + Gloss + Cut + Blowout", "$180+", "2hr"),
-]
-
-// const Item = styled(Paper)(({ theme }) => ({
-//   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: "center",
-//   color: theme.palette.text.secondary,
-// }))
+import Button from "@mui/material/Button"
+import Typography from "@mui/material/Typography"
 
 function Services() {
-  const [simpleServicesArray, setSimpleServicesArray] = useState([])
-  const [therapeuticServicesArray, setTherapeuticServicesArray] = useState([])
-  const [luxuryServicesArray, setLuxuryServicesArray] = useState([])
-
-  useEffect(() => {
-    fetch("/simpleServices")
-      .then((r) => r.json())
-      .then(setSimpleServicesArray)
-  }, [])
-  useEffect(() => {
-    fetch("/therapeuticServices")
-      .then((r) => r.json())
-      .then(setTherapeuticServicesArray)
-  }, [])
-  useEffect(() => {
-    fetch("/luxuryServices")
-      .then((r) => r.json())
-      .then(setLuxuryServicesArray)
-  }, [])
-
   return (
     <>
       <Grid
+        container
+        spacing={2}
         sx={{
-          flexGrow: 1,
           display: "flex",
           flexDirection: "row",
-          marginTop: "150px",
-          justifyContent: "center",
-          alignItems: "center",
+          justifycontent: "center",
+          fontFamily: "Montserrat",
+          padding: "30px",
         }}
-        container
-        spacing={0}
       >
-        <Grid xs={3} item sx={{ margin: "30px" }}>
-          <img
+        <Grid
+          sx={{
+            borderRadius: "20px",
+            backgroundColor: "hsl(21, 50%, 71%, 0.6)",
+          }}
+          item
+          xs={3}
+        >
+          <div
             style={{
-              borderRadius: "40px",
               display: "flex",
-              width: "100%",
-              height: "auto",
-              objectFit: "contain",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
             }}
-            src={services1}
-            alt="service1"
-          />
-        </Grid>
-        <Grid item xs={3} sx={{ margin: "30px" }}>
-          {" "}
-          <img
-            style={{
-              borderRadius: "40px",
-              display: "flex",
-              width: "100%",
-              height: "auto",
-              objectFit: "cover",
-            }}
-            src={services2}
-            alt="service1"
-          />
-        </Grid>
-        <Grid xs={3} item sx={{ margin: "30px" }}>
-          {" "}
-          <img
-            style={{
-              borderRadius: "40px",
-              display: "flex",
-              width: "100%",
-              height: "auto",
-              objectFit: "cover",
-            }}
-            src={services3}
-            alt="service1"
-          />
-        </Grid>
-      </Grid>
-    </>
-    // <Box sx={{ flexGrow: 1 }}>
-    // {
-    /* <Grid container spacing={3}>
-        <Grid sx={{ display: "flex", justifyContent: "center" }} item xs>
-          <CardContent>
-            <Typography variant="h5" component="div">
-              Simplicity
+          >
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h3">
+              SIMPLICITY
             </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
-            </Typography>
-            <Typography variant="body2">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              ACCOMPANIMENTS
-            </Typography>
-            <Typography variant="caption">K18 Treatment</Typography>
+            <hr style={{ width: "50%", size: "3", color: "black" }} />
             <br />
-            <Typography variant="caption">Curls</Typography>
-          </CardContent>
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h5">
+              Maintenance Services
+            </Typography>
+            <table>
+              {" "}
+              <tbody>
+                <tr>
+                  <td className="tdspacing">Gloss + Blowout</td>
+                  <td className="tdspacing">90+</td>
+                  <td className="tdspacing">(1 hr)</td>
+                </tr>
+                <tr>
+                  <td className="tdspacing">Gloss + Cut + Blowout</td>
+                  <td className="tdspacing">135+</td>
+                  <td className="tdspacing">(1.5 hr)</td>
+                </tr>
+                <tr>
+                  <td className="tdspacing">Virgin Retouch + Gloss</td>
+                  <td className="tdspacing">185+</td>
+                  <td className="tdspacing">(2 hr)</td>
+                </tr>
+                <tr>
+                  <td className="tdspacing">
+                    Virgin Retouch + Gloss + Cut + Blowout
+                  </td>
+                  <td className="tdspacing">225+</td>
+                  <td className="tdspacing">(2.5 hr)</td>
+                </tr>
+              </tbody>
+            </table>
+            <br />
+            <hr style={{ width: "25%", size: "3", color: "black" }} />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              Accompaniments
+            </Typography>
+            <table>
+              {" "}
+              <tbody>
+                <tr>
+                  <td className="tdspacing">K18 Treatment</td>
+                  <td className="tdspacing">+$30</td>
+                </tr>
+                <tr>
+                  <td className="tdspacing">Curls</td>
+                  <td className="tdspacing">+$15</td>
+                </tr>
+              </tbody>
+            </table>
+            <Grid
+              container
+              spacing={2}
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifycontent: "center",
+                alignItems: "center",
+                fontFamily: "Montserrat",
+              }}
+            >
+              {" "}
+            </Grid>
+          </div>
         </Grid>
         <Grid
           sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            borderRadius: "20px",
+            backgroundColor: "hsl(21, 50%, 71%, 0.9)",
           }}
           item
           xs={6}
         >
-          <CardContent
-            sx={{
+          <div
+            style={{
               display: "flex",
-              alignItems: "center",
               flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <Typography variant="h5" component="div">
-              Luxury
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h3">
+              LUXURY
             </Typography>
-            <TableContainer component={Paper}>
-              <Table s aria-label="simple table">
-                <TableBody
+            <hr style={{ width: "50%", size: "3", color: "black" }} />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h5">
+              Customized Coloring
+            </Typography>
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              Includes any of the following needed to achieve desired look:
+            </Typography>
+
+            <Grid
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "10px",
+              }}
+              container
+              spacing={1}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Grid
                   sx={{
-                    backgroundImage: "../assets/hair.png",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
+                  item
+                  xs={6}
                 >
-                  {rows.map((row) => (
-                    <TableRow
-                      key={row.name}
-                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
-                      <TableCell component="th" scope="row">
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.price}</TableCell>
-                      <TableCell align="right">{row.time}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </CardContent>
+                  <Typography
+                    sx={{ fontWeight: "bold", fontFamily: "Montserrat" }}
+                    variant="body"
+                  >
+                    PREP & TREAT
+                  </Typography>
+                  <ul>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Demineralization
+                    </li>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Color Remover
+                    </li>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      K18 Treatment
+                    </li>
+                  </ul>
+                </Grid>
+                <Grid
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  item
+                  xs={6}
+                >
+                  <Typography
+                    sx={{ fontWeight: "bold", fontFamily: "Montserrat" }}
+                    variant="body"
+                  >
+                    FOUNDATIONS
+                  </Typography>
+                  <ul>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Fill/Gloss
+                    </li>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Virgin Retouch
+                    </li>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Cut & Style
+                    </li>
+                  </ul>
+                </Grid>
+              </div>
+            </Grid>
+            <Grid
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "10px",
+              }}
+              container
+              spacing={1}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Grid
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  item
+                  xs={6}
+                >
+                  <Typography
+                    sx={{ fontWeight: "bold", fontFamily: "Montserrat" }}
+                    variant="body"
+                  >
+                    BLONDING
+                  </Typography>
+                  <ul>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Foiled Highlights
+                    </li>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Hand Painted Balayage
+                    </li>
+
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Wet Balayage
+                    </li>
+                  </ul>
+                </Grid>
+
+                <Grid
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                  item
+                  xs={6}
+                >
+                  <Typography
+                    sx={{ fontWeight: "bold", fontFamily: "Montserrat" }}
+                    variant="body"
+                  >
+                    DEPTH
+                  </Typography>
+                  <ul>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Shadow Root
+                    </li>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Reverse Balayage
+                    </li>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Panels of Depth
+                    </li>
+                    <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                      Color Melting
+                    </li>
+                  </ul>
+                </Grid>
+              </div>
+            </Grid>
+          </div>{" "}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <hr style={{ width: "25%", size: "3", color: "black" }} />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              *all color services include bond builder*
+            </Typography>
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              *all luxury line services will be styled for photos*
+            </Typography>
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              *PERSONALIZED PRICING*
+            </Typography>
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              Based on budget, time, and guest's inspiration
+            </Typography>
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              *$110/Hour*
+            </Typography>
+          </div>
         </Grid>
-        <Grid sx={{ display: "flex", justifyContent: "center" }} item xs>
-          <CardContent>
-            <Typography variant="h5" component="div">
-              Therapeutic
+        <Grid
+          sx={{
+            borderRadius: "20px",
+            backgroundColor: "hsl(21, 50%, 71%, 0.6)",
+          }}
+          item
+          xs={3}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {" "}
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h3">
+              THERAPEUTIC
             </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
+            <hr style={{ width: "50%", size: "3", color: "black" }} />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h5">
+              Hair and Scalp Treatments
             </Typography>
-            <Typography variant="body2">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
+            <br />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h5">
+              Scalp Therapy
             </Typography>
-          </CardContent>
+            <br />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
+              Relax in a padded massage bed and receive :
+            </Typography>
+            <ul>
+              <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                Fresh Lavendar Aromatherpay
+              </li>
+              <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                Dry Brushing
+              </li>
+              <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                Charcoal Detox Oil Scalp Massage
+              </li>
+              <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                Eucalyptus Steam
+              </li>
+              <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                Infared Healing/Warmth
+              </li>
+              <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                Hand and Forearm Massage
+              </li>
+              <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                Exfoliating & Purifying Shampoo
+              </li>
+              <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                Cooling Conditioner
+              </li>
+              <li sx={{ fontFamily: "Montserrat" }} variant="body">
+                Essential Oil Scalp Tonic
+              </li>
+            </ul>
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
+              $90 (1hour)
+            </Typography>
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
+              + Blowout $135
+            </Typography>
+            <hr style={{ width: "25%", size: "3", color: "black" }} />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              Hair Treatments
+            </Typography>
+            <table>
+              {" "}
+              <tbody>
+                <tr>
+                  <td className="tdspacing">Nourishing Mask + Blowout</td>
+                  <td className="tdspacing">$65</td>
+                </tr>
+                <tr>
+                  <td className="tdspacing">K18 Treatment + Blowout</td>
+                  <td className="tdspacing">$80</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </Grid>
-      </Grid> */
-    // }
-    // </Box>
+      </Grid>
+    </>
   )
 }
 

@@ -6,6 +6,7 @@
 /* .App {
   display: block;
 } */
+
 body {
   background-image: url("./assets/newpic.png");
   opacity: 0.9;
@@ -53,4 +54,7 @@ body {
 .blurb2 {
   background-color: #d5a082;
   border-radius: 60% 60% 40% 60%;
+}
+.tdspacing {
+  padding: 8px;
 }
