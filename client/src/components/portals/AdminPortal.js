@@ -449,133 +449,143 @@ function AdminPortal() {
               variant="body"
               sx={{ fontFamily: "Montserrat" }}
             >
-              Guest Details:{" "}
-              <Grid
-                container
-                spacing={2}
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Grid item xs={2}>
-                  {selectedGuest ? (
-                    <img
-                      src={selectedGuest.user_consults[0].mugshotone.url}
-                      alt="image upload"
-                      style={{
-                        height: "100px",
-                        width: "100px",
-                        height: "150px",
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : null}
-                </Grid>
-                <Grid item xs={2}>
-                  {selectedGuest ? (
-                    <img
-                      src={selectedGuest.user_consults[0].mugshottwo.url}
-                      alt="image upload"
-                      style={{
-                        height: "100px",
-                        width: "100px",
-                        height: "150px",
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : null}
-                </Grid>
-                <Grid item xs={2}>
-                  {selectedGuest ? (
-                    <img
-                      src={selectedGuest.user_consults[0].mugshotthree.url}
-                      alt="image upload"
-                      style={{
-                        height: "100px",
-                        width: "100px",
-                        height: "150px",
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : null}
-                </Grid>
-                <Grid item xs={2}>
-                  {selectedGuest ? (
-                    <img
-                      src={selectedGuest.user_consults[0].mugshotfour.url}
-                      alt="image upload"
-                      style={{
-                        height: "100px",
-                        width: "100px",
-                        height: "150px",
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : null}
-                </Grid>
-                <Grid item xs={2}>
-                  {selectedGuest ? (
-                    <img
-                      src={selectedGuest.user_consults[0].mugshotfive.url}
-                      alt="image upload"
-                      style={{
-                        height: "100px",
-                        width: "100px",
-                        height: "150px",
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : null}
-                </Grid>
-              </Grid>
-              <Grid
-                container
-                spacing={2}
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Grid item xs={2}>
-                  {selectedGuest ? (
-                    <img
-                      src={selectedGuest.user_images[0].picture.url}
-                      alt="image upload"
-                      style={{
-                        height: "100px",
-                        width: "100px",
-                        height: "150px",
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : null}
-                </Grid>{" "}
-                <Grid item xs={2}>
-                  {selectedGuest ? (
-                    <img
-                      src={selectedGuest.user_images[0].picturetwo.url}
-                      alt="image upload"
-                      style={{
-                        height: "100px",
-                        width: "100px",
-                        height: "150px",
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                    />
-                  ) : null}
-                </Grid>{" "}
-              </Grid>
+              Guest Pictures:{" "}
             </Typography>
+            <br />
+            <Grid
+              container
+              spacing={2}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Grid item xs={2}>
+                {selectedGuest ? (
+                  <img
+                    src={selectedGuest.user_consults[0].mugshotone.url}
+                    alt="image upload"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                      height: "150px",
+                      borderRadius: "100px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : null}
+              </Grid>
+              <Grid item xs={2}>
+                {selectedGuest ? (
+                  <img
+                    src={selectedGuest.user_consults[0].mugshottwo.url}
+                    alt="image upload"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                      height: "150px",
+                      borderRadius: "100px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : null}
+              </Grid>
+              <Grid item xs={2}>
+                {selectedGuest ? (
+                  <img
+                    src={selectedGuest.user_consults[0].mugshotthree.url}
+                    alt="image upload"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                      height: "150px",
+                      borderRadius: "100px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : null}
+              </Grid>
+              <Grid item xs={2}>
+                {selectedGuest ? (
+                  <img
+                    src={selectedGuest.user_consults[0].mugshotfour.url}
+                    alt="image upload"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                      height: "150px",
+                      borderRadius: "100px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : null}
+              </Grid>
+              <Grid item xs={2}>
+                {selectedGuest ? (
+                  <img
+                    src={selectedGuest.user_consults[0].mugshotfive.url}
+                    alt="image upload"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                      height: "150px",
+                      borderRadius: "100px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : null}
+              </Grid>
+            </Grid>
+            <br />
+            <Typography
+              id="modal-modal-title"
+              variant="body"
+              sx={{ fontFamily: "Montserrat" }}
+            >
+              Guest Inspo Pics:{" "}
+            </Typography>
+            <br />
+            <Grid
+              container
+              spacing={2}
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Grid item xs={2}>
+                {selectedGuest ? (
+                  <img
+                    src={selectedGuest.user_images[0].picture.url}
+                    alt="image upload"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                      height: "150px",
+                      borderRadius: "100px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : null}
+              </Grid>{" "}
+              <Grid item xs={2}>
+                {selectedGuest ? (
+                  <img
+                    src={selectedGuest.user_images[0].picturetwo.url}
+                    alt="image upload"
+                    style={{
+                      height: "100px",
+                      width: "100px",
+                      height: "150px",
+                      borderRadius: "100px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : null}
+              </Grid>{" "}
+            </Grid>
           </Box>
         </Modal>
       </div>

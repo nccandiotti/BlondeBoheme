@@ -10,11 +10,9 @@ import Modal from "@mui/material/Modal"
 
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
-import placeholder from "../../assets/bohoart2.png"
 import { UserContext } from "../../UserContext"
-import axios from "axios"
 
-function UploadPicsForm() {
+function UploadPicsForm({ setPicsix, setPicseven }) {
   const { currentUser } = useContext(UserContext)
   const [picture, setPicture] = useState(null)
   const [pictureTwo, setPictureTwo] = useState(null)
@@ -38,6 +36,8 @@ function UploadPicsForm() {
       method: "POST",
       body: formData,
     })
+    setPicsix(currentUser.user_images[0].picture.url)
+    setPicseven(currentUser.user_images[0].picturetwo.url)
   }
 
   return (

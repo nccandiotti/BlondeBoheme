@@ -1,7 +1,4 @@
 import Grid from "@mui/material/Grid"
-import services1 from "../assets/service1.png"
-import services2 from "../assets/service2.png"
-import services3 from "../assets/service3.png"
 
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"

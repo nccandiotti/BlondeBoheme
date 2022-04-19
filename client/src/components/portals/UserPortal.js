@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import Button from "@mui/material/Button"
 import { UserContext } from "../../UserContext"
 
@@ -21,6 +21,9 @@ import NewGuestConsultation from "../forms/NewGuestConsultation"
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import sun from "../../assets/sun.png"
 import bohoart4 from "../../assets/bohoart4.png"
+import bohoart2 from "../../assets/bohoart2.png"
+import mcm1 from "../../assets/mcm1.png"
+import flower from "../../assets/flower1.png"
 
 const steps = [
   "Complete Consultation Paperwork",
@@ -45,6 +48,7 @@ function UserPortal({ appointmentsArray }) {
   const [formOpen, setFormOpen] = useState(false)
   const [apptOpen, setApptOpen] = useState(false)
   const [consultOpen, setConsultOpen] = useState(false)
+  const [showUploads, setShowUploads] = useState(true)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const handleFormOpen = () => setFormOpen(true)
@@ -53,8 +57,16 @@ function UserPortal({ appointmentsArray }) {
   const handleApptOpen = () => setApptOpen(true)
   const handleConsultOpen = () => setConsultOpen(true)
   const handleConsultClose = () => setConsultOpen(false)
-  const { id } = useParams()
-
+  const handleShowUploads = () => setShowUploads(!showUploads)
+  const [picone, setPicone] = useState(bohoart4)
+  const [pictwo, setPictwo] = useState(sun)
+  const [picthree, setPicthree] = useState(bohoart2)
+  const [picfour, setPicfour] = useState(mcm1)
+  const [picfive, setPicfive] = useState(flower)
+  const [picsix, setPicsix] = useState(mcm1)
+  const [picseven, setPicseven] = useState(sun)
+  console.log(picsix)
+  console.log(currentUser)
   const totalSteps = () => {
     return steps.length
   }
@@ -98,9 +110,6 @@ function UserPortal({ appointmentsArray }) {
     setActiveStep(0)
     setCompleted({})
   }
-
-  let navigate = useNavigate()
-  const [appointments, setAppointments] = useState(currentUser.appointments)
 
   function handleClick(e) {
     toggleClicked()
@@ -151,14 +160,20 @@ function UserPortal({ appointmentsArray }) {
       if (r.ok) {
         r.json().then(setDateValue(null))
         handleApptClose()
-      } else alert("no dice")
+      } else
+        alert("This day/time is not available, please select another time.")
     })
   }
-
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <div style={{ backgroundColor: "#b5b8a3", borderRadius: "10px" }}>
+        <div
+          style={{
+            backgroundColor: "#b5b8a3",
+            borderRadius: "10px",
+            marginBottom: "20px",
+          }}
+        >
           <Button
             sx={{
               color: "white",
@@ -276,9 +291,8 @@ function UserPortal({ appointmentsArray }) {
               </FormControl>
 
               <Grid container spacing={1}>
-                {/* {currentUser.user_images ? ( */}
                 <>
-                  <Grid sx={{ marginBottom: "20px" }} item xs={12}>
+                  {/* <Grid sx={{ marginBottom: "20px" }} item xs={12}>
                     <Typography sx={{ fontFamily: "Sacramento" }} variant="h3">
                       My Pictures (complete steps one and two to show your
                       current and inspo pictures below!)
@@ -295,13 +309,14 @@ function UserPortal({ appointmentsArray }) {
                         objectFit: "cover",
                       }}
                       src={
-                        currentUser.user_consults
+                        typeof currentUser.user_consults !== undefined
                           ? currentUser.user_consults[0].mugshotone.url
                           : bohoart4
                       }
                       alt="picture"
                     />{" "}
-                  </Grid>
+                  </Grid> */}
+                  {/*
                   <Grid item xs={2}>
                     <img
                       style={{
@@ -413,8 +428,8 @@ function UserPortal({ appointmentsArray }) {
                         }
                         alt="picture"
                       />{" "}
-                    </Grid>
-                  </Grid>
+                    </Grid> */}
+                  {/* </Grid> */}
                 </>
               </Grid>
             </Box>
@@ -486,7 +501,14 @@ function UserPortal({ appointmentsArray }) {
                         aria-labelledby="modal-modal-title"
                         aria-describedby="modal-modal-description"
                       >
-                        <NewGuestConsultation />
+                        <NewGuestConsultation
+                          setPicone={setPicone}
+                          setPictwo={setPictwo}
+                          setPicthree={setPicthree}
+                          setPicfour={setPicfour}
+                          setPicfive={setPicfive}
+                          setPicsix={setPicsix}
+                        />
                       </Modal>{" "}
                     </div>
                   </>
@@ -509,7 +531,12 @@ function UserPortal({ appointmentsArray }) {
                       </Button>
                     )}
 
-                    {!clicked ? null : <UploadPicsForm />}
+                    {!clicked ? null : (
+                      <UploadPicsForm
+                        setPicsix={setPicsix}
+                        setPicseven={setPicseven}
+                      />
+                    )}
                   </div>
                 ) : null}
                 {activeStep === 2 ? (
@@ -678,8 +705,119 @@ function UserPortal({ appointmentsArray }) {
         <div>
           <div>
             <Typography sx={{ fontFamily: "Montserrat" }} variant="h5">
-              View My Consults <ExpandMoreIcon />
+              View My Uploads <ExpandMoreIcon onClick={handleShowUploads} />
             </Typography>
+            {showUploads ? (
+              <div>
+                {" "}
+                <Grid container spacing={1}>
+                  <Grid sx={{ marginBottom: "20px" }} item xs={12}>
+                    <Typography sx={{ fontFamily: "Sacramento" }} variant="h3">
+                      My Pictures (complete steps one and two to show your
+                      current and inspo pictures below!)
+                    </Typography>
+                  </Grid>
+                  <div style={{ height: "50px" }}></div>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={picone}
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={pictwo}
+                      alt="picture"
+                    />
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={picthree}
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={picfour}
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={picfive}
+                      alt="picture"
+                    />{" "}
+                  </Grid>{" "}
+                  <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                      <Typography
+                        sx={{ fontFamily: "Sacramento" }}
+                        variant="h3"
+                      >
+                        <br />
+                        My Inspo Pictures
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={4}>
+                      <img
+                        style={{
+                          height: "250px",
+                          width: "200px",
+
+                          borderRadius: "100px",
+                          objectFit: "cover",
+                        }}
+                        src={picsix}
+                        alt="picture"
+                      />{" "}
+                    </Grid>
+                    <Grid item xs={4}>
+                      <img
+                        style={{
+                          height: "250px",
+                          width: "200px",
+
+                          borderRadius: "100px",
+                          objectFit: "cover",
+                        }}
+                        src={picseven}
+                        alt="picture"
+                      />{" "}
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

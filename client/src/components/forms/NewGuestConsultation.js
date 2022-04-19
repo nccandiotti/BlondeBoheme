@@ -16,7 +16,13 @@ import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 
 import { UserContext } from "../../UserContext"
-function NewGuestConsultation() {
+function NewGuestConsultation({
+  setPicone,
+  setPictwo,
+  setPicthree,
+  setPicfour,
+  setPicfive,
+}) {
   const { currentUser } = useContext(UserContext)
 
   const [firstname, setFirstName] = useState(currentUser.firstname)
@@ -69,54 +75,16 @@ function NewGuestConsultation() {
     setLastName("")
     setEmail("")
     setPhone("")
+    setPicone(mugshotone)
+    setPictwo(mugshottwo)
+    setPicthree(mugshotthree)
+    setPicfour(mugshotfour)
+    setPicfive(mugshotfive)
   }
-
-  // fetch("/user_consults", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({
-  //     firstname: firstname,
-  //     lastname: lastname,
-  //     email: email,
-  //     phone: phone,
-  //     graycvg: graycvg,
-  //     allergies: allergies,
-  //     hairhx: hairHx,
-  //     mugshots: mugshot,
-  //     inspos: inspo,
-  //     salon_id: 2,
-  //     user_id: currentUser.id,
-  //   }),
-  //   }).then((r) => {
-  //     if (r.ok) {
-  //       r.json()
-  //       // r.json().then((currentUser) => setCurrentUser(currentUser))
-  //       // setFirstName = ""
-  //       // navigate("/login")
-  //       setFirstName("")
-  //       setLastName("")
-  //       setEmail("")
-  //       setPhone("")
-  //     } else alert("Error")
-  //   })
-  // }
 
   function handleGrayCvg(e) {
     e.preventDefault()
     setGrayCvg(e.target.value)
-  }
-
-  //   function handleTravel(e) {
-  //     e.preventDefault()
-  //     setTravel(e.target.value)
-  //   }
-  //   function handleType(e) {
-  //     e.preventDefault()
-  //     setLessonType(e.target.value)
-  //   }
-
-  function toggleCheckbox(e) {
-    setChecked(e.target.checked)
   }
 
   return (
