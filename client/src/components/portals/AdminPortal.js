@@ -35,7 +35,7 @@ function AdminPortal() {
   const [selectedApptFirstname, setSelectedApptFirstname] = useState("")
   const [selectedApptLastname, setSelectedApptLastname] = useState("")
   const [selectedApptTime, setSelectedApptTime] = useState("")
-  const [selectedGuest, setSelectedGuest] = useState({})
+  const [selectedGuest, setSelectedGuest] = useState(null)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const handleOpenApptEdit = () => setOpenApptEdit(true)
@@ -62,17 +62,6 @@ function AdminPortal() {
       .then((r) => r.json())
       .then(setUsersArray)
   }, [])
-  // console.log(usersArray)
-  // console.log(appointments)
-
-  function findGuest(e) {
-    const guest = usersArray.filter((user) => user.appointments.id === e.row.id)
-
-    // const guest = usersArray.filter(
-    //   (user) => user.appointments.time === e.row.time
-    // )
-    setSelectedGuest(guest)
-  }
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -95,11 +84,10 @@ function AdminPortal() {
     setSelectedApptTime(e.row.time)
     setSelectedApptid(e.row.id)
     // _______________________ OMG THIS WORKS ____________________________
+    setSelectedGuest(usersArray.find((user) => user.appointments[0]))
     console.log(usersArray.find((user) => user.appointments[0]))
-    // console.log(usersArray.filter((user) => user.appointments.id === e.row.id))
-    // console.log(e.row)
   }
-  // console.log(usersArray)
+
   const rows = appointments?.map((appt) => {
     return {
       id: appt.id,
@@ -467,6 +455,131 @@ function AdminPortal() {
               sx={{ fontFamily: "Montserrat" }}
             >
               Guest Details:{" "}
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Grid item xs={2}>
+                  {selectedGuest ? (
+                    <img
+                      src={selectedGuest.user_consults[0].mugshotone.url}
+                      alt="image upload"
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : null}
+                </Grid>
+                <Grid item xs={2}>
+                  {selectedGuest ? (
+                    <img
+                      src={selectedGuest.user_consults[0].mugshottwo.url}
+                      alt="image upload"
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : null}
+                </Grid>
+                <Grid item xs={2}>
+                  {selectedGuest ? (
+                    <img
+                      src={selectedGuest.user_consults[0].mugshotthree.url}
+                      alt="image upload"
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : null}
+                </Grid>
+                <Grid item xs={2}>
+                  {selectedGuest ? (
+                    <img
+                      src={selectedGuest.user_consults[0].mugshotfour.url}
+                      alt="image upload"
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : null}
+                </Grid>
+                <Grid item xs={2}>
+                  {selectedGuest ? (
+                    <img
+                      src={selectedGuest.user_consults[0].mugshotfive.url}
+                      alt="image upload"
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : null}
+                </Grid>
+              </Grid>
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Grid item xs={2}>
+                  {selectedGuest ? (
+                    <img
+                      src={selectedGuest.user_images[0].picture.url}
+                      alt="image upload"
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : null}
+                </Grid>{" "}
+                <Grid item xs={2}>
+                  {selectedGuest ? (
+                    <img
+                      src={selectedGuest.user_images[0].picturetwo.url}
+                      alt="image upload"
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        height: "150px",
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  ) : null}
+                </Grid>{" "}
+              </Grid>
             </Typography>
           </Box>
         </Modal>
