@@ -6,7 +6,7 @@ import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
-import Email from "./Email"
+
 import face from "../assets/face.png"
 
 function Education() {
@@ -271,7 +271,6 @@ function Education() {
           </Grid>
         </Grid>
       </Grid>
-      <Email />
     </div>
   )
 }

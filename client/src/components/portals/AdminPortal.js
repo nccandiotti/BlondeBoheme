@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useRef } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../UserContext"
 import Button from "@mui/material/Button"
@@ -15,7 +15,7 @@ import { DataGrid } from "@mui/x-data-grid"
 
 function AdminPortal() {
   let navigate = useNavigate()
-  const selectedAppointment = useRef()
+
   const { currentUser } = useContext(UserContext)
   const [usersArray, setUsersArray] = useState([])
   const [clicked, setClicked] = useState(false)
@@ -24,9 +24,7 @@ function AdminPortal() {
   const [email, setEmail] = useState(currentUser.email)
   const [phone, setPhone] = useState(currentUser.phone)
   const [showAlert, setShowAlert] = useState(true)
-  const [successfulDeleteAlert, setSuccessfulDeleteAlert] = useState(true)
   const [salon, setSalon] = useState([])
-  const [studentInq, setStudentInq] = useState([])
   const studentInquiries = salon.student_inquiries
   const [appointments, setAppointments] = useState(salon.appointments)
   const [open, setOpen] = useState(false)
@@ -40,9 +38,7 @@ function AdminPortal() {
   const handleClose = () => setOpen(false)
   const handleOpenApptEdit = () => setOpenApptEdit(true)
   const handleCloseApptEdit = () => setOpenApptEdit(false)
-  const toggleClicked = () => setClicked((prevstate) => !prevstate)
   const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
-  const toggleDeleteSuccessAlert = () => setShowAlert((prevstate) => !prevstate)
 
   useEffect(() => {
     fetch("./salons")
@@ -85,7 +81,6 @@ function AdminPortal() {
     setSelectedApptid(e.row.id)
     // _______________________ OMG THIS WORKS ____________________________
     setSelectedGuest(usersArray.find((user) => user.appointments[0]))
-    console.log(usersArray.find((user) => user.appointments[0]))
   }
 
   const rows = appointments?.map((appt) => {
