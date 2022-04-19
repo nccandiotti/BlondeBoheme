@@ -48,7 +48,7 @@ function Education() {
           flexGrow: 1,
           display: "flex",
           flexDirection: "row",
-          marginTop: "150px",
+          marginTop: "50px",
           justifyContent: "center",
           alignItems: "center",
           padding: "20px",
@@ -71,65 +71,74 @@ function Education() {
               justifyContent: "center",
               paddingTop: "20px",
             }}
-            variant="h2"
+            variant="h1"
           >
             {" "}
             We Believe in Changing the Status Quo
           </Typography>
           <br />
-          <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
-            {" "}
-            As stylists, we love education. We take classes year after year to
-            perfect our craft; we get so excited and inspired by it. When we get
-            back to the salon, we do this amazingly satisfying new technique on
-            our clients, and they love it! You walk them up to the front desk,
-            and she asks, "How much for today?" And you flounder.
+          <div style={{ padding: "30px" }}>
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              {" "}
+              As stylists, we love education. We take classes year after year to
+              perfect our craft; we get so excited and inspired by it. When we
+              get back to the salon, we do this amazingly satisfying new
+              technique on our clients, and they love it! You walk them up to
+              the front desk, and she asks, "How much for today?" And you
+              flounder.
+              <br />
+            </Typography>{" "}
             <br />
-          </Typography>{" "}
-          <br />
-          <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
-            {" "}
-            You see, we vastly consume education for our technical skills but
-            never how to cover our costs, price according to our demand, and
-            calculate profit. Let's go back to that scene above for a minute.
-          </Typography>{" "}
-          <br />
-          <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
-            {" "}
-            Consultation is crucial and quoting pricing before you even drape
-            your client. No matter what!
-          </Typography>
-          <br />
-          <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
-            {" "}
-            That's where we come in.
-          </Typography>
-          <br />
-          <br />
-          <Typography sx={{ fontFamily: "Montserrat" }} variant="body">
-            {" "}
-            We are Lesley and Suzie of Local Lux.u.ry, and we teach you
-            profitable techniques to save you time behind the chair and put more
-            money in your bank account. We believe in challenging the industry
-            status quo, and we can get you started making a profit in your salon
-            business with our combined knowledge. Suzie's skills training from
-            previous experience as a theory and technical educator and myself
-            with the knowledge and expertise from my formal education, together
-            we have created the proven formula which you can apply to ANY salon
-            service, not just balayage.
-          </Typography>
-          <br />
-          <br />
-          <Typography sx={{ fontFamily: "Montserrat" }} variant="h5">
-            {" "}
-            We teach you the hard and soft skills you need to apply to your
-            business today. You'll be able to assess and evaluate the knowledge
-            you need to turn a profit, not just break even. So you can make more
-            money behind the chair.
-          </Typography>
+            <br />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              {" "}
+              You see, we vastly consume education for our technical skills but
+              never how to cover our costs, price according to our demand, and
+              calculate profit. Let's go back to that scene above for a minute.
+            </Typography>{" "}
+            <br />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              {" "}
+              Consultation is crucial and quoting pricing before you even drape
+              your client. No matter what!
+            </Typography>
+            <br />
+            <br />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              {" "}
+              That's where we come in.
+            </Typography>
+            <br />
+            <br />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h6">
+              {" "}
+              We are Lesley and Suzie of Local Lux.u.ry, and we teach you
+              profitable techniques to save you time behind the chair and put
+              more money in your bank account. We believe in challenging the
+              industry status quo, and we can get you started making a profit in
+              your salon business with our combined knowledge. Suzie's skills
+              training from previous experience as a theory and technical
+              educator and myself with the knowledge and expertise from my
+              formal education, together we have created the proven formula
+              which you can apply to ANY salon service, not just balayage.
+            </Typography>
+            <br />
+            <br />
+            <Typography sx={{ fontFamily: "Montserrat" }} variant="h5">
+              {" "}
+              We teach you the hard and soft skills you need to apply to your
+              business today. You'll be able to assess and evaluate the
+              knowledge you need to turn a profit, not just break even. So you
+              can make more money behind the chair.
+            </Typography>
+          </div>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <Button
-              sx={{ color: "  #807b67  ", fontWeight: "bold" }}
+              sx={{
+                fontSize: "30px",
+                color: "  #807b67  ",
+                fontFamily: "Montserrat",
+              }}
               onClick={handleClick}
             >
               Interested in learning more? Please send us an inquiry here!
