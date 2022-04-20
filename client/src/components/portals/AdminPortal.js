@@ -470,43 +470,48 @@ function AdminPortal() {
                 alignItems: "center",
               }}
             >
-              {selectedGuest && (
-                <Grid item xs={2}>
-                  <p>{selectedGuest[0]?.email}</p>
-                  <img
-                    style={{
-                      height: "250px",
-                      width: "200px",
+              {selectedGuest ? (
+                <>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
 
-                      borderRadius: "100px",
-                      objectFit: "cover",
-                    }}
-                    src={
-                      selectedGuest[0]?.user_consults[0].mugshotone.url
-                        ? selectedGuest[0]?.user_consults[0].mugshotone.url
-                        : bohoart4
-                      // bohoart4
-                    }
-                    alt="picture"
-                  />{" "}
-                </Grid>
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        selectedGuest[0]?.user_consults[0]?.mugshotone.url
+                          ? selectedGuest[0]?.user_consults[0].mugshotone.url
+                          : bohoart4
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
+
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        selectedGuest[0]?.user_consults[0]?.mugshottwo.url
+                          ? selectedGuest[0]?.user_consults[0].mugshottwo.url
+                          : sun
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                </>
+              ) : (
+                <p>This guest has not uploaded any pictures yet!</p>
               )}
+
               {/* <Grid item xs={2}>
-                {selectedGuest ? (
-                  <img
-                    src={selectedGuest.user_consults[0].mugshottwo.url}
-                    alt="image upload"
-                    style={{
-                      height: "100px",
-                      width: "100px",
-                      height: "150px",
-                      borderRadius: "100px",
-                      objectFit: "cover",
-                    }}
-                  />
-                ) : null}
-              </Grid>
-              <Grid item xs={2}>
                 {selectedGuest ? (
                   <img
                     src={selectedGuest.user_consults[0].mugshotthree.url}
@@ -599,7 +604,7 @@ function AdminPortal() {
                     }}
                   />
                 ) : null}
-              </Grid>{" "} */}
+              </Grid> */}
             </Grid>
           </Box>
         </Modal>
