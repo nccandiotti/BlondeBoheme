@@ -42,7 +42,10 @@ function AdminPortal() {
   const [selectedGuest, setSelectedGuest] = useState(null)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-  const handleOpenApptEdit = () => setOpenApptEdit(true)
+  const handleOpenApptEdit = () => {
+    setOpenApptEdit(true)
+    setShowAlert(true)
+  }
   const handleCloseApptEdit = () => setOpenApptEdit(false)
   const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
 
@@ -441,7 +444,10 @@ function AdminPortal() {
                 variant="body"
                 sx={{ fontFamily: "Montserrat" }}
               >{`Time : ${selectedApptTime} `}</Typography>
-              <Button id="modal-modal-description" sx={{ mt: 2 }}>
+              <Button
+                id="modal-modal-description"
+                sx={{ mt: 2, color: "#b26446" }}
+              >
                 Change time
               </Button>
               {showAlert ? null : (
@@ -455,7 +461,10 @@ function AdminPortal() {
                   <Button onClick={() => setShowAlert(true)}>Back</Button>
                 </Alert>
               )}
-              <Button onClick={handleFirstDeleteButton}>
+              <Button
+                style={{ color: "#b26446" }}
+                onClick={handleFirstDeleteButton}
+              >
                 Cancel This Appointment
               </Button>
               <Typography
