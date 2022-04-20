@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import { DataGrid } from "@mui/x-data-grid"
 import bohoart4 from "../../assets/pink.jpg"
+import sun from "../../assets/sun.png"
 
 function AdminPortal() {
   let navigate = useNavigate()
@@ -82,6 +83,7 @@ function AdminPortal() {
     setSelectedApptid(e.row.id)
     setSelectedGuest(usersArray.filter((user) => user.id === e.row.user_id))
     console.log(usersArray.filter((user) => user.id === e.row.user_id))
+
     // _______________________ OMG THIS WORKS ____________________________
     // setSelectedGuest(usersArray.find((user) => user.appointments[0]))
   }
@@ -468,24 +470,27 @@ function AdminPortal() {
                 alignItems: "center",
               }}
             >
-              <Grid item xs={2}>
-                <img
-                  style={{
-                    height: "250px",
-                    width: "200px",
+              {selectedGuest && (
+                <Grid item xs={2}>
+                  <p>{selectedGuest[0]?.email}</p>
+                  <img
+                    style={{
+                      height: "250px",
+                      width: "200px",
 
-                    borderRadius: "100px",
-                    objectFit: "cover",
-                  }}
-                  src={
-                    // selectedGuest?.user_consults.hasOwnProperty(0)
-                    //   ? selectedGuest.user_consults[0]?.mugshotfive.url
-                    //   : bohoart4
-                    bohoart4
-                  }
-                  alt="picture"
-                />{" "}
-              </Grid>
+                      borderRadius: "100px",
+                      objectFit: "cover",
+                    }}
+                    src={
+                      selectedGuest[0]?.user_consults[0].mugshotone.url
+                        ? selectedGuest[0]?.user_consults[0].mugshotone.url
+                        : bohoart4
+                      // bohoart4
+                    }
+                    alt="picture"
+                  />{" "}
+                </Grid>
+              )}
               {/* <Grid item xs={2}>
                 {selectedGuest ? (
                   <img
