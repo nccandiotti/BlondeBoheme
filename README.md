@@ -25,7 +25,8 @@ Guests:
     - Signup/sign in to view their account
     - Complete consultation forms (posted to admin dashboard)
     - Upload current pictures of their hair and inspo pics via Active Storage (displayed on their page and admin page)
-    - leave a deposit via Stripe payment link
+    - Leave a deposit via Stripe payment link
+    - Schedule an Appointment
     - Edit their profile details
 
 
