@@ -1,6 +1,6 @@
 # README
 
-The Blonde Boheme is a demo freelance project for a local hair salon [instagram linked here]https://www.instagram.com/the.blonde.boheme).
+[The Blonde Boheme](https://github.com/nccandiotti/BlondeBoheme) is a demo freelance project for a local hair salon [business instagram linked here](https://www.instagram.com/the.blonde.boheme).
 
 Tech Stack: JavaScript React, Ruby on Rails, MUI, Active Storage
 This app has a user view and admin(salon owner) views. Features
