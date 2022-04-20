@@ -36,8 +36,6 @@ function UploadPicsForm({ setPicsix, setPicseven }) {
       method: "POST",
       body: formData,
     })
-    setPicsix(currentUser.user_images[0].picture.url)
-    setPicseven(currentUser.user_images[0].picturetwo.url)
   }
 
   return (

@@ -728,10 +728,15 @@ function UserPortal({ appointmentsArray }) {
                       style={{
                         height: "250px",
                         width: "200px",
+
                         borderRadius: "100px",
                         objectFit: "cover",
                       }}
-                      src={picone}
+                      src={
+                        currentUser.user_consults?.hasOwnProperty(0)
+                          ? currentUser.user_consults[0].mugshotone.url
+                          : picone
+                      }
                       alt="picture"
                     />{" "}
                   </Grid>
@@ -740,22 +745,15 @@ function UserPortal({ appointmentsArray }) {
                       style={{
                         height: "250px",
                         width: "200px",
+
                         borderRadius: "100px",
                         objectFit: "cover",
                       }}
-                      src={pictwo}
-                      alt="picture"
-                    />
-                  </Grid>
-                  <Grid item xs={2}>
-                    <img
-                      style={{
-                        height: "250px",
-                        width: "200px",
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                      src={picthree}
+                      src={
+                        currentUser.user_consults?.hasOwnProperty(0)
+                          ? currentUser.user_consults[0].mugshottwo.url
+                          : picone
+                      }
                       alt="picture"
                     />{" "}
                   </Grid>
@@ -764,10 +762,15 @@ function UserPortal({ appointmentsArray }) {
                       style={{
                         height: "250px",
                         width: "200px",
+
                         borderRadius: "100px",
                         objectFit: "cover",
                       }}
-                      src={picfour}
+                      src={
+                        currentUser.user_consults?.hasOwnProperty(0)
+                          ? currentUser.user_consults[0].mugshotthree.url
+                          : picone
+                      }
                       alt="picture"
                     />{" "}
                   </Grid>
@@ -776,10 +779,32 @@ function UserPortal({ appointmentsArray }) {
                       style={{
                         height: "250px",
                         width: "200px",
+
                         borderRadius: "100px",
                         objectFit: "cover",
                       }}
-                      src={picfive}
+                      src={
+                        currentUser.user_consults?.hasOwnProperty(0)
+                          ? currentUser.user_consults[0].mugshotfour.url
+                          : picone
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
+
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        currentUser.user_consults?.hasOwnProperty(0)
+                          ? currentUser.user_consults[0].mugshotfive.url
+                          : picone
+                      }
                       alt="picture"
                     />{" "}
                   </Grid>{" "}
