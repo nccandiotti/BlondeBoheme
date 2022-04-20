@@ -141,10 +141,6 @@ function UserPortal({ appointmentsArray }) {
   function handleBookAppointment(e) {
     e.preventDefault()
 
-    const doesApptExist = appointmentsArray.filter(
-      (appt) => appt.time === { time }
-    )
-
     fetch("/appointments", {
       method: "POST",
       headers: {
@@ -164,10 +160,6 @@ function UserPortal({ appointmentsArray }) {
         alert("This day/time is not available, please select another time.")
     })
   }
-  console.log(currentUser)
-  // function filterUserImages(img) {
-  //   const filter = currentUser.user
-  // }
 
   return (
     <>
@@ -388,12 +380,6 @@ function UserPortal({ appointmentsArray }) {
                         Inspation Pics uploaded, thank you!
                       </Button>
                     ) : (
-                      <Button sx={{ color: "#b26446" }} onClick={handleClick}>
-                        Upload Pics
-                      </Button>
-                    )}
-
-                    {!clicked ? null : (
                       <UploadPicsForm
                         setPicsix={setPicsix}
                         setPicseven={setPicseven}
@@ -572,7 +558,16 @@ function UserPortal({ appointmentsArray }) {
             {showUploads ? (
               <div>
                 {" "}
-                <Grid container spacing={1}>
+                <Grid
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    alignItems: "center",
+                  }}
+                  container
+                  spacing={1}
+                >
                   <Grid sx={{ marginBottom: "20px" }} item xs={12}>
                     <Typography sx={{ fontFamily: "Sacramento" }} variant="h3">
                       My Pictures (complete steps one and two to show your

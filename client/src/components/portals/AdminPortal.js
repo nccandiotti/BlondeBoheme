@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import { UserContext } from "../../UserContext"
+import { format } from "date-fns"
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
 import TextField from "@mui/material/TextField"
 import FormControl from "@mui/material/FormControl"
 import Grid from "@mui/material/Grid"
+import DateTimePicker from "@mui/lab/DateTimePicker"
 import Box from "@mui/material/Box"
 import Modal from "@mui/material/Modal"
 import Alert from "@mui/material/Alert"
@@ -20,8 +21,6 @@ import mcm1 from "../../assets/mcm1.png"
 import flower from "../../assets/flower1.png"
 
 function AdminPortal() {
-  let navigate = useNavigate()
-
   const { currentUser } = useContext(UserContext)
   const [usersArray, setUsersArray] = useState([])
   const [clicked, setClicked] = useState(false)
@@ -40,14 +39,17 @@ function AdminPortal() {
   const [selectedApptLastname, setSelectedApptLastname] = useState("")
   const [selectedApptTime, setSelectedApptTime] = useState("")
   const [selectedGuest, setSelectedGuest] = useState(null)
+  const [apptOpen, setApptOpen] = useState(false)
+  const [dateValue, setDateValue] = useState("")
+  const [time, setTime] = useState("")
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
+  const handleApptClose = () => setApptOpen(false)
+  const handleApptOpen = () => setApptOpen(true)
   const handleOpenApptEdit = () => {
     setOpenApptEdit(true)
     setShowAlert(true)
   }
-  const handleCloseApptEdit = () => setOpenApptEdit(false)
-  const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
 
   useEffect(() => {
     fetch("./salons")
@@ -67,6 +69,37 @@ function AdminPortal() {
       .then((r) => r.json())
       .then(setUsersArray)
   }, [])
+
+  const handleCloseApptEdit = () => setOpenApptEdit(false)
+  const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
+
+  function datePick(newDateValue) {
+    setDateValue(newDateValue)
+    const formattedDate = format(newDateValue, "EEEE, MMM d yyyy 'at' h:mmaaa")
+    setTime(formattedDate.toString())
+  }
+  function filterWeekends(date) {
+    return date.getDay() === 0
+  }
+  function handleApptPatch(e) {
+    e.preventDefault()
+    fetch(`/appointments/${selectedApptid}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        time: time,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then(setDateValue(null))
+        setSelectedApptTime(time)
+        handleApptClose()
+      } else
+        alert("This day/time is not available, please select another time.")
+    })
+  }
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -89,15 +122,7 @@ function AdminPortal() {
     setSelectedApptTime(e.row.time)
     setSelectedApptid(e.row.id)
     setSelectedGuest(usersArray.filter((user) => user.id === e.row.user_id))
-    console.log(usersArray.filter((user) => user.id === e.row.user_id))
-
-    // _______________________ OMG THIS WORKS ____________________________
-    // setSelectedGuest(usersArray.find((user) => user.appointments[0]))
   }
-
-  // const filterUsers = usersArray.filter((users) =>
-  //   Object.values(users.appointments[0]).includes(58)
-  // )
 
   const rows = appointments?.map((appt) => {
     return {
@@ -447,9 +472,91 @@ function AdminPortal() {
               <Button
                 id="modal-modal-description"
                 sx={{ mt: 2, color: "#b26446" }}
+                onClick={handleApptOpen}
               >
-                Change time
+                Reschedule
               </Button>
+              <Modal
+                open={apptOpen}
+                onClose={handleApptClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Container component="main" maxWidth="s">
+                  <CssBaseline />
+                  <Box
+                    sx={{
+                      marginTop: 8,
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      backgroundColor: "rgba(255, 255, 255)",
+                      padding: "40px",
+                      borderRadius: "20px",
+                    }}
+                  >
+                    <Typography component="h1" variant="h5">
+                      Schedule
+                    </Typography>
+
+                    <FormControl>
+                      <Box
+                        component="form"
+                        noValidate
+                        onSubmit={handleApptPatch}
+                        sx={{ mt: 3 }}
+                      >
+                        <Grid container spacing={2}>
+                          <Grid item xs={6} sm={6}>
+                            <DateTimePicker
+                              sx={{
+                                button: {
+                                  color: "white",
+                                },
+                              }}
+                              minutesStep="0"
+                              shouldDisableDate={filterWeekends}
+                              minTime={new Date(0, 0, 0, 10)}
+                              maxTime={new Date(0, 0, 0, 14)}
+                              maxDate={new Date("2022-12-31")}
+                              minDate={new Date()}
+                              renderInput={(props) => <TextField {...props} />}
+                              value={dateValue}
+                              placeholder={selectedApptTime}
+                              onChange={(newDateValue) => {
+                                datePick(newDateValue)
+                              }}
+                            />
+                          </Grid>
+
+                          <Grid item xs={6} sm={6}>
+                            <Button>10:00</Button>
+                            <Button>11:00</Button> <Button>12:00</Button>{" "}
+                            <Button>1:00</Button> <Button>2:00</Button>{" "}
+                            <Button>3:00</Button> <Button>4:00</Button>{" "}
+                          </Grid>
+                        </Grid>
+
+                        <Button
+                          type="submit"
+                          onChange={handleApptPatch}
+                          fullWidth
+                          variant="contained"
+                          sx={{
+                            mt: 3,
+                            mb: 2,
+                            backgroundColor: "#b26446",
+                          }}
+                        >
+                          Submit
+                        </Button>
+
+                        <Grid container justifyContent="flex-end"></Grid>
+                      </Box>
+                    </FormControl>
+                  </Box>
+                </Container>
+              </Modal>{" "}
               {showAlert ? null : (
                 <Alert severity="warning">
                   You are about to delete this appointment - this action{" "}
@@ -480,7 +587,7 @@ function AdminPortal() {
                 spacing={2}
                 sx={{
                   display: "flex",
-                  justifyContent: "center",
+                  justifyContent: "space-between",
                   alignItems: "center",
                 }}
               >

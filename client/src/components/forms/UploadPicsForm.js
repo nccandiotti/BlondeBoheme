@@ -41,7 +41,9 @@ function UploadPicsForm({ setPicsix, setPicseven }) {
   return (
     <>
       <div>
-        <Button onClick={handleOpen}>Upload Images</Button>
+        <Button sx={{ color: "#b26446" }} onClick={handleOpen}>
+          Upload Inspo Pics
+        </Button>
         <Modal
           open={open}
           onClose={handleClose}
