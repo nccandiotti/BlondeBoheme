@@ -303,6 +303,9 @@ function UserPortal({ appointmentsArray }) {
             width: "100%",
             backgroundColor: "white",
             borderRadius: "20px",
+            width: "95%",
+            alignItems: "center",
+            marginLeft: "15px",
           }}
         >
           <Stepper nonLinear activeStep={activeStep}>
@@ -552,7 +555,14 @@ function UserPortal({ appointmentsArray }) {
         </Box>
         <div>
           <div>
-            <Typography sx={{ fontFamily: "Montserrat" }} variant="h5">
+            <Typography
+              sx={{
+                marginTop: "20px",
+                marginBottom: "20px",
+                fontFamily: "Montserrat",
+              }}
+              variant="h4"
+            >
               View My Uploads <ExpandMoreIcon onClick={handleShowUploads} />
             </Typography>
             {showUploads ? (
