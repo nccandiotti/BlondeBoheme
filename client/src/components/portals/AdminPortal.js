@@ -14,6 +14,10 @@ import Container from "@mui/material/Container"
 import { DataGrid } from "@mui/x-data-grid"
 import bohoart4 from "../../assets/pink.jpg"
 import sun from "../../assets/sun.png"
+import bohoart from "../../assets/bohoart4.png"
+import bohoart2 from "../../assets/bohoart2.png"
+import mcm1 from "../../assets/mcm1.png"
+import flower from "../../assets/flower1.png"
 
 function AdminPortal() {
   let navigate = useNavigate()
@@ -502,6 +506,57 @@ function AdminPortal() {
                         selectedGuest[0]?.user_consults[0]?.mugshottwo.url
                           ? selectedGuest[0]?.user_consults[0].mugshottwo.url
                           : sun
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
+
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        selectedGuest[0]?.user_consults[0]?.mugshotthree.url
+                          ? selectedGuest[0]?.user_consults[0].mugshotthree.url
+                          : bohoart
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
+
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        selectedGuest[0]?.user_consults[0]?.mugshotfour.url
+                          ? selectedGuest[0]?.user_consults[0].mugshotfour.url
+                          : flower
+                      }
+                      alt="picture"
+                    />{" "}
+                  </Grid>
+                  <Grid item xs={2}>
+                    <img
+                      style={{
+                        height: "250px",
+                        width: "200px",
+
+                        borderRadius: "100px",
+                        objectFit: "cover",
+                      }}
+                      src={
+                        selectedGuest[0]?.user_consults[0]?.mugshotfive.url
+                          ? selectedGuest[0]?.user_consults[0].mugshotfive.url
+                          : bohoart2
                       }
                       alt="picture"
                     />{" "}
