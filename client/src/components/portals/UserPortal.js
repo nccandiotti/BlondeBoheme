@@ -65,8 +65,7 @@ function UserPortal({ appointmentsArray }) {
   const [picfive, setPicfive] = useState(flower)
   const [picsix, setPicsix] = useState(mcm1)
   const [picseven, setPicseven] = useState(sun)
-  console.log(picsix)
-  console.log(currentUser)
+
   const totalSteps = () => {
     return steps.length
   }
@@ -383,10 +382,7 @@ function UserPortal({ appointmentsArray }) {
                         Inspation Pics uploaded, thank you!
                       </Button>
                     ) : (
-                      <UploadPicsForm
-                        setPicsix={setPicsix}
-                        setPicseven={setPicseven}
-                      />
+                      <UploadPicsForm />
                     )}
                   </div>
                 ) : null}

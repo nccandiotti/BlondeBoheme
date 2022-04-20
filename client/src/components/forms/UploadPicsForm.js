@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from "react"
+import React, { useState, useContext } from "react"
 import CssBaseline from "@mui/material/CssBaseline"
 import Button from "@mui/material/Button"
 import FormControl from "@mui/material/FormControl"
@@ -12,11 +12,10 @@ import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import { UserContext } from "../../UserContext"
 
-function UploadPicsForm({ setPicsix, setPicseven }) {
+function UploadPicsForm() {
   const { currentUser } = useContext(UserContext)
   const [picture, setPicture] = useState(null)
   const [pictureTwo, setPictureTwo] = useState(null)
-  const imageUpload = useRef()
 
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
@@ -24,7 +23,6 @@ function UploadPicsForm({ setPicsix, setPicseven }) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    console.log(imageUpload.current)
 
     const formData = new FormData()
 

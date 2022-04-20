@@ -1,11 +1,9 @@
 import { useState, useContext, useEffect } from "react"
-// import { useNavigate } from "react-router-dom"
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
 import TextField from "@mui/material/TextField"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import FormControl from "@mui/material/FormControl"
-import Checkbox from "@mui/material/Checkbox"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import Radio from "@mui/material/Radio"
@@ -43,9 +41,7 @@ function NewGuestConsultation({
   const [mugshotfive, setmugshotfive] = useState(null)
 
   useEffect(() => {
-    fetch("/user_consults")
-      .then((r) => r.json())
-      .then((data) => console.log(data))
+    fetch("/user_consults").then((r) => r.json())
   }, [])
   function handleSubmit(e) {
     e.preventDefault()

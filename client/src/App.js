@@ -21,7 +21,6 @@ import hair2 from "./assets/hair2.png"
 import hair3 from "./assets/hair3.png"
 import hair4 from "./assets/hair4.png"
 import hair5 from "./assets/hair5.png"
-import hair6 from "./assets/hair6.png"
 
 const footers = [
   {
@@ -117,25 +116,12 @@ function App() {
           <Route exact path="/newguest" element={<NewGuestConsultation />} />
         </Routes>
       </UserContext.Provider>
-      {/* <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2907.753123155224!2d-77.6623780845272!3d43.21466717913881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b1496fdd8883%3A0xab84c4616032acac!2s1401%20Stone%20Rd%2C%20Rochester%2C%20NY%2014615!5e0!3m2!1sen!2sus!4v1649279418765!5m2!1sen!2sus"
-        width="400"
-        height="300"
-        allowFullScreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        style={{
-          filter: "sepia(100%) saturate(100%)  hue-rotate(180deg)",
-        }}
-      ></iframe> */}
-
       <Container
         component="footer"
         sx={{
           borderTop: (theme) => `1px solid ${theme.palette.divider}`,
           mt: 8,
           py: [3, 6],
-          // position: "fixed",
           bottom: 0,
           left: 0,
           right: 0,
@@ -158,8 +144,6 @@ function App() {
 
         <Grid
           container
-          // spacing={1}
-          xs={12}
           sx={{
             display: "flex",
             alignItems: "center",

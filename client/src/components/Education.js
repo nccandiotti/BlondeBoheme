@@ -1,8 +1,5 @@
 import { useState, useRef } from "react"
 import StudentLessonForm from "./forms/StudentLessonForm"
-import SendEmail from "./forms/SendEmail"
-import emailjs from "@emailjs/browser"
-import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
@@ -18,26 +15,6 @@ function Education() {
   }
 
   const form = useRef()
-
-  const sendEmail = (e) => {
-    e.preventDefault()
-
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current,
-        "YOUR_USER_ID"
-      )
-      .then(
-        (result) => {
-          console.log(result.text)
-        },
-        (error) => {
-          console.log(error.text)
-        }
-      )
-  }
 
   return (
     <div>

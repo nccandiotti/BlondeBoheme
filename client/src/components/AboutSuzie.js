@@ -1,6 +1,5 @@
 import React from "react"
 import Typography from "@mui/material/Typography"
-import { styled } from "@mui/material/styles"
 import Box from "@mui/material/Box"
 import Paper from "@mui/material/Paper"
 import Grid from "@mui/material/Grid"
@@ -47,7 +46,7 @@ function AboutSuzie() {
               <Paper
                 sx={{
                   padding: "10px",
-                  // backgroundImage: `url(${pinkwatercolor})`,
+
                   backgroundColor: "#9e786c",
                   width: "100%",
                 }}
@@ -63,6 +62,7 @@ function AboutSuzie() {
                     objectFit: "cover",
                   }}
                   src={headshot}
+                  alt="headshot"
                 />
               </Paper>
             </Grid>
@@ -102,7 +102,6 @@ function AboutSuzie() {
               <div className="blurb">
                 <div
                   style={{
-                    // padding: "30px",
                     display: "flex",
                     flexDirection: "column",
                     maxWidth: "60%",
@@ -117,8 +116,6 @@ function AboutSuzie() {
                       fontSize: "1.5vw",
 
                       fontFamily: "Montserrat",
-
-                      // objectFit: "cover",
                     }}
                     gutterBottom
                     variant="subtitle1"

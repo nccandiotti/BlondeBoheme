@@ -5,23 +5,15 @@ import AccordionSummary from "@mui/material/AccordionSummary"
 import AccordionDetails from "@mui/material/AccordionDetails"
 import Typography from "@mui/material/Typography"
 
-function Policies() {
-  const [expanded, setExpanded] = useState(false)
-  const [clicked, setClicked] = useState("0")
-  const handleToggle = (index) => {
-    if (clicked === index) return setClicked("0")
-    setClicked(index)
-  }
-  const handleChange = (panel) => (event, isExpanded) => {
-    setExpanded(isExpanded ? panel : false)
-  }
+import ExpandMore from "@mui/icons-material/ExpandMore"
 
+function Policies() {
   return (
     <div style={{ margin: "40px", borderRadius: "20px" }}>
       {" "}
       <Accordion sx={{ borderRadius: "20px", backgroundColor: "#c88d6f" }}>
         <AccordionSummary
-          //   expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMore />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
@@ -37,7 +29,7 @@ function Policies() {
       </Accordion>
       <Accordion sx={{ borderRadius: "20px", backgroundColor: "#d6bfc2" }}>
         <AccordionSummary
-          //   expandIcon={<ExpandMore />}
+          expandIcon={<ExpandMore />}
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
@@ -71,7 +63,7 @@ function Policies() {
       </Accordion>
       <Accordion sx={{ borderRadius: "20px", backgroundColor: "#c88d6f" }}>
         <AccordionSummary
-          //   expandIcon={<ExpandMore />}
+          expandIcon={<ExpandMore />}
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
@@ -99,7 +91,7 @@ function Policies() {
       </Accordion>
       <Accordion sx={{ borderRadius: "20px", backgroundColor: "#d6bfc2" }}>
         <AccordionSummary
-          //   expandIcon={<ExpandMore />}
+          expandIcon={<ExpandMore />}
           aria-controls="panel2a-content"
           id="panel2a-header"
         >
@@ -118,7 +110,7 @@ function Policies() {
       </Accordion>
       <Accordion sx={{ borderRadius: "20px", backgroundColor: "#c88d6f" }}>
         <AccordionSummary
-          //   expandIcon={<ExpandMore />}
+          expandIcon={<ExpandMore />}
           aria-controls="panel2a-content"
           id="panel2a-header"
         >

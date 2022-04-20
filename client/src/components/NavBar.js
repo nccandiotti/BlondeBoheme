@@ -8,9 +8,7 @@ function NavBar() {
   const { setCurrentUser } = useContext(UserContext)
 
   function handleLogout() {
-    fetch("/logout", { method: "DELETE" })
-      .then(setCurrentUser(null))
-      .then(console.log(currentUser))
+    fetch("/logout", { method: "DELETE" }).then(setCurrentUser(null))
   }
 
   return (

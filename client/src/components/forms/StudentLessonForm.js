@@ -1,12 +1,9 @@
 import { useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
 import TextField from "@mui/material/TextField"
 import FormControlLabel from "@mui/material/FormControlLabel"
 import FormControl from "@mui/material/FormControl"
-import Checkbox from "@mui/material/Checkbox"
-import Link from "@mui/material/Link"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import Radio from "@mui/material/Radio"
@@ -19,9 +16,7 @@ import Container from "@mui/material/Container"
 import { UserContext } from "../../UserContext"
 
 function StudentLessonForm() {
-  let navigate = useNavigate()
   const { currentUser } = useContext(UserContext)
-  const { setCurrentUser } = useContext(UserContext)
 
   const [firstname, setFirstName] = useState("")
   const [lastname, setLastName] = useState("")
@@ -50,9 +45,6 @@ function StudentLessonForm() {
     }).then((r) => {
       if (r.ok) {
         r.json()
-        // r.json().then((currentUser) => setCurrentUser(currentUser))
-        // setFirstName = ""
-        // navigate("/login")
         setFirstName("")
         setLastName("")
         setEmail("")
@@ -97,7 +89,7 @@ function StudentLessonForm() {
           >
             Student Education Inquiry
           </Typography>
-          {/* <form> */}
+
           <FormControl>
             <Box
               component="form"
@@ -239,9 +231,7 @@ function StudentLessonForm() {
               <Grid container justifyContent="flex-end"></Grid>
             </Box>
           </FormControl>
-          {/* </form> */}
         </Box>
-        {/* <Copyright sx={{ mt: 5 }} /> */}
       </Container>
     </>
   )

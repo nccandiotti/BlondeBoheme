@@ -23,7 +23,6 @@ import flower from "../../assets/flower1.png"
 function AdminPortal() {
   const { currentUser } = useContext(UserContext)
   const [usersArray, setUsersArray] = useState([])
-  const [clicked, setClicked] = useState(false)
   const [firstname, setFirstname] = useState(currentUser.firstname)
   const [lastname, setLastname] = useState(currentUser.lastname)
   const [email, setEmail] = useState(currentUser.email)
