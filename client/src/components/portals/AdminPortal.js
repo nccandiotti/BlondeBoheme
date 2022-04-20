@@ -12,6 +12,7 @@ import Alert from "@mui/material/Alert"
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import { DataGrid } from "@mui/x-data-grid"
+import bohoart4 from "../../assets/pink.jpg"
 
 function AdminPortal() {
   let navigate = useNavigate()
@@ -79,9 +80,15 @@ function AdminPortal() {
     setSelectedApptLastname(e.row.lastName)
     setSelectedApptTime(e.row.time)
     setSelectedApptid(e.row.id)
+    setSelectedGuest(usersArray.filter((user) => user.id === e.row.user_id))
+    console.log(usersArray.filter((user) => user.id === e.row.user_id))
     // _______________________ OMG THIS WORKS ____________________________
-    setSelectedGuest(usersArray.find((user) => user.appointments[0]))
+    // setSelectedGuest(usersArray.find((user) => user.appointments[0]))
   }
+
+  // const filterUsers = usersArray.filter((users) =>
+  //   Object.values(users.appointments[0]).includes(58)
+  // )
 
   const rows = appointments?.map((appt) => {
     return {
@@ -90,6 +97,7 @@ function AdminPortal() {
       firstName: appt.firstname,
       time: appt.time,
       desposit: appt.deposit_received,
+      user_id: appt.user_id,
     }
   })
 
@@ -163,7 +171,7 @@ function AdminPortal() {
     {
       field: "cancel",
       headerName: "Modify Appointment",
-      width: 150,
+      width: 200,
       renderCell: (params) => (
         <strong>
           {params.value?.getFullYear() ?? ""}
@@ -230,7 +238,6 @@ function AdminPortal() {
           >
             <Typography
               sx={{ fontFamily: "Sacramento", color: " #807b67" }}
-              // component="h1"
               variant="h2"
             >
               My Profile Details
@@ -462,21 +469,24 @@ function AdminPortal() {
               }}
             >
               <Grid item xs={2}>
-                {selectedGuest ? (
-                  <img
-                    src={selectedGuest.user_consults[0].mugshotone.url}
-                    alt="image upload"
-                    style={{
-                      height: "100px",
-                      width: "100px",
-                      height: "150px",
-                      borderRadius: "100px",
-                      objectFit: "cover",
-                    }}
-                  />
-                ) : null}
+                <img
+                  style={{
+                    height: "250px",
+                    width: "200px",
+
+                    borderRadius: "100px",
+                    objectFit: "cover",
+                  }}
+                  src={
+                    // selectedGuest?.user_consults.hasOwnProperty(0)
+                    //   ? selectedGuest.user_consults[0]?.mugshotfive.url
+                    //   : bohoart4
+                    bohoart4
+                  }
+                  alt="picture"
+                />{" "}
               </Grid>
-              <Grid item xs={2}>
+              {/* <Grid item xs={2}>
                 {selectedGuest ? (
                   <img
                     src={selectedGuest.user_consults[0].mugshottwo.url}
@@ -584,7 +594,7 @@ function AdminPortal() {
                     }}
                   />
                 ) : null}
-              </Grid>{" "}
+              </Grid>{" "} */}
             </Grid>
           </Box>
         </Modal>
