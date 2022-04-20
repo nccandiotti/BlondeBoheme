@@ -1,25 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[The Blonde Boheme](https://github.com/nccandiotti/BlondeBoheme) is a demo freelance project for a local hair salon [business instagram linked here](https://www.instagram.com/the.blonde.boheme). This is a **full stack** application with a self-generated, restful API and full CRUD functionality. 
 
-Things you may want to cover:
+Tech Stack: 
 
-* Ruby version
+- JavaScript React 
+- Ruby on Rails
+- MUI
+- Active Storage
 
-* System dependencies
 
-* Configuration
+This app has a user view and admin(salon owner) views. 
 
-* Database creation
+Features:
 
-* Database initialization
+Student Inquiries: 
 
-* How to run the test suite
+    - View Salon's classes
+    - Complete Inquiry form (posted to admin dashboard)
+    - Purchase tickets via Stripe payment link
 
-* Services (job queues, cache servers, search engines, etc.)
+Guests:
 
-* Deployment instructions
+    - Signup/sign in to view their account
+    - Complete consultation forms (posted to admin dashboard)
+    - Upload current pictures of their hair and inspo pics via Active Storage (displayed on their page and admin page)
+    - leave a deposit via Stripe payment link
+    - Edit their profile details
 
-* ...
-# tinderclonetutorial
+
+Admin:
+
+    - Login to dashboard
+    - View education inquiries and upcoming appointments
+    - Reschedule Appointments
+    - Delete Appointments
+    - View User uploaded pictures
+    - Edit their profile details
+
