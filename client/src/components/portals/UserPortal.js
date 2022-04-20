@@ -164,6 +164,11 @@ function UserPortal({ appointmentsArray }) {
         alert("This day/time is not available, please select another time.")
     })
   }
+  console.log(currentUser)
+  // function filterUserImages(img) {
+  //   const filter = currentUser.user
+  // }
+
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -797,7 +802,11 @@ function UserPortal({ appointmentsArray }) {
                           borderRadius: "100px",
                           objectFit: "cover",
                         }}
-                        src={picsix}
+                        src={
+                          currentUser.user_images?.hasOwnProperty(0)
+                            ? currentUser.user_images[0].picture.url
+                            : mcm1
+                        }
                         alt="picture"
                       />{" "}
                     </Grid>
@@ -810,7 +819,11 @@ function UserPortal({ appointmentsArray }) {
                           borderRadius: "100px",
                           objectFit: "cover",
                         }}
-                        src={picseven}
+                        src={
+                          currentUser.user_images?.hasOwnProperty(0)
+                            ? currentUser.user_images[0].picturetwo.url
+                            : sun
+                        }
                         alt="picture"
                       />{" "}
                     </Grid>
