@@ -140,25 +140,6 @@ function AdminPortal() {
       headerName: "Travel ?",
       width: 100,
     },
-    // {
-    //   field: "cancel",
-    //   headerName: "Cancel Appointment",
-    //   width: 150,
-    //   renderCell: (params) => (
-    //     <strong>
-    //       {params.value?.getFullYear() ?? ""}
-    //       <Button
-    //         variant="contained"
-    //         color="warning"
-    //         size="small"
-    //         style={{ marginLeft: 16 }}
-    //         onClick={handleRemoveInquiry}
-    //       >
-    //         Cancel
-    //       </Button>
-    //     </strong>
-    //   ),
-    // },
   ]
   const columns = [
     {
@@ -207,414 +188,436 @@ function AdminPortal() {
     updateApptsArrayAfterDelete(selectedApptid)
     fetch(`/appointments/${selectedApptid}`, {
       method: "DELETE",
-    }).then(setShowAlert(true))
+    }).then(setShowAlert(!showAlert))
     handleCloseApptEdit()
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <Button
-        sx={{
-          backgroundColor: "#b5b8a3",
-          borderRadius: "10px",
-          color: "white",
-        }}
-        onClick={handleOpen}
-      >
-        Edit Profile
-      </Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Container component="main" maxWidth="s">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              backgroundColor: "rgba(255, 255, 255)",
-              padding: "40px",
-              borderRadius: "20px",
-            }}
-          >
-            <Typography
-              sx={{ fontFamily: "Sacramento", color: " #807b67" }}
-              variant="h2"
-            >
-              My Profile Details
-            </Typography>
-
-            <FormControl>
-              <Box
-                component="form"
-                noValidate
-                onSubmit={handleSubmit}
-                sx={{ mt: 3 }}
-              >
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      autoComplete="given-name"
-                      name="firstName"
-                      fullWidth
-                      id="firstName"
-                      label="First Name"
-                      autoFocus
-                      value={firstname}
-                      onChange={(e) => setFirstname(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      autoComplete="given-name"
-                      name="firstName"
-                      fullWidth
-                      id="firstName"
-                      label="Last Name"
-                      autoFocus
-                      value={lastname}
-                      onChange={(e) => setLastname(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      name="email"
-                      fullWidth
-                      id="email"
-                      label="Email"
-                      autoFocus
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      name="phone"
-                      fullWidth
-                      id="phone"
-                      label="Phone Number"
-                      autoFocus
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
-                  </Grid>
-                </Grid>
-
-                <Button
-                  type="submit"
-                  onChange={handleSubmit}
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2, backgroundColor: "#b26446 " }}
-                >
-                  Submit
-                </Button>
-                <Button
-                  type="onClick"
-                  onChange={() => handleClose()}
-                  fullWidth
-                  variant="contained"
-                  sx={{ mt: 3, mb: 2, backgroundColor: "#b26446 " }}
-                >
-                  cancel
-                </Button>
-                <Grid container justifyContent="flex-end"></Grid>
-              </Box>
-            </FormControl>
-          </Box>
-        </Container>
-      </Modal>
-
-      {/* ---------------------------------------------------------------- */}
+    <>
       <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
           alignItems: "center",
-          padding: "40px",
-        }}
-      >
-        <Typography variant="h2" sx={{ fontFamily: "Montserrat" }}>
-          Student Education Inquiries
-        </Typography>
-
-        <div
-          style={{
-            backgroundColor: "#edccb9",
-            height: 400,
-            width: "80%",
-            display: "flex",
-          }}
-        >
-          <DataGrid
-            sx={{ borderColor: "#9f6755", boxShadow: 2 }}
-            rows={studentInquiryRows}
-            columns={studentInquiryColumnns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            checkboxSelection
-          />
-        </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {/* ---------------------------------------------------------------- */}
-        <Typography variant="h2" sx={{ fontFamily: "Montserrat" }}>
-          Appointments
-        </Typography>
-
-        <div
-          style={{
-            backgroundColor: "#edccb9",
-            height: 400,
-            width: "80%",
-            display: "flex",
-          }}
-        >
-          <DataGrid
-            sx={{ boxShadow: 2, border: "none" }}
-            // onSelectionModelChange={}
-            onCellClick={handleEditAppointment}
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            checkboxSelection
-          />
-        </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
           justifyContent: "center",
         }}
       >
+        <Button
+          sx={{
+            backgroundColor: "#b5b8a3",
+            borderRadius: "10px",
+            color: "white",
+          }}
+          onClick={handleOpen}
+        >
+          Edit Profile
+        </Button>
+      </div>
+
+      <div style={{ display: "flex", flexDirection: "column" }}>
         <Modal
-          open={openApptEdit}
-          onClose={handleCloseApptEdit}
+          open={open}
+          onClose={handleClose}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box
-            sx={{
-              marginTop: 8,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "rgba(255, 255, 255)",
-              padding: "40px",
-              borderRadius: "20px",
-              width: "50%",
-            }}
-          >
-            <Typography
-              sx={{ fontFamily: "Sacramento" }}
-              id="modal-modal-title"
-              variant="h3"
-            >
-              Modify Appointment
-            </Typography>
-            <br />
-            <br />
-            <Typography
-              id="modal-modal-title"
-              variant="body"
-              sx={{ fontFamily: "Montserrat" }}
-            >{`Guest : ${selectedApptFirstname} ${selectedApptLastname}`}</Typography>
-            <Typography
-              id="modal-modal-title"
-              variant="body"
-              sx={{ fontFamily: "Montserrat" }}
-            >{`Time : ${selectedApptTime} `}</Typography>
-            <Button id="modal-modal-description" sx={{ mt: 2 }}>
-              Change time
-            </Button>
-            {showAlert ? null : (
-              <Alert severity="warning">
-                You are about to delete this appointment - this action{" "}
-                <strong> cannot </strong> be undone, are you sure you want to
-                proceed?
-                <Button onClick={handleHardDelete}>
-                  Yes, Cancel Appointment
-                </Button>
-                <Button onClick={() => setShowAlert(true)}>Back</Button>
-              </Alert>
-            )}
-            <Button onClick={handleFirstDeleteButton}>
-              Cancel This Appointment
-            </Button>
-            <Typography
-              id="modal-modal-title"
-              variant="body"
-              sx={{ fontFamily: "Montserrat" }}
-            >
-              Guest Pictures:{" "}
-            </Typography>
-            <br />
-            <Grid
-              container
-              spacing={2}
+          <Container component="main" maxWidth="s">
+            <CssBaseline />
+            <Box
               sx={{
+                marginTop: 8,
                 display: "flex",
-                justifyContent: "center",
+                flexDirection: "column",
                 alignItems: "center",
+                backgroundColor: "rgba(255, 255, 255)",
+                padding: "40px",
+                borderRadius: "20px",
               }}
             >
-              {selectedGuest ? (
-                <>
-                  <Grid item xs={2}>
-                    <img
-                      style={{
-                        height: "250px",
-                        width: "200px",
+              <Typography
+                sx={{ fontFamily: "Sacramento", color: " #807b67" }}
+                variant="h2"
+              >
+                My Profile Details
+              </Typography>
 
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                      src={
-                        selectedGuest[0]?.user_consults[0]?.mugshotone.url
-                          ? selectedGuest[0]?.user_consults[0].mugshotone.url
-                          : bohoart4
-                      }
-                      alt="picture"
-                    />{" "}
-                  </Grid>
-                  <Grid item xs={2}>
-                    <img
-                      style={{
-                        height: "250px",
-                        width: "200px",
-
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                      src={
-                        selectedGuest[0]?.user_consults[0]?.mugshottwo.url
-                          ? selectedGuest[0]?.user_consults[0].mugshottwo.url
-                          : sun
-                      }
-                      alt="picture"
-                    />{" "}
-                  </Grid>
-                  <Grid item xs={2}>
-                    <img
-                      style={{
-                        height: "250px",
-                        width: "200px",
-
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                      src={
-                        selectedGuest[0]?.user_consults[0]?.mugshotthree.url
-                          ? selectedGuest[0]?.user_consults[0].mugshotthree.url
-                          : bohoart
-                      }
-                      alt="picture"
-                    />{" "}
-                  </Grid>
-                  <Grid item xs={2}>
-                    <img
-                      style={{
-                        height: "250px",
-                        width: "200px",
-
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                      src={
-                        selectedGuest[0]?.user_consults[0]?.mugshotfour.url
-                          ? selectedGuest[0]?.user_consults[0].mugshotfour.url
-                          : flower
-                      }
-                      alt="picture"
-                    />{" "}
-                  </Grid>
-                  <Grid item xs={2}>
-                    <img
-                      style={{
-                        height: "250px",
-                        width: "200px",
-
-                        borderRadius: "100px",
-                        objectFit: "cover",
-                      }}
-                      src={
-                        selectedGuest[0]?.user_consults[0]?.mugshotfive.url
-                          ? selectedGuest[0]?.user_consults[0].mugshotfive.url
-                          : bohoart2
-                      }
-                      alt="picture"
-                    />{" "}
+              <FormControl>
+                <Box
+                  component="form"
+                  noValidate
+                  onSubmit={handleSubmit}
+                  sx={{ mt: 3 }}
+                >
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        autoComplete="given-name"
+                        name="firstName"
+                        fullWidth
+                        id="firstName"
+                        label="First Name"
+                        autoFocus
+                        value={firstname}
+                        onChange={(e) => setFirstname(e.target.value)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        autoComplete="given-name"
+                        name="firstName"
+                        fullWidth
+                        id="firstName"
+                        label="Last Name"
+                        autoFocus
+                        value={lastname}
+                        onChange={(e) => setLastname(e.target.value)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        name="email"
+                        fullWidth
+                        id="email"
+                        label="Email"
+                        autoFocus
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        name="phone"
+                        fullWidth
+                        id="phone"
+                        label="Phone Number"
+                        autoFocus
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                      />
+                    </Grid>
                   </Grid>
 
-                  <Grid
-                    container
-                    spacing={2}
-                    sx={{
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
+                  <Button
+                    type="submit"
+                    onChange={handleSubmit}
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2, backgroundColor: "#b26446 " }}
                   >
-                    <Grid item xs={2}>
-                      <img
-                        style={{
-                          height: "250px",
-                          width: "200px",
-
-                          borderRadius: "100px",
-                          objectFit: "cover",
-                        }}
-                        src={
-                          selectedGuest[0]?.user_images[0]?.picture.url
-                            ? selectedGuest[0]?.user_images[0].picture.url
-                            : bohoart2
-                        }
-                        alt="picture"
-                      />{" "}
-                    </Grid>
-                    <Grid item xs={2}>
-                      <img
-                        style={{
-                          height: "250px",
-                          width: "200px",
-
-                          borderRadius: "100px",
-                          objectFit: "cover",
-                        }}
-                        src={
-                          selectedGuest[0]?.user_images[0]?.picturetwo.url
-                            ? selectedGuest[0]?.user_images[0].picturetwo.url
-                            : bohoart2
-                        }
-                        alt="picture"
-                      />{" "}
-                    </Grid>
-                  </Grid>
-                </>
-              ) : (
-                <p>This guest has not uploaded any pictures yet!</p>
-              )}
-            </Grid>
-          </Box>
+                    Submit
+                  </Button>
+                  <Button
+                    type="onClick"
+                    onChange={() => handleClose()}
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2, backgroundColor: "#b26446 " }}
+                  >
+                    cancel
+                  </Button>
+                  <Grid container justifyContent="flex-end"></Grid>
+                </Box>
+              </FormControl>
+            </Box>
+          </Container>
         </Modal>
+
+        {/* ---------------------------------------------------------------- */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "40px",
+          }}
+        >
+          <Typography variant="h2" sx={{ fontFamily: "Montserrat" }}>
+            Student Education Inquiries
+          </Typography>
+
+          <div
+            style={{
+              borderRadius: "20px",
+              backgroundColor: "#edccb9",
+              height: 400,
+              width: "80%",
+              display: "flex",
+            }}
+          >
+            <DataGrid
+              sx={{
+                borderRadius: "20px",
+                borderColor: "#9f6755",
+                boxShadow: 2,
+                padding: "10px",
+                borderRadius: "20px",
+              }}
+              rows={studentInquiryRows}
+              columns={studentInquiryColumnns}
+              pageSize={5}
+              rowsPerPageOptions={[5]}
+            />
+          </div>
+        </div>
+        <div
+          style={{
+            borderRadius: "20px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          {/* ---------------------------------------------------------------- */}
+          <Typography variant="h2" sx={{ fontFamily: "Montserrat" }}>
+            Appointments
+          </Typography>
+
+          <div
+            style={{
+              borderRadius: "20px",
+              backgroundColor: "#edccb9",
+              height: 400,
+              width: "80%",
+              display: "flex",
+            }}
+          >
+            <DataGrid
+              sx={{
+                boxShadow: 2,
+                border: "none",
+                padding: "10px",
+                borderRadius: "20px",
+              }}
+              // onSelectionModelChange={}
+              onCellClick={handleEditAppointment}
+              rows={rows}
+              columns={columns}
+              pageSize={5}
+              rowsPerPageOptions={[5]}
+            />
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
+          <Modal
+            open={openApptEdit}
+            onClose={handleCloseApptEdit}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box
+              sx={{
+                marginTop: 8,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                backgroundColor: "rgba(255, 255, 255)",
+                padding: "40px",
+                borderRadius: "20px",
+              }}
+            >
+              <Typography
+                sx={{ fontFamily: "Sacramento" }}
+                id="modal-modal-title"
+                variant="h3"
+              >
+                Modify Appointment
+              </Typography>
+              <br />
+              <br />
+              <Typography
+                id="modal-modal-title"
+                variant="body"
+                sx={{ fontFamily: "Montserrat" }}
+              >{`Guest : ${selectedApptFirstname} ${selectedApptLastname}`}</Typography>
+              <Typography
+                id="modal-modal-title"
+                variant="body"
+                sx={{ fontFamily: "Montserrat" }}
+              >{`Time : ${selectedApptTime} `}</Typography>
+              <Button id="modal-modal-description" sx={{ mt: 2 }}>
+                Change time
+              </Button>
+              {showAlert ? null : (
+                <Alert severity="warning">
+                  You are about to delete this appointment - this action{" "}
+                  <strong> cannot </strong> be undone, are you sure you want to
+                  proceed?
+                  <Button onClick={handleHardDelete}>
+                    Yes, Cancel Appointment
+                  </Button>
+                  <Button onClick={() => setShowAlert(true)}>Back</Button>
+                </Alert>
+              )}
+              <Button onClick={handleFirstDeleteButton}>
+                Cancel This Appointment
+              </Button>
+              <Typography
+                id="modal-modal-title"
+                variant="body"
+                sx={{ fontFamily: "Montserrat" }}
+              >
+                Guest Pictures:{" "}
+              </Typography>
+              <br />
+              <Grid
+                container
+                spacing={2}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {selectedGuest ? (
+                  <>
+                    <Grid item xs={2}>
+                      <img
+                        style={{
+                          height: "250px",
+                          width: "200px",
+
+                          borderRadius: "100px",
+                          objectFit: "cover",
+                        }}
+                        src={
+                          selectedGuest[0]?.user_consults[0]?.mugshotone?.url
+                            ? selectedGuest[0]?.user_consults[0].mugshotone.url
+                            : bohoart4
+                        }
+                        alt="picture"
+                      />{" "}
+                    </Grid>
+                    <Grid item xs={2}>
+                      <img
+                        style={{
+                          height: "250px",
+                          width: "200px",
+
+                          borderRadius: "100px",
+                          objectFit: "cover",
+                        }}
+                        src={
+                          selectedGuest[0]?.user_consults[0]?.mugshottwo?.url
+                            ? selectedGuest[0]?.user_consults[0].mugshottwo.url
+                            : sun
+                        }
+                        alt="picture"
+                      />{" "}
+                    </Grid>
+                    <Grid item xs={2}>
+                      <img
+                        style={{
+                          height: "250px",
+                          width: "200px",
+
+                          borderRadius: "100px",
+                          objectFit: "cover",
+                        }}
+                        src={
+                          selectedGuest[0]?.user_consults[0]?.mugshotthree?.url
+                            ? selectedGuest[0]?.user_consults[0].mugshotthree
+                                .url
+                            : bohoart
+                        }
+                        alt="picture"
+                      />{" "}
+                    </Grid>
+                    <Grid item xs={2}>
+                      <img
+                        style={{
+                          height: "250px",
+                          width: "200px",
+
+                          borderRadius: "100px",
+                          objectFit: "cover",
+                        }}
+                        src={
+                          selectedGuest[0]?.user_consults[0]?.mugshotfour?.url
+                            ? selectedGuest[0]?.user_consults[0].mugshotfour.url
+                            : flower
+                        }
+                        alt="picture"
+                      />{" "}
+                    </Grid>
+                    <Grid item xs={2}>
+                      <img
+                        style={{
+                          height: "250px",
+                          width: "200px",
+
+                          borderRadius: "100px",
+                          objectFit: "cover",
+                        }}
+                        src={
+                          selectedGuest[0]?.user_consults[0]?.mugshotfive?.url
+                            ? selectedGuest[0]?.user_consults[0].mugshotfive.url
+                            : bohoart2
+                        }
+                        alt="picture"
+                      />{" "}
+                    </Grid>
+
+                    <Grid
+                      container
+                      spacing={2}
+                      sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <Grid item xs={2}>
+                        <img
+                          style={{
+                            height: "250px",
+                            width: "200px",
+
+                            borderRadius: "100px",
+                            objectFit: "cover",
+                          }}
+                          src={
+                            selectedGuest[0]?.user_images[0]?.picture?.url
+                              ? selectedGuest[0]?.user_images[0].picture.url
+                              : mcm1
+                          }
+                          alt="picture"
+                        />{" "}
+                      </Grid>
+                      <Grid item xs={2}>
+                        <img
+                          style={{
+                            height: "250px",
+                            width: "200px",
+
+                            borderRadius: "100px",
+                            objectFit: "cover",
+                          }}
+                          src={
+                            selectedGuest[0]?.user_images[0]?.picturetwo?.url
+                              ? selectedGuest[0]?.user_images[0].picturetwo.url
+                              : sun
+                          }
+                          alt="picture"
+                        />{" "}
+                      </Grid>
+                    </Grid>
+                  </>
+                ) : (
+                  <p>This guest has not uploaded any pictures yet!</p>
+                )}
+              </Grid>
+            </Box>
+          </Modal>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
