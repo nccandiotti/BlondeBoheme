@@ -1,17 +1,26 @@
 # README
 
-[The Blonde Boheme](https://github.com/nccandiotti/BlondeBoheme) is a demo freelance project for a local hair salon [business instagram linked here](https://www.instagram.com/the.blonde.boheme).
+[The Blonde Boheme](https://github.com/nccandiotti/BlondeBoheme) is a demo freelance project for a local hair salon [business instagram linked here](https://www.instagram.com/the.blonde.boheme). This is a **full stack** application. 
 
-Tech Stack: JavaScript React, Ruby on Rails, MUI, Active Storage
-This app has a user view and admin(salon owner) views. Features
+Tech Stack: 
 
-Student Inquiries 
+- JavaScript React 
+- Ruby on Rails
+- MUI
+- Active Storage
+
+
+This app has a user view and admin(salon owner) views. 
+
+Features:
+
+Student Inquiries: 
 
     - View Salon's classes
     - Complete Inquiry form (posted to admin dashboard)
     - Purchase tickets via Stripe payment link
 
-Guests
+Guests:
 
     - Signup/sign in to view their account
     - Complete consultation forms (posted to admin dashboard)
@@ -19,7 +28,7 @@ Guests
     - leave a deposit via Stripe payment link
 
 
-Admin
+Admin:
 
     - Login to dashboard
     - View education inquiries and upcoming appointments
