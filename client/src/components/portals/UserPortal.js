@@ -48,7 +48,7 @@ function UserPortal({ appointmentsArray }) {
   const [formOpen, setFormOpen] = useState(false)
   const [apptOpen, setApptOpen] = useState(false)
   const [consultOpen, setConsultOpen] = useState(false)
-  const [showUploads, setShowUploads] = useState(true)
+  const [showUploads, setShowUploads] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const handleFormOpen = () => setFormOpen(true)

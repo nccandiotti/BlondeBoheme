@@ -32,17 +32,32 @@ function NavBar() {
         Home
       </Link>
       <br />
-      <Link
-        style={{
-          color: "#b5b8a3",
-          fontSize: "20px",
-          textDecoration: "none",
-          color: "black",
-        }}
-        to={`/login`}
-      >
-        Login
-      </Link>
+      {currentUser ? (
+        <Link
+          style={{
+            color: "#b5b8a3",
+            fontSize: "20px",
+            textDecoration: "none",
+            color: "black",
+          }}
+          to={`/login`}
+        >
+          My Account
+        </Link>
+      ) : (
+        <Link
+          style={{
+            color: "#b5b8a3",
+            fontSize: "20px",
+            textDecoration: "none",
+            color: "black",
+          }}
+          to={`/login`}
+        >
+          Login
+        </Link>
+      )}
+
       <br />
       {currentUser ? null : (
         <Link
