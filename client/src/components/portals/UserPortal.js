@@ -383,7 +383,7 @@ function UserPortal({ appointmentsArray }) {
                         Inspation Pics uploaded, thank you!
                       </Button>
                     ) : (
-                      <UploadPicsForm />
+                      <UploadPicsForm handleConsultClose={handleConsultClose} />
                     )}
                   </div>
                 ) : null}
@@ -667,7 +667,16 @@ function UserPortal({ appointmentsArray }) {
                       alt="picture"
                     />{" "}
                   </Grid>{" "}
-                  <Grid container spacing={1}>
+                  <Grid
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-evenly",
+                      alignItems: "center",
+                    }}
+                    container
+                    spacing={1}
+                  >
                     <Grid item xs={12}>
                       <Typography
                         sx={{ fontFamily: "Sacramento" }}

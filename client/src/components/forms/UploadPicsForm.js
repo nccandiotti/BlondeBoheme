@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 import { UserContext } from "../../UserContext"
 
-function UploadPicsForm() {
+function UploadPicsForm({ handleConsultClose }) {
   const { currentUser } = useContext(UserContext)
   const [picture, setPicture] = useState(null)
   const [pictureTwo, setPictureTwo] = useState(null)
@@ -34,6 +34,7 @@ function UploadPicsForm() {
       method: "POST",
       body: formData,
     })
+    handleConsultClose()
   }
 
   return (
