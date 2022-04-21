@@ -40,7 +40,7 @@ function StudentLessonForm() {
         technique: technique,
         lessonType: lessonType,
         salon_id: 2,
-        user_id: currentUser.id,
+        user_id: 28,
       }),
     }).then((r) => {
       if (r.ok) {
@@ -49,6 +49,9 @@ function StudentLessonForm() {
         setLastName("")
         setEmail("")
         setPhone("")
+        setTravel(false)
+        setLessonType(false)
+        setTechnique(false)
       } else alert("Error")
     })
   }
@@ -194,7 +197,7 @@ function StudentLessonForm() {
                   value="private"
                   onChange={handleType}
                   control={<Radio />}
-                  label="I'd like a public lesson (**only available locally)"
+                  label="I'd like a private lesson (**only available locally)"
                 />
                 <FormControlLabel
                   value="group"

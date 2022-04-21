@@ -20,6 +20,7 @@ function NewGuestConsultation({
   setPicthree,
   setPicfour,
   setPicfive,
+  handleConsultClose,
 }) {
   const { currentUser } = useContext(UserContext)
 
@@ -76,6 +77,7 @@ function NewGuestConsultation({
     setPicthree(mugshotthree)
     setPicfour(mugshotfour)
     setPicfive(mugshotfive)
+    handleConsultClose()
   }
 
   function handleGrayCvg(e) {

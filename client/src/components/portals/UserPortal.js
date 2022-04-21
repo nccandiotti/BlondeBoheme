@@ -364,6 +364,7 @@ function UserPortal({ appointmentsArray }) {
                           setPicfour={setPicfour}
                           setPicfive={setPicfive}
                           setPicsix={setPicsix}
+                          handleConsultClose={handleConsultClose}
                         />
                       </Modal>{" "}
                     </div>
