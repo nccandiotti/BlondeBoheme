@@ -1,6 +1,7 @@
 # README
 
 [The Blonde Boheme](https://github.com/nccandiotti/BlondeBoheme) is a demo freelance project for a local hair salon [business instagram linked here](https://www.instagram.com/the.blonde.boheme). This is a **full stack** application with a self-generated, restful API and full CRUD functionality. 
+[demo video](https://www.loom.com/share/e40b922fc7fa40bcbefa8d4c7c409f3d)
 
 Tech Stack: 
 
