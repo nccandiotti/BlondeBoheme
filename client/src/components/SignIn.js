@@ -1,5 +1,4 @@
 import { useState, useContext } from "react"
-import { useNavigate } from "react-router-dom"
 
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
@@ -16,22 +15,12 @@ import Typography from "@mui/material/Typography"
 import { UserContext } from "../UserContext"
 import UserHome from "./portals/UserHome"
 import hair from "../assets/hair.png"
-import { createTheme, ThemeProvider, styled } from "@mui/material/styles"
-
-const theme = createTheme({
-  button: {
-    "&:hover": {
-      background: "#f00",
-    },
-  },
-})
 
 export default function SignIn() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const { currentUser } = useContext(UserContext)
   const { setCurrentUser } = useContext(UserContext)
-  const navigate = useNavigate()
 
   function handleLogin(e) {
     e.preventDefault()
@@ -61,22 +50,7 @@ export default function SignIn() {
           <Grid container component="main">
             <CssBaseline />
 
-            <Grid
-              item
-              xs={false}
-              sm={4}
-              md={7}
-              // sx={{
-              //   backgroundImage: { hair },
-              //   backgroundRepeat: "no-repeat",
-              //   backgroundColor: (t) =>
-              //     t.palette.mode === "light"
-              //       ? t.palette.grey[50]
-              //       : t.palette.grey[900],
-              //   backgroundSize: "cover",
-              //   backgroundPosition: "center",
-              // }}
-            >
+            <Grid item xs={false} sm={4} md={7}>
               <img
                 src={hair}
                 style={{
@@ -107,7 +81,6 @@ export default function SignIn() {
               >
                 <Typography
                   sx={{ fontFamily: "Sacramento", color: "#2c3d26" }}
-                  // component="h1"
                   variant="h1"
                 >
                   Sign in
@@ -146,16 +119,16 @@ export default function SignIn() {
                     control={<Checkbox value="remember" color="primary" />}
                     label="Remember me"
                   />
-                  <ThemeProvider theme={theme}>
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      sx={{ mt: 3, mb: 2, backgroundColor: "#cb8568" }}
-                    >
-                      Sign In
-                    </Button>
-                  </ThemeProvider>
+
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2, backgroundColor: "#cb8568" }}
+                  >
+                    Sign In
+                  </Button>
+
                   <Grid container>
                     <Grid item>
                       <Link
