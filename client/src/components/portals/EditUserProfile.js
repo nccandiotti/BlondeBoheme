@@ -10,11 +10,38 @@ import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
 
-function EditUserProfile() {
+function EditUserProfile({
+  firstname,
+  setFirstname,
+  lastname,
+  setLastname,
+  email,
+  setEmail,
+  phone,
+  setPhone,
+  handleClose,
+}) {
+  const { currentUser } = useContext(UserContext)
+  function handleSubmit(e) {
+    e.preventDefault()
+    fetch(`/users/${currentUser.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        phone: phone,
+      }),
+    }).then((r) => r.json)
+    setPhone(phone)
+    setEmail(email)
+    setFirstname(firstname)
+    setLastname(lastname)
+    handleClose()
+  }
   return (
     <>
-      <h1>EditUserProfile</h1>
-
       <Container component="main" maxWidth="s">
         <CssBaseline />
         <Box

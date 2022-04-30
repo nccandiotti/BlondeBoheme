@@ -19,6 +19,7 @@ import bohoart from "../../assets/bohoart4.png"
 import bohoart2 from "../../assets/bohoart2.png"
 import mcm1 from "../../assets/mcm1.png"
 import flower from "../../assets/flower1.png"
+import EditUserProfile from "./EditUserProfile"
 
 function AdminPortal() {
   const { currentUser } = useContext(UserContext)
@@ -100,20 +101,6 @@ function AdminPortal() {
     })
   }
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    fetch(`/users/${currentUser.id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        firstname: firstname,
-        lastname: lastname,
-        email: email,
-        phone: phone,
-      }),
-    }).then((r) => r.json)
-    handleClose()
-  }
   function handleEditAppointment(e) {
     handleOpenApptEdit()
     setSelectedApptFirstname(e.row.firstName)
@@ -247,6 +234,17 @@ function AdminPortal() {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
+          <EditUserProfile
+            firstname={firstname}
+            setFirstname={setFirstname}
+            lastname={lastname}
+            setLastname={setLastname}
+            phone={phone}
+            setPhone={setPhone}
+            email={email}
+            setEmail={setEmail}
+            handleClose={handleClose}
+          />
           {/* <Container component="main" maxWidth="s">
             <CssBaseline />
             <Box
