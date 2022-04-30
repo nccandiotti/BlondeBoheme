@@ -25,11 +25,6 @@ export default function SignUp() {
   const [email, setEmail] = useState("")
   const admin = false
 
-  const formData = {
-    admin: false,
-    firstname: first_name,
-    lastname: last_name,
-  }
   function handleSubmit(e) {
     e.preventDefault()
     fetch("/users", {
@@ -47,9 +42,6 @@ export default function SignUp() {
     }).then((r) => {
       if (r.ok) {
         r.json().then((currentUser) => setCurrentUser(currentUser))
-        // setUsername = ""
-        // setPassword = ""
-        // setFirstName = ""
         navigate("/login")
       }
     })

@@ -1,9 +1,8 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import StudentLessonForm from "./forms/StudentLessonForm"
 import Grid from "@mui/material/Grid"
 import Button from "@mui/material/Button"
 import Typography from "@mui/material/Typography"
-
 import face from "../assets/face.png"
 
 function Education() {
@@ -13,8 +12,6 @@ function Education() {
   function handleClick(e) {
     toggleClicked()
   }
-
-  const form = useRef()
 
   return (
     <div>

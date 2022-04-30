@@ -92,7 +92,6 @@ function UploadPicsForm({ handleConsultClose }) {
                         onChange={(e) => setPicture(e.target.files[0])}
                       />
                       <input
-                        //   enctype="multipart/form-data"
                         required
                         type="file"
                         accept="image/*"
