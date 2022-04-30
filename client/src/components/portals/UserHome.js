@@ -76,11 +76,10 @@ function UserHome() {
               </p>
               <p
                 style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}
-              >{`phone: ${currentUser ? currentUser.phone : ""}`}</p>{" "}
+              >{`phone: ${currentUser.phone}`}</p>{" "}
             </div>
           </Grid>
         </div>
-        {/* bottom of grid container */}
       </Grid>
 
       {currentUser.admin ? (
