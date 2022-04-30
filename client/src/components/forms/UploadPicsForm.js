@@ -106,7 +106,7 @@ function UploadPicsForm({ handleConsultClose }) {
                     value="Upload"
                     fullWidth
                     variant="contained"
-                    sx={{ mt: 3, mb: 2, backgroundColor: " #cdadaf " }}
+                    sx={{ mt: 3, mb: 2, backgroundColor: " #ebc696  " }}
                   >
                     Submit
                   </Button>

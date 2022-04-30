@@ -37,7 +37,7 @@ function Calendar({ handleApptPatch, time, setTime, selectedApptTime }) {
             borderRadius: "20px",
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography sx={{ fontFamily: "Sacramento" }} variant="h1">
             Schedule
           </Typography>
 

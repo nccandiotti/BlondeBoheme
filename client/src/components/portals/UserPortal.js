@@ -9,7 +9,6 @@ import Modal from "@mui/material/Modal"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Container from "@mui/material/Container"
-import FormControl from "@mui/material/FormControl"
 import Grid from "@mui/material/Grid"
 import { format } from "date-fns"
 import Stepper from "@mui/material/Stepper"
@@ -456,73 +455,18 @@ function UserPortal() {
                               borderRadius: "20px",
                             }}
                           >
-                            {/* <Typography component="h1" variant="h5">
-                              Schedule
-                            </Typography> */}
-
-                            {/* <FormControl> */}
-                            {/* <Box
-                                component="form"
-                                noValidate
-                                onSubmit={handleBookAppointment}
-                                sx={{ mt: 3 }}
-                              > */}
                             <Grid container spacing={2}>
-                              <Grid item xs={6} sm={6}>
+                              <Grid item xs={12}>
                                 <Calendar
                                   key={currentUser.id}
                                   handleApptPatch={handleBookAppointment}
                                   time={time}
                                   setTime={setTime}
                                 />
-                                {/* <DateTimePicker
-                                      sx={{
-                                        button: {
-                                          color: "white",
-                                        },
-                                      }}
-                                      minutesStep="0"
-                                      shouldDisableDate={filterWeekends}
-                                      minTime={new Date(0, 0, 0, 10)}
-                                      maxTime={new Date(0, 0, 0, 14)}
-                                      maxDate={new Date("2022-12-31")}
-                                      minDate={new Date()}
-                                      renderInput={(props) => (
-                                        <TextField {...props} />
-                                      )}
-                                      value={dateValue}
-                                      onChange={(newDateValue) => {
-                                        datePick(newDateValue)
-                                      }}
-                                    /> */}
                               </Grid>
-
-                              {/* <Grid item xs={6} sm={6}>
-                                    <Button>10:00</Button>
-                                    <Button>11:00</Button>{" "}
-                                    <Button>12:00</Button> <Button>1:00</Button>{" "}
-                                    <Button>2:00</Button> <Button>3:00</Button>{" "}
-                                    <Button>4:00</Button>{" "}
-                                  </Grid> */}
                             </Grid>
 
-                            {/* <Button
-                                  type="submit"
-                                  onChange={handleBookAppointment}
-                                  fullWidth
-                                  variant="contained"
-                                  sx={{
-                                    mt: 3,
-                                    mb: 2,
-                                    backgroundColor: "#b26446",
-                                  }}
-                                >
-                                  Submit
-                                </Button> */}
-
                             <Grid container justifyContent="flex-end"></Grid>
-                            {/* </Box> */}
-                            {/* </FormControl> */}
                           </Box>
                         </Container>
                       </Modal>{" "}
