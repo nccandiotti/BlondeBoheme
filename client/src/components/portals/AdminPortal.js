@@ -21,17 +21,12 @@ import mcm1 from "../../assets/mcm1.png"
 import flower from "../../assets/flower1.png"
 import EditUserProfile from "./EditUserProfile"
 
-function AdminPortal({
-  firstname,
-  setFirstname,
-  lastname,
-  setLastname,
-  email,
-  setEmail,
-  phone,
-  setPhone,
-}) {
+function AdminPortal() {
   const { currentUser } = useContext(UserContext)
+  const [firstname, setFirstname] = useState(currentUser.firstname)
+  const [lastname, setLastname] = useState(currentUser.lastname)
+  const [email, setEmail] = useState(currentUser.email)
+  const [phone, setPhone] = useState(currentUser.phone)
   const [usersArray, setUsersArray] = useState([])
 
   const [showAlert, setShowAlert] = useState(true)
@@ -56,20 +51,21 @@ function AdminPortal({
     setOpenApptEdit(true)
     setShowAlert(true)
   }
-
+  // fetch Salon
   useEffect(() => {
     fetch("./salons")
       .then((r) => r.json())
 
       .then((data) => setSalon(data[0]))
   }, [])
+  // fetch appointments array
   useEffect(() => {
     fetch("./appointments")
       .then((r) => r.json())
 
       .then((data) => setAppointments(data))
   }, [])
-
+  // fetch users array
   useEffect(() => {
     fetch("./users")
       .then((r) => r.json())
@@ -87,6 +83,7 @@ function AdminPortal({
   function filterWeekends(date) {
     return date.getDay() === 0
   }
+  // update appointment
   function handleApptPatch(e) {
     e.preventDefault()
     fetch(`/appointments/${selectedApptid}`, {
@@ -195,7 +192,7 @@ function AdminPortal({
       ),
     },
   ]
-
+  // delete appointment
   function handleFirstDeleteButton(e) {
     toggleAlert()
   }

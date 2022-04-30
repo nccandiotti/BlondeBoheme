@@ -31,17 +31,12 @@ const steps = [
   "Select Date",
 ]
 
-function UserPortal({
-  firstname,
-  setFirstname,
-  lastname,
-  setLastname,
-  email,
-  setEmail,
-  phone,
-  setPhone,
-}) {
+function UserPortal() {
   const { currentUser } = useContext(UserContext)
+  const [firstname, setFirstname] = useState(currentUser.firstname)
+  const [lastname, setLastname] = useState(currentUser.lastname)
+  const [email, setEmail] = useState(currentUser.email)
+  const [phone, setPhone] = useState(currentUser.phone)
   const [dateValue, setDateValue] = useState("")
   const [time, setTime] = useState("")
   const [activeStep, setActiveStep] = useState(0)

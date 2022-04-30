@@ -38,11 +38,13 @@ function EditUserProfile({
     currentUser.firstname = firstname
     currentUser.lastname = lastname
     currentUser.email = email
-    currentUser.phone = phone
+    handleUpdateState()
 
     handleClose()
   }
-
+  function handleUpdateState() {
+    setPhone(phone)
+  }
   return (
     <>
       <Container component="main" maxWidth="s">
