@@ -2,16 +2,11 @@ import React, { useState, useContext, useEffect } from "react"
 import { UserContext } from "../../UserContext"
 import { format } from "date-fns"
 import Button from "@mui/material/Button"
-import CssBaseline from "@mui/material/CssBaseline"
-import TextField from "@mui/material/TextField"
-import FormControl from "@mui/material/FormControl"
 import Grid from "@mui/material/Grid"
-import DateTimePicker from "@mui/lab/DateTimePicker"
 import Box from "@mui/material/Box"
 import Modal from "@mui/material/Modal"
 import Alert from "@mui/material/Alert"
 import Typography from "@mui/material/Typography"
-import Container from "@mui/material/Container"
 import { DataGrid } from "@mui/x-data-grid"
 import bohoart4 from "../../assets/pink.jpg"
 import sun from "../../assets/sun.png"
@@ -20,6 +15,7 @@ import bohoart2 from "../../assets/bohoart2.png"
 import mcm1 from "../../assets/mcm1.png"
 import flower from "../../assets/flower1.png"
 import EditUserProfile from "./EditUserProfile"
+import Calendar from "./Calendar"
 
 function AdminPortal() {
   const { currentUser } = useContext(UserContext)
@@ -75,14 +71,6 @@ function AdminPortal() {
   const handleCloseApptEdit = () => setOpenApptEdit(false)
   const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
 
-  function datePick(newDateValue) {
-    setDateValue(newDateValue)
-    const formattedDate = format(newDateValue, "EEEE, MMM d yyyy 'at' h:mmaaa")
-    setTime(formattedDate.toString())
-  }
-  function filterWeekends(date) {
-    return date.getDay() === 0
-  }
   // update appointment
   function handleApptPatch(e) {
     e.preventDefault()
@@ -384,7 +372,14 @@ function AdminPortal() {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
               >
-                <Container component="main" maxWidth="s">
+                <Calendar
+                  key={currentUser.id}
+                  handleApptPatch={handleApptPatch}
+                  time={time}
+                  setTime={setTime}
+                  selectedApptTime={selectedApptTime}
+                />
+                {/* <Container component="main" maxWidth="s">
                   <CssBaseline />
                   <Box
                     sx={{
@@ -457,7 +452,7 @@ function AdminPortal() {
                       </Box>
                     </FormControl>
                   </Box>
-                </Container>
+                </Container> */}
               </Modal>{" "}
               {showAlert ? null : (
                 <Alert severity="warning">
