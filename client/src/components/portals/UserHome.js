@@ -9,6 +9,11 @@ function UserHome() {
   const { currentUser } = useContext(UserContext)
   const { setCurrentUser } = useContext(UserContext)
   const [appointmentsArray, setAppointmentsArray] = useState([])
+  const [firstname, setFirstname] = useState(currentUser.firstname)
+  const [lastname, setLastname] = useState(currentUser.lastname)
+  const [email, setEmail] = useState(currentUser.email)
+  const [phone, setPhone] = useState(currentUser.phone)
+  const [username, setUsername] = useState(currentUser.username)
 
   useEffect(() => {
     fetch(`/me`)
@@ -20,7 +25,7 @@ function UserHome() {
       .then((r) => r.json())
       .then(setAppointmentsArray)
   }, [])
-
+  console.log(username)
   return (
     <>
       <Grid
@@ -64,19 +69,19 @@ function UserHome() {
             >
               <p
                 style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}
-              >{`firstname: ${currentUser.username}`}</p>
+              >{`firstname: ${firstname}`}</p>
               <p style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}>
-                {`lastname: ${currentUser.lastname}`}{" "}
+                {`lastname: ${lastname}`}{" "}
               </p>
               <p style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}>
                 {`username: ${currentUser.username}`}{" "}
               </p>
               <p style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}>
-                {`email: ${currentUser.email}`}{" "}
+                {`email: ${email}`}{" "}
               </p>
               <p
                 style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}
-              >{`phone: ${currentUser.phone}`}</p>{" "}
+              >{`phone: ${phone}`}</p>{" "}
             </div>
           </Grid>
         </div>
@@ -84,9 +89,29 @@ function UserHome() {
       </Grid>
 
       {currentUser.admin ? (
-        <AdminPortal appointmentsArray={appointmentsArray} />
+        <AdminPortal
+          firstname={firstname}
+          setFirstname={setFirstname}
+          lastname={lastname}
+          setLastname={setLastname}
+          phone={phone}
+          email={email}
+          setPhone={setPhone}
+          setEmail={setEmail}
+          appointmentsArray={appointmentsArray}
+        />
       ) : (
-        <UserPortal appointmentsArray={appointmentsArray} />
+        <UserPortal
+          firstname={firstname}
+          setFirstname={setFirstname}
+          lastname={lastname}
+          setLastname={setLastname}
+          phone={phone}
+          email={email}
+          setPhone={setPhone}
+          setEmail={setEmail}
+          appointmentsArray={appointmentsArray}
+        />
       )}
     </>
   )

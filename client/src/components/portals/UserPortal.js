@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react"
-import { useParams } from "react-router-dom"
 import Button from "@mui/material/Button"
 import { UserContext } from "../../UserContext"
-
+import EditUserProfile from "./EditUserProfile"
 import UploadPicsForm from "../forms/UploadPicsForm"
 import DateTimePicker from "@mui/lab/DateTimePicker"
 import TextField from "@mui/material/TextField"
@@ -32,7 +31,17 @@ const steps = [
   "Select Date",
 ]
 
-function UserPortal({ appointmentsArray }) {
+function UserPortal({
+  appointmentsArray,
+  firstname,
+  setFirstname,
+  lastname,
+  setLastname,
+  email,
+  setEmail,
+  phone,
+  setPhone,
+}) {
   const { currentUser } = useContext(UserContext)
   const [dateValue, setDateValue] = useState("")
   const [time, setTime] = useState("")
@@ -187,7 +196,19 @@ function UserPortal({ appointmentsArray }) {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Container component="main" maxWidth="s">
+          <EditUserProfile
+            key={currentUser.username}
+            firstname={firstname}
+            setFirstname={setFirstname}
+            lastname={lastname}
+            setLastname={setLastname}
+            phone={phone}
+            setPhone={setPhone}
+            email={email}
+            setEmail={setEmail}
+            handleClose={handleClose}
+          />
+          {/* <Container component="main" maxWidth="s">
             <CssBaseline />
             <Box
               sx={{
@@ -286,7 +307,7 @@ function UserPortal({ appointmentsArray }) {
                 </Box>
               </FormControl>
             </Box>
-          </Container>
+          </Container> */}
         </Modal>
       </div>
       <div

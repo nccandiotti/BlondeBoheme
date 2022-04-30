@@ -15,13 +15,14 @@ function EditUserProfile({
   setFirstname,
   lastname,
   setLastname,
-  email,
-  setEmail,
   phone,
   setPhone,
+  email,
+  setEmail,
   handleClose,
 }) {
   const { currentUser } = useContext(UserContext)
+
   function handleSubmit(e) {
     e.preventDefault()
     fetch(`/users/${currentUser.id}`, {
@@ -33,13 +34,11 @@ function EditUserProfile({
         email: email,
         phone: phone,
       }),
-    }).then((r) => r.json)
-    setPhone(phone)
-    setEmail(email)
-    setFirstname(firstname)
-    setLastname(lastname)
+    }).then((r) => r.json())
+
     handleClose()
   }
+
   return (
     <>
       <Container component="main" maxWidth="s">
