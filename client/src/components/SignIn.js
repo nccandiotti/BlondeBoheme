@@ -1,4 +1,5 @@
 import { useState, useContext } from "react"
+import { UserContext } from "../UserContext"
 
 import Button from "@mui/material/Button"
 import CssBaseline from "@mui/material/CssBaseline"
@@ -9,10 +10,7 @@ import Link from "@mui/material/Link"
 import Paper from "@mui/material/Paper"
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
-
 import Typography from "@mui/material/Typography"
-
-import { UserContext } from "../UserContext"
 import UserHome from "./portals/UserHome"
 import hair from "../assets/hair.png"
 
@@ -36,7 +34,7 @@ export default function SignIn() {
     }).then((response) => {
       if (response.ok) {
         response.json().then((currentUser) => setCurrentUser(currentUser))
-      } else alert("No dice")
+      } else alert("Invalid login. Please try again.")
     })
   }
 

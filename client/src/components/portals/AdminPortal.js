@@ -247,7 +247,7 @@ function AdminPortal() {
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Container component="main" maxWidth="s">
+          {/* <Container component="main" maxWidth="s">
             <CssBaseline />
             <Box
               sx={{
@@ -345,7 +345,7 @@ function AdminPortal() {
                 </Box>
               </FormControl>
             </Box>
-          </Container>
+          </Container> */}
         </Modal>
 
         {/* ---------------------------------------------------------------- */}
