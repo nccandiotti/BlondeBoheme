@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react"
+import Calendar from "./Calendar"
 import Button from "@mui/material/Button"
 import { UserContext } from "../../UserContext"
 import EditUserProfile from "./EditUserProfile"
 import UploadPicsForm from "../forms/UploadPicsForm"
-import DateTimePicker from "@mui/lab/DateTimePicker"
-import TextField from "@mui/material/TextField"
 import CssBaseline from "@mui/material/CssBaseline"
 import Modal from "@mui/material/Modal"
 import Box from "@mui/material/Box"
@@ -457,20 +456,26 @@ function UserPortal() {
                               borderRadius: "20px",
                             }}
                           >
-                            <Typography component="h1" variant="h5">
+                            {/* <Typography component="h1" variant="h5">
                               Schedule
-                            </Typography>
+                            </Typography> */}
 
-                            <FormControl>
-                              <Box
+                            {/* <FormControl> */}
+                            {/* <Box
                                 component="form"
                                 noValidate
                                 onSubmit={handleBookAppointment}
                                 sx={{ mt: 3 }}
-                              >
-                                <Grid container spacing={2}>
-                                  <Grid item xs={6} sm={6}>
-                                    <DateTimePicker
+                              > */}
+                            <Grid container spacing={2}>
+                              <Grid item xs={6} sm={6}>
+                                <Calendar
+                                  key={currentUser.id}
+                                  handleApptPatch={handleBookAppointment}
+                                  time={time}
+                                  setTime={setTime}
+                                />
+                                {/* <DateTimePicker
                                       sx={{
                                         button: {
                                           color: "white",
@@ -489,19 +494,19 @@ function UserPortal() {
                                       onChange={(newDateValue) => {
                                         datePick(newDateValue)
                                       }}
-                                    />
-                                  </Grid>
+                                    /> */}
+                              </Grid>
 
-                                  <Grid item xs={6} sm={6}>
+                              {/* <Grid item xs={6} sm={6}>
                                     <Button>10:00</Button>
                                     <Button>11:00</Button>{" "}
                                     <Button>12:00</Button> <Button>1:00</Button>{" "}
                                     <Button>2:00</Button> <Button>3:00</Button>{" "}
                                     <Button>4:00</Button>{" "}
-                                  </Grid>
-                                </Grid>
+                                  </Grid> */}
+                            </Grid>
 
-                                <Button
+                            {/* <Button
                                   type="submit"
                                   onChange={handleBookAppointment}
                                   fullWidth
@@ -513,14 +518,11 @@ function UserPortal() {
                                   }}
                                 >
                                   Submit
-                                </Button>
+                                </Button> */}
 
-                                <Grid
-                                  container
-                                  justifyContent="flex-end"
-                                ></Grid>
-                              </Box>
-                            </FormControl>
+                            <Grid container justifyContent="flex-end"></Grid>
+                            {/* </Box> */}
+                            {/* </FormControl> */}
                           </Box>
                         </Container>
                       </Modal>{" "}

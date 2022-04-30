@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react"
 import { UserContext } from "../../UserContext"
-import { format } from "date-fns"
 import Button from "@mui/material/Button"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
@@ -379,80 +378,6 @@ function AdminPortal() {
                   setTime={setTime}
                   selectedApptTime={selectedApptTime}
                 />
-                {/* <Container component="main" maxWidth="s">
-                  <CssBaseline />
-                  <Box
-                    sx={{
-                      marginTop: 8,
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      backgroundColor: "rgba(255, 255, 255)",
-                      padding: "40px",
-                      borderRadius: "20px",
-                    }}
-                  >
-                    <Typography component="h1" variant="h5">
-                      Schedule
-                    </Typography>
-
-                    <FormControl>
-                      <Box
-                        component="form"
-                        noValidate
-                        onSubmit={handleApptPatch}
-                        sx={{ mt: 3 }}
-                      >
-                        <Grid container spacing={2}>
-                          <Grid item xs={6} sm={6}>
-                            <DateTimePicker
-                              sx={{
-                                button: {
-                                  color: "white",
-                                },
-                              }}
-                              minutesStep="0"
-                              shouldDisableDate={filterWeekends}
-                              minTime={new Date(0, 0, 0, 10)}
-                              maxTime={new Date(0, 0, 0, 14)}
-                              maxDate={new Date("2022-12-31")}
-                              minDate={new Date()}
-                              renderInput={(props) => <TextField {...props} />}
-                              value={dateValue}
-                              placeholder={selectedApptTime}
-                              onChange={(newDateValue) => {
-                                datePick(newDateValue)
-                              }}
-                            />
-                          </Grid>
-
-                          <Grid item xs={6} sm={6}>
-                            <Button>10:00</Button>
-                            <Button>11:00</Button> <Button>12:00</Button>{" "}
-                            <Button>1:00</Button> <Button>2:00</Button>{" "}
-                            <Button>3:00</Button> <Button>4:00</Button>{" "}
-                          </Grid>
-                        </Grid>
-
-                        <Button
-                          type="submit"
-                          onChange={handleApptPatch}
-                          fullWidth
-                          variant="contained"
-                          sx={{
-                            mt: 3,
-                            mb: 2,
-                            backgroundColor: "#b26446",
-                          }}
-                        >
-                          Submit
-                        </Button>
-
-                        <Grid container justifyContent="flex-end"></Grid>
-                      </Box>
-                    </FormControl>
-                  </Box>
-                </Container> */}
               </Modal>{" "}
               {showAlert ? null : (
                 <Alert severity="warning">
