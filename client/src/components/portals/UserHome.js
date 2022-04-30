@@ -13,7 +13,6 @@ function UserHome() {
   const [lastname, setLastname] = useState(currentUser.lastname)
   const [email, setEmail] = useState(currentUser.email)
   const [phone, setPhone] = useState(currentUser.phone)
-  const [username, setUsername] = useState(currentUser.username)
 
   useEffect(() => {
     fetch(`/me`)
@@ -25,7 +24,7 @@ function UserHome() {
       .then((r) => r.json())
       .then(setAppointmentsArray)
   }, [])
-  console.log(username)
+
   return (
     <>
       <Grid
@@ -69,7 +68,7 @@ function UserHome() {
             >
               <p
                 style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}
-              >{`firstname: ${firstname}`}</p>
+              >{`firstname: ${currentUser.firstname}`}</p>
               <p style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}>
                 {`lastname: ${lastname}`}{" "}
               </p>
@@ -77,11 +76,11 @@ function UserHome() {
                 {`username: ${currentUser.username}`}{" "}
               </p>
               <p style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}>
-                {`email: ${email}`}{" "}
+                {`email: ${currentUser.email}`}{" "}
               </p>
               <p
                 style={{ fontFamily: "MontSerrat", fontSize: "1.5vw" }}
-              >{`phone: ${phone}`}</p>{" "}
+              >{`phone: ${currentUser.phone}`}</p>{" "}
             </div>
           </Grid>
         </div>

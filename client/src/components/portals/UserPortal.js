@@ -32,7 +32,6 @@ const steps = [
 ]
 
 function UserPortal({
-  appointmentsArray,
   firstname,
   setFirstname,
   lastname,
@@ -134,6 +133,7 @@ function UserPortal({
         phone: userPhone,
       }),
     }).then((r) => r.json)
+
     handleClose()
   }
 

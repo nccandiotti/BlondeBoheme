@@ -21,7 +21,7 @@ function EditUserProfile({
   setEmail,
   handleClose,
 }) {
-  const { currentUser } = useContext(UserContext)
+  let { currentUser } = useContext(UserContext)
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -35,6 +35,10 @@ function EditUserProfile({
         phone: phone,
       }),
     }).then((r) => r.json())
+    currentUser.firstname = firstname
+    currentUser.lastname = lastname
+    currentUser.email = email
+    currentUser.phone = phone
 
     handleClose()
   }
