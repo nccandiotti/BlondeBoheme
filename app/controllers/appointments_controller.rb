@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-    # skip_before_action :authorize
+
     def index
         render json: Appointment.all, status: :ok
     end

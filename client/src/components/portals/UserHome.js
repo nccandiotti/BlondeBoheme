@@ -83,29 +83,9 @@ function UserHome() {
       </Grid>
 
       {currentUser.admin ? (
-        <AdminPortal
-          // firstname={firstname}
-          // setFirstname={setFirstname}
-          // lastname={lastname}
-          // setLastname={setLastname}
-          // phone={phone}
-          // email={email}
-          // setPhone={setPhone}
-          // setEmail={setEmail}
-          appointmentsArray={appointmentsArray}
-        />
+        <AdminPortal appointmentsArray={appointmentsArray} />
       ) : (
-        <UserPortal
-          // firstname={firstname}
-          // setFirstname={setFirstname}
-          // lastname={lastname}
-          // setLastname={setLastname}
-          // phone={phone}
-          // email={email}
-          // setPhone={setPhone}
-          // setEmail={setEmail}
-          appointmentsArray={appointmentsArray}
-        />
+        <UserPortal appointmentsArray={appointmentsArray} />
       )}
     </>
   )

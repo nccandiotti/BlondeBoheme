@@ -1,5 +1,5 @@
 class UserImagesController < ApplicationController
-    # before_action :set_storage_url, only: [:create, :show]
+
     def index 
         render json: UserImage.all, status: :ok
     end
