@@ -7,14 +7,8 @@ import drawing from "../../assets/silhouette.png"
 
 function UserHome() {
   const { currentUser } = useContext(UserContext)
-  const { setCurrentUser } = useContext(UserContext)
   const [appointmentsArray, setAppointmentsArray] = useState([])
 
-  useEffect(() => {
-    fetch(`/me`)
-      .then((r) => r.json())
-      .then(setCurrentUser)
-  }, [])
   useEffect(() => {
     fetch(`/appointments`)
       .then((r) => r.json())
