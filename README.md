@@ -59,8 +59,256 @@ To try out this project:
 
 ### JavaScript/React.js 
 ```React.js
+  //login
+  function handleLogin(e) {
+    e.preventDefault()
+    fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      }),
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((currentUser) => setCurrentUser(currentUser))
+      } else alert("Invalid login. Please try again.")
+    })
+  }
+
+  // fetch appointments array
+  useEffect(() => {
+    fetch("./appointments")
+      .then((r) => r.json())
+
+      .then((data) => setAppointments(data))
+  }, [])
+  // fetch users array
+  useEffect(() => {
+    fetch("./users")
+      .then((r) => r.json())
+      .then(setUsersArray)
+  }, [])
+
+  const handleCloseApptEdit = () => setOpenApptEdit(false)
+  const toggleAlert = () => setShowAlert((prevstate) => !prevstate)
+  
+ // update appointment
+  function handleApptPatch(e) {
+    e.preventDefault()
+    fetch(`/appointments/${selectedApptid}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        time: time,
+      }),
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then(setDateValue(null))
+        setSelectedApptTime(time)
+        handleApptClose()
+      } else
+        alert("This day/time is not available, please select another time.")
+    })
+  }
+
+  // delete appointment
+  function handleFirstDeleteButton(e) {
+    toggleAlert()
+  }
+
+  function updateApptsArrayAfterDelete(id) {
+    const filter = appointments.filter((appt) => appt.id !== id)
+    return setAppointments(filter)
+  }
+  function handleHardDelete(e) {
+    updateApptsArrayAfterDelete(selectedApptid)
+    fetch(`/appointments/${selectedApptid}`, {
+      method: "DELETE",
+    }).then(setShowAlert(!showAlert))
+    handleCloseApptEdit()
+  }
+```
+### Ruby/rails 
+```
+  //application controller with error handling
+    class ApplicationController < ActionController::API
+      include ActionController::Cookies
+      rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
+      rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+ 
+      def current_user
+          User.find_by(id:session[:user_id])
+      end 
+
+      private
+      def render_unprocessable_entity(exception)
+        render json: { errors: exception.record.errors.full_messages}, status: :unprocessable_entity
+      end
+
+      def render_not_found(error)
+        render json: {error: "#{error.message}"}, status: :not_found
+      end
+    end
+    
+    //Sessions controller
+    class SessionsController < ApplicationController
+ 
+    def login
+        user = User.find_by(username: params[:username])
+        if user&.authenticate(params[:password])
+            session[:user_id]=user.id
+            render json: user
+        else
+          render json: {errors: ["invalid username or password"]}, status: :unauthorized
+        end
+       end
+    
+       def logout
+        session.delete :user_id
+        head :no_content
+       end
+
+    end
+    
+
 
 ```
+### API Schema
+```
+ActiveRecord::Schema[7.0].define(version: 2022_04_16_183933) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "salon_id", null: false
+    t.bigint "user_id", null: false
+    t.string "time"
+    t.string "duration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "deposit_received", default: false
+    t.index ["salon_id"], name: "index_appointments_on_salon_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "salons", force: :cascade do |t|
+    t.string "name"
+    t.string "owner"
+    t.string "address"
+    t.string "phone"
+    t.string "instagram"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "category"
+    t.string "time"
+    t.string "price"
+    t.string "name"
+    t.bigint "salon_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["salon_id"], name: "index_services_on_salon_id"
+  end
+
+  create_table "student_inquiries", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "phone"
+    t.string "email"
+    t.string "technique"
+    t.string "travel"
+    t.string "lessonType"
+    t.bigint "salon_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["salon_id"], name: "index_student_inquiries_on_salon_id"
+    t.index ["user_id"], name: "index_student_inquiries_on_user_id"
+  end
+
+  create_table "user_consults", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "phone"
+    t.string "graycvg"
+    t.string "hairhx"
+    t.string "allergies"
+    t.bigint "user_id", null: false
+    t.bigint "salon_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["salon_id"], name: "index_user_consults_on_salon_id"
+    t.index ["user_id"], name: "index_user_consults_on_user_id"
+  end
+
+  create_table "user_images", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_images_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.boolean "admin", default: false
+    t.string "firstname"
+    t.string "lastname"
+    t.string "username"
+    t.string "email"
+    t.string "password_digest", default: ""
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "appointments", "salons"
+  add_foreign_key "appointments", "users"
+  add_foreign_key "services", "salons"
+  add_foreign_key "student_inquiries", "salons"
+  add_foreign_key "student_inquiries", "users"
+  add_foreign_key "user_consults", "salons"
+  add_foreign_key "user_consults", "users"
+  add_foreign_key "user_images", "users"
+end
+```
+
 
 ## Features
 * Full stack web application utilizing the Ruby on Rails, Active Storage, React, MUI 
