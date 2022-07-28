@@ -343,7 +343,7 @@ end
 Project is: evolving. Future plans include coordinating with business owner on final features and refactors to optimize UI, including media queries for mobile users. 
 
 ## Inspiration
-The inspiration for The Blonde Boheme came as an initiative to improve the current website for a friend, [@the.blonde.boheme.](https://www.instagram.com/the.blonde.boheme/), a luxury hair service provider in Rochester, New York. Currently using a mix of instagram, linktree, and wix to advertise her business, I wanted to build a website that was better fit her brand and improved current/future clients user experience. 
+The inspiration for The Blonde Boheme came as an initiative to improve the current website for a friend, [@the.blonde.boheme.](https://www.instagram.com/the.blonde.boheme/), a luxury hair service provider in Rochester, New York. Currently using a mix of instagram, linktree, and wix to advertise her business, I wanted to build a website that better fit her brand and improved current/future clients user experience. 
 
 ## Contact
 Created by [Nicole Candiotti](https://www.linkedin.com/in/nicole-candiotti/) 
